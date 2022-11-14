@@ -1,6 +1,7 @@
 # ui-base
 
-vue前端基础组件
+前端公共组件
+公共UI-组件库
 
 ## Getting started
 
@@ -15,14 +16,14 @@ Already a pro? Just edit this README.md and make it your own. Want to make it ea
 
 ```
 cd existing_repo
-git remote add origin http://gitlab.ahyzc.com/yzc-public-tools/ui-base.git
+git remote add origin http://gitlab.ahyzc.com/basicservicegroup/ui-base.git
 git branch -M main
 git push -uf origin main
 ```
 
 ## Integrate with your tools
 
-- [ ] [Set up project integrations](http://gitlab.ahyzc.com/yzc-public-tools/ui-base/-/settings/integrations)
+- [ ] [Set up project integrations](http://gitlab.ahyzc.com/basicservicegroup/ui-base/-/settings/integrations)
 
 ## Collaborate with your team
 
