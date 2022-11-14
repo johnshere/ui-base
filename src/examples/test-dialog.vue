@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import dialogCa from "../../packages/dialog/dialog-ca.vue";
+import dialogCa from "../../packages/dialog/dialog.vue";
 
 export default {
   components: { dialogCa },
