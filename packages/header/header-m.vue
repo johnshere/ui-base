@@ -572,6 +572,7 @@ a:hover {
     border: solid 1px #e5301e;
     border-right: none;
     outline: none;
+    box-sizing: border-box;
   }
   .search-box-fixed .search-input-content .search-select-companytype {
     height: 32px;
