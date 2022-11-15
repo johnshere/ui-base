@@ -33,6 +33,17 @@
             target="_blank"
             :href="topInfo.userManagerUrl"
             class="user_manager"
+            style="
+              height: 30px;
+              background-color: #f24645;
+              width: 120px;
+              color: #fff;
+              padding: 0;
+              text-align: center;
+              text-align: center;
+              margin: 0;
+              line-height: 30px;
+            "
             >进入用户管理平台</a
           >
         </div>
