@@ -158,7 +158,6 @@ export default {
   padding: 0 10px;
   margin-top: 6px;
   border-left: 1px solid #505a6d;
-  border-right: 1px solid #505a6d;
 }
 
 .header .register:hover {
