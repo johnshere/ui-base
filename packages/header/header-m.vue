@@ -478,11 +478,13 @@ a:hover {
     color: #41465a;
     font-weight: 600;
     font-size: 16px;
+    margin-top: 2px;
   }
   .contact-us-words {
     float: left;
     margin-top: -10px;
     margin-left: 10px;
+    line-height: 20px;
   }
   .search-input-content .seachBtn {
     float: left;
