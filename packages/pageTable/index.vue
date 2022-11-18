@@ -1,6 +1,7 @@
 <template>
   <div class="u-page-table">
     <el-table
+      ref="table"
       :data="data"
       style="width: 100%"
       :size="size"
@@ -17,6 +18,7 @@
     </el-table>
     <div v-if="data.length > 0" class="u-page-table__pagination">
       <el-pagination
+        ref="pagination"
         :page-sizes="pageSizes"
         :layout="layout"
         v-bind="$attrs"
