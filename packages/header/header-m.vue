@@ -143,7 +143,7 @@
             :class="bidService ? 'platform-active' : ''"
           >
             <a @mouseover="bidService = true" @mouseleave="bidService = false">
-              <img src="./images/fire.png" style="width: 20px" />投标通</a
+              <img src="./images/fire.png" style="width: 20px;height: 20px;" />投标通</a
             >
             <img
               src="./images/trianglenavdown.png"
