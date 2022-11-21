@@ -115,6 +115,7 @@ export default {
     height: 22px;
     vertical-align: middle;
     margin-right: 5px;
+    background-repeat: no-repeat;
   }
   .userName {
     color: #bbb;
