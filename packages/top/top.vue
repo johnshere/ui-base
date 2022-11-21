@@ -4,7 +4,7 @@
       <div>
         <span class="welcome"
           ><span>
-            <img v-if="topInfo.isLogin" :class="topInfo.memberLevel" />
+            <span v-if="topInfo.isLogin" :class="topInfo.memberLevel" class="member-img"></span>
             <a
               class="userName"
               :class="topInfo.isLogin ? 'vipserName' : ''"
@@ -114,6 +114,14 @@ export default {
     height: 22px;
     vertical-align: middle;
     margin-right: 5px;
+  }
+  .member-img {
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    vertical-align: middle;
   }
   .userName {
     color: #bbb;
