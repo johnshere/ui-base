@@ -1,6 +1,7 @@
 <template>
   <div class="u-header-wrap">
-    <div class="search-box">
+    <div class="search-box"  ref="searchBox">
+      <div>
       <div class="yzc-logo">
         <a href="/">
           <img src="./images/navlogo.png" alt="" />
@@ -65,6 +66,7 @@
         <p class="phone-num">400-0099-555</p>
         <p class="contact-us-words">客服咨询<br />客户服务</p>
       </div>
+    </div>
     </div>
     <!-- 菜单 -->
     <div class="item-block-box nav-box">
@@ -143,7 +145,7 @@
             :class="bidService ? 'platform-active' : ''"
           >
             <a @mouseover="bidService = true" @mouseleave="bidService = false">
-              <img src="./images/fire.png" style="width: 20px;height: 20px;" />投标通</a
+              <img src="./images/fire.png" style="width: 20px" />投标通</a
             >
             <img
               src="./images/trianglenavdown.png"
@@ -256,6 +258,9 @@ export default {
       platService: false,
     };
   },
+  mounted() {
+    window.addEventListener("scroll", this.handleScroll, true);
+  },
   computed: {
     currentPlace() {
       return this.navList.find((item) => item.code === this.currentSearchVal)
@@ -265,6 +270,22 @@ export default {
   methods: {
     handleTab(code) {
       this.currentSearchVal = code;
+    },
+    handleScroll() {
+      var top = document.body.scrollTop || document.documentElement.scrollTop;
+      if(top > 30) {
+        this.$refs.searchBox.style.position = "fixed";
+        this.$refs.searchBox.style.top = "30px";
+        this.$refs.searchBox.style.marginTop = "0";
+        this.$refs.searchBox.style.left = "50%";
+        this.$refs.searchBox.style.transform = "translate(-50%)";
+      } else {
+        this.$refs.searchBox.style.position = "initial";
+        this.$refs.searchBox.style.top = "0";
+        this.$refs.searchBox.style.marginTop = "30px";
+        this.$refs.searchBox.style.left = "0";
+        this.$refs.searchBox.style.transform = "translate(0)";
+      }
     },
     Search() {
       const sltcontent = this.$refs.inputValue.value;
@@ -324,20 +345,27 @@ a:hover {
 .u-header-wrap {
   width: 100%;
   height: 100px;
-  position: fixed;
-  z-index: 200;
-  top: 30px;
-  left: 50%;
-  transform: translate(-50%);
+  // top: 30px;
+  // left: 50%;
+  // transform: translate(-50%);
   background: #fff;
+  z-index: 200;
   .search-box-fixed,
   .search-box {
-    width: 1200px;
     height: 100px;
     padding: 0;
     box-sizing: content-box;
-    width: 1200px;
+    width: 100%;
+    margin-top: 30px;
+    z-index: 200;
+    background: #fff;
+    >div {
+      width: 1200px;
     margin: 0 auto;
+
+    }
+    // left: 50%;
+    // transform: translate(-50%);
   }
 
   .wholeSeachBtn {
