@@ -280,7 +280,7 @@ export default {
         this.$refs.searchBox.style.left = "50%";
         this.$refs.searchBox.style.transform = "translate(-50%)";
       } else {
-        this.$refs.searchBox.style.position = "initial";
+        this.$refs.searchBox.style.position = "static";
         this.$refs.searchBox.style.top = "0";
         this.$refs.searchBox.style.marginTop = "30px";
         this.$refs.searchBox.style.left = "0";
