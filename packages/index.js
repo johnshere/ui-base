@@ -1,10 +1,10 @@
 import UTitle from './title'
 import UDialog from './dialog'
-import PageTable from './pageTable'
+import UPageTable from './pageTable'
 
 export const Title = UTitle;
 export const Dialog = UDialog;
-export const PageTable = PageTable;
+export const PageTable = UPageTable;
 
 const components = {
     Title,
