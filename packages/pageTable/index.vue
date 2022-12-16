@@ -75,8 +75,10 @@ export default {
       }
     }
   }
-  &__pagination .el-pagination{
-    margin: 24px 0;
+  &__pagination {
+    .el-pagination {
+      margin: 24px 0;
+    }
   }
   &__empty {
     background: url("./empty.png") no-repeat;
