@@ -59,21 +59,7 @@ export default {
   },
 };
 </script>
-<!-- <style>
-.u-page-table 
-.u-page-table 
-.u-page-table 
-.u-page-table 
-.u-page-table 
-.u-page-table 
-.u-page-table .u-page-table
-.u-page-table .u-page-table
-.u-page-table .u-page-table
-.u-page-table .u-page-table__pagination .el-pagination{
-    margin: 24px 0;
-  }
-.u-page-table .u-page-table
-</style> -->
+
 <style lang="less">
 .u-page-table {
   .el-table {
@@ -82,9 +68,6 @@ export default {
       background-color: #f5f7fa;
       color: #333;
     }
-    // td {
-    //   padding: 5px 0;
-    // }
     th {
       padding: 10px 0;
       &.center {
@@ -92,7 +75,9 @@ export default {
       }
     }
   }
-  &
+  &__pagination .el-pagination{
+    margin: 24px 0;
+  }
   &__empty {
     background: url("./empty.png") no-repeat;
     width: 300px;
