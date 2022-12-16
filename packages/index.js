@@ -1,10 +1,19 @@
-import Title from './title'
+import UTitle from './title'
+import UDialog from './dialog'
+
+export const Title = UTitle;
+export const Dialog = UDialog;
 
 const components = {
-    Title
+    Title,
+    Dialog
 }
 
 const install = function (Vue, options) {
+    Vue.prototype.$UBase = {
+        size: opts.size || ''
+    };
+
     const componentKeys = Object.keys(components)
     componentKeys.forEach(function (key) {
         const component = components[key]

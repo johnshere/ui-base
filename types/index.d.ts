@@ -1,8 +1,10 @@
 import Vue from "vue/types/umd";
 import { UComponent } from "./component";
 import { UTitle } from "./title";
+import { UDialog } from "./dialog";
 
 export class Title extends UTitle {}
+export class Dialog extends UDialog  {}
 
 export const version: string;
 
@@ -14,6 +16,7 @@ export type Component = UComponent;
 
 declare class UElement {
   Title;
+  Dialog;
 }
 
 export default UElement;

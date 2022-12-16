@@ -1,7 +1,8 @@
 <script>
-import dialog from "element-ui/packages/dialog/index";
+import { Dialog } from "element-ui";
 export default {
-  extends: dialog,
+  name: "UDialog",
+  extends: Dialog,
 };
 </script>
 <style lang="less" scoped>
@@ -15,6 +16,7 @@ export default {
   padding: 0;
   padding-left: 20px;
   box-sizing: border-box;
+
   .el-dialog__headerbtn {
     top: 10px;
     right: 16px;
