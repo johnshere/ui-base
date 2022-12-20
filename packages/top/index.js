@@ -1,4 +1,4 @@
-import Top from './top.vue'
+import Top from './index.vue'
 
 Top.install = function (Vue) {
     Vue.component(Top.name, Top);

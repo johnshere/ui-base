@@ -1,15 +1,18 @@
 import UTitle from './title'
 import UDialog from './dialog'
 import UPageTable from './pageTable'
+import UTop from './top';
 
 export const Title = UTitle;
 export const Dialog = UDialog;
 export const PageTable = UPageTable;
+export const Top = UTop
 
 const components = {
     Title,
     Dialog,
-    PageTable
+    PageTable,
+    Top
 }
 
 const install = function (Vue, options) {
