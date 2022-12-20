@@ -3,6 +3,7 @@ import { UComponent } from "./component";
 import { UTitle } from "./title";
 import { UDialog } from "./dialog";
 import { UPageTable } from './pageTable'
+import { UTop } from './top'
 
 /** Title Component */
 export class Title extends UTitle { }
@@ -10,6 +11,8 @@ export class Title extends UTitle { }
 export class Dialog extends UDialog { }
 /** PageTable Component */
 export class PageTable extends UPageTable { }
+
+export class Top extends UTop { }
 
 export const version: string;
 
