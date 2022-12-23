@@ -1,14 +1,20 @@
 import UTitle from './title'
 import UDialog from './dialog'
+import UPageTable from './pageTable'
+import UTop from './top';
 import USelect from './form/select'
 
 export const Title = UTitle;
 export const Dialog = UDialog;
+export const PageTable = UPageTable;
+export const Top = UTop
 export const Select = USelect;
 
 const components = {
     Title,
     Dialog,
+    PageTable,
+    Top,
     Select
 }
 

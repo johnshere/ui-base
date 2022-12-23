@@ -79,7 +79,7 @@
 
 <script>
 export default {
-  name: "uTop",
+  name: "UTop",
   props: {
     topInfo: {
       type: Object,
