@@ -1,12 +1,15 @@
 import UTitle from './title'
 import UDialog from './dialog'
+import USelect from './form/select'
 
 export const Title = UTitle;
 export const Dialog = UDialog;
+export const Select = USelect;
 
 const components = {
     Title,
-    Dialog
+    Dialog,
+    Select
 }
 
 const install = function (Vue, options) {
