@@ -4,6 +4,8 @@ import { UTitle } from "./title";
 import { UDialog } from "./dialog";
 import { UPageTable } from './pageTable'
 import { UTop } from './top'
+import { USelect } from './select'
+import { URadio } from './radio'
 
 /** Title Component */
 export class Title extends UTitle { }
@@ -13,6 +15,9 @@ export class Dialog extends UDialog { }
 export class PageTable extends UPageTable { }
 
 export class Top extends UTop { }
+
+export class Select extends USelect { }
+export class Radio extends URadio { }
 
 export const version: string;
 

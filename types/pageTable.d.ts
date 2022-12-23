@@ -1,9 +1,9 @@
-import { UComponent } from "ui-base/types/component";
+import { UComponent } from "./component";
 
 // title组件
 export declare class UPageTable extends UComponent {
-  data: Array;
+  data: Array<any>;
   size: String;
-  pageSizes: Array;
+  pageSizes: Array<any>;
   layout?: String;
 }

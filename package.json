@@ -1,60 +1,34 @@
 {
-  "_from": "git+http://gitlab.ahyzc.com/yzc-public-tools/ui-base.git#develop",
-  "_id": "ui-base@0.1.1",
-  "_inBundle": false,
-  "_integrity": "",
-  "_location": "/ui-base",
-  "_phantomChildren": {
-    "@vue/compiler-sfc": "2.7.14",
-    "csstype": "3.1.1"
+  "name": "ui-base",
+  "version": "0.1.1",
+  "private": true,
+  "description": "前端公共组件 公共UI-组件库",
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
   },
-  "_requested": {
-    "type": "git",
-    "raw": "git+http://gitlab.ahyzc.com/yzc-public-tools/ui-base.git#develop",
-    "rawSpec": "git+http://gitlab.ahyzc.com/yzc-public-tools/ui-base.git#develop",
-    "saveSpec": "git+http://gitlab.ahyzc.com/yzc-public-tools/ui-base.git#develop",
-    "fetchSpec": "http://gitlab.ahyzc.com/yzc-public-tools/ui-base.git",
-    "gitCommittish": "develop"
-  },
-  "_requiredBy": [
-    "#USER",
-    "/"
-  ],
-  "_resolved": "git+http://gitlab.ahyzc.com/yzc-public-tools/ui-base.git#a18104db24b205d26206ec424fd90a9738b608cc",
-  "_spec": "git+http://gitlab.ahyzc.com/yzc-public-tools/ui-base.git#develop",
-  "_where": "E:\\Code\\03-portal\\portal-business-web",
-  "bundleDependencies": false,
+  "main": "packages/index.js",
+  "typings": "types/index.d.ts",
   "dependencies": {
     "vue": "^2.6.11"
   },
-  "deprecated": false,
-  "description": "前端公共组件\r 公共UI-组件库",
   "devDependencies": {
+    "core-js": "^3.6.5",
+    "element-ui": "^2.15.10",
+    "vue-router": "^3.2.0",
     "@vue/cli-plugin-babel": "~4.5.19",
     "@vue/cli-plugin-eslint": "~4.5.19",
     "@vue/cli-plugin-router": "~4.5.19",
     "@vue/cli-service": "~4.5.19",
     "@vue/eslint-config-prettier": "^6.0.0",
     "babel-eslint": "^10.1.0",
-    "core-js": "^3.6.5",
-    "element-ui": "^2.15.10",
     "eslint": "^6.7.2",
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-vue": "^6.2.2",
     "less": "^3.0.4",
     "less-loader": "^5.0.0",
     "prettier": "^2.2.1",
-    "vue-router": "^3.2.0",
     "vue-template-compiler": "^2.6.11"
-  },
-  "main": "packages/index.js",
-  "name": "ui-base",
-  "private": true,
-  "scripts": {
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint",
-    "serve": "vue-cli-service serve"
-  },
-  "types": "types/index.d.ts",
-  "version": "0.1.1"
+  }
 }
