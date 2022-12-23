@@ -1,30 +1,27 @@
 <template>
-  <Select
+  <el-radio-group
     v-bind="$attrs"
     v-on="$listeners"
   >
-    <Option
+    <el-radio
       v-for="(item,i) in list"
       :key="i"
       v-bind="item"
-    ></Option>
-  </Select>
+    >
+      {{item.text}}
+    </el-radio>
+  </el-radio-group>
 </template>
+
 <script>
-import { Select, Option } from "element-ui";
+import { Radio, RadioGroup } from "element-ui";
 import Dictionary from  "../dictionary/dictionary" 
 
 export default {
-  name: "USelect", 
-   components:{
-     Select,Option
+  name: "URadio", 
+  components:{
+     Radio, RadioGroup
   }, 
   mixins: [Dictionary],
-};
-</script>
-
-<style lang="less" scoped>
-div.el-select {
-  width: 100%;
 }
-</style>
+</script>

@@ -10,6 +10,7 @@ export default {
       default: ''
     }
   },
+  data: () => ({ list: [] }),
   watch: {
     data(list) {
       if (this.codeKey) return
@@ -17,12 +18,15 @@ export default {
     }
   },
   mounted() {
+    console.log(this)
     this.getCodeData()
   },
   methods: {
     resolveData(list) {
-      if (typeof this.renderOptions == 'function') {
-        return this.renderOptions(list)
+      if (typeof this.dataHandle == 'function') {
+        return this.dataHandle(list)
+      } else {
+        this.list = list
       }
       console.log("no option handle for " + this.codeKey)
     },
