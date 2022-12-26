@@ -13,10 +13,12 @@ export class Title extends UTitle { }
 export class Dialog extends UDialog { }
 /** PageTable Component */
 export class PageTable extends UPageTable { }
-
+/** Top Component */
 export class Top extends UTop { }
 
+/** Select Component */
 export class Select extends USelect { }
+/** Radio Component */
 export class Radio extends URadio { }
 
 export const version: string;

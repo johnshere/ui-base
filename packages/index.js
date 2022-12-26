@@ -3,19 +3,22 @@ import UDialog from './dialog'
 import UPageTable from './pageTable'
 import UTop from './top';
 import USelect from './form/select'
+import URadio from './form/radio'
 
 export const Title = UTitle;
 export const Dialog = UDialog;
 export const PageTable = UPageTable;
 export const Top = UTop
 export const Select = USelect;
+export const Radio = URadio;
 
 const components = {
     Title,
     Dialog,
     PageTable,
     Top,
-    Select
+    Select,
+    Radio
 }
 
 const install = function (Vue, options) {
