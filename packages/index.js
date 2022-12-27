@@ -1,9 +1,12 @@
+import './style/index.less'
 import UTitle from './title'
 import UDialog from './dialog'
 import UPageTable from './pageTable'
 import UTop from './top';
 import USelect from './form/select'
 import URadio from './form/radio'
+
+export * from './utils'
 
 export const Title = UTitle;
 export const Dialog = UDialog;

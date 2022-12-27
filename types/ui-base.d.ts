@@ -7,6 +7,10 @@ import { UTop } from './top'
 import { USelect } from './select'
 import { URadio } from './radio'
 
+/** utils */
+export * from './utils'
+
+
 /** Title Component */
 export class Title extends UTitle { }
 /** Dialog Component */
@@ -20,6 +24,7 @@ export class Top extends UTop { }
 export class Select extends USelect { }
 /** Radio Component */
 export class Radio extends URadio { }
+
 
 export const version: string;
 
