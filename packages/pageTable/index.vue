@@ -7,7 +7,7 @@
       :size="size"
       border
       v-bind="$attrs"
-      v-on="$listeners"
+      v-on="tableListener"
     >
       <slot />
       <div slot="empty">
@@ -57,6 +57,13 @@ export default {
       type: String,
     },
   },
+  computed:{
+    tableListener(){
+      // table和pagination的current-change同名，并且没啥用
+      const currentChange = this.$listeners['current-row-change'] || function(){}
+      return Object.assign({},this.$listeners,{'current-change':currentChange})
+    }
+  }
 };
 </script>
 
@@ -68,6 +75,9 @@ export default {
       background-color: #f5f7fa;
       color: #333;
     }
+    // td {
+    //   padding: 5px 0;
+    // }
     th {
       padding: 10px 0;
       &.center {

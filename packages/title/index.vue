@@ -1,5 +1,8 @@
 <template>
-  <div class="common-header" :style="{ background: bgColor }">
+  <div
+    class="common-header"
+    :style="{ background: bgColor }"
+  >
     <div class="header-title">
       {{ title }}
     </div>
@@ -19,9 +22,9 @@ export default {
     },
     title: {
       type: String,
-      default: ''
-    }
-  }
+      default:    ''
+    } 
+   }
 }
 </script>
 

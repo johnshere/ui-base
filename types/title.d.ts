@@ -1,4 +1,4 @@
-import { UComponent } from "ui-base/types/component";
+import { UComponent } from "./component";
 
 // title组件
 export declare class UTitle extends UComponent {
