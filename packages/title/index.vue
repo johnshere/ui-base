@@ -39,11 +39,13 @@ export default {
   align-items: center;
 
   .header-title {
-    font-size: 14px;
+    font-size: 16px;
+    font-weight: bolder;
     color: #333;
     height: 18px;
     line-height: 18px;
-    // padding-left: 18px;
+    padding-left: 18px;
+    position: relative;
   }
 }
 </style>
