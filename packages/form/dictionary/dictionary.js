@@ -18,7 +18,6 @@ export default {
     }
   },
   mounted() {
-    console.log(this)
     this.getCodeData()
   },
   methods: {
