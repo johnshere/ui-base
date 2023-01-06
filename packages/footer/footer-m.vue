@@ -422,7 +422,7 @@
           </div>
         </div>
         <div class="footer-wx-code">
-          <img src="./images/wxcode.png" alt="" style="width:112px;">
+          <img src="./images/wxCode.jpg" alt="" style="width:112px;">
           <p>
 
             优质采官方微信
