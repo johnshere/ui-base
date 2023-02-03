@@ -1,6 +1,6 @@
 <template>
   <el-dialog
-    :visible.sync="loginVisible"
+    :visible.sync="visible"
     append-to-body
     title="用户登录"
     class="login_window"
@@ -19,6 +19,16 @@ export default {
     },
     loginWindow: {
       type: String,
+    },
+  },
+  data() {
+    return {
+      visible: this.loginVisible,
+    };
+  },
+  watch: {
+    loginVisible(val, oldVal) {
+      this.visible = val;
     },
   },
   methods: {
