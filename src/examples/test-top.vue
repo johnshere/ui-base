@@ -5,7 +5,7 @@
   </template>
   
   <script>
-  import Header from "../../packages/footer/footer-m.vue";
+  import Header from "../../packages/header/header-m.vue";
   
   export default {
     components: { Header },
