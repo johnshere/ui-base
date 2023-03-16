@@ -4,6 +4,7 @@
     :style="{ background: bgColor }"
   >
     <div class="header-title">
+      <span class="el-button--primary"></span>
       {{ title }}
     </div>
     <div>
@@ -44,8 +45,17 @@ export default {
     color: #333;
     height: 18px;
     line-height: 18px;
-    padding-left: 18px;
+    padding-left: 14px;
     position: relative;
+    .el-button--primary {
+      display: inline-block;
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 18px;
+      width: 4px;
+      -webkit-print-color-adjust: exact;
+    }
   }
 }
 </style>
