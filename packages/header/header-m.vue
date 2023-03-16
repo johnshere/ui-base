@@ -139,7 +139,7 @@
             </ul>
           </li>
           <li class="nav-box-line">|</li>
-          <li :class="caCert ? 'platform-active' : ''" class="platform-services-nav" style="width: 118px;">
+          <li :class="caCert ? 'platform-active' : ''" class="platform-services-nav" style="width: 122px;">
                 <a class="" @mouseover="caCert = true" @mouseleave="caCert = false">CA证书办理</a>
                 <img src="./images/trianglenavdown.png" alt="" 
                   style="margin-left:10px; vertical-align: middle;"
@@ -149,7 +149,7 @@
                 >
                 <ul 
                 class="platform-services-nav-lists" 
-                style="height: auto; width: 118px;"
+                style="height: auto; width: 122px;"
                 v-show="caCert"
                 @mouseover="caCert = true"
                 @mouseleave="caCert = false"
