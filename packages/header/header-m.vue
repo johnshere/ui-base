@@ -237,10 +237,10 @@
                 >
               </li>
               <li>
-                <a href="/homeweb/#/purservice">采购商服务</a>
+                <a href="/purservice/index">采购商服务</a>
               </li>
               <li>
-                <a href="/homeweb/#/supService">供应商服务</a>
+                <a href="/SupService/index">供应商服务</a>
               </li>
 
               <li>
