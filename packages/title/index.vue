@@ -4,8 +4,13 @@
     :style="{ background: bgColor }"
   >
     <div class="header-title">
-      <span class="el-button--primary"></span>
-      {{ title }}
+      <div>
+        <span class="el-button--primary"></span>
+        {{ title }}
+      </div>
+      <div class="tip">
+        <slot name="tip"></slot>
+      </div>
     </div>
     <div>
       <slot />
@@ -29,7 +34,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
 .common-header {
   margin-bottom: 20px;
   padding: 20px 18px 12px 18px;
@@ -47,6 +52,7 @@ export default {
     line-height: 18px;
     padding-left: 14px;
     position: relative;
+    display: flex;
     .el-button--primary {
       display: inline-block;
       position: absolute;
@@ -56,6 +62,10 @@ export default {
       width: 4px;
       -webkit-print-color-adjust: exact;
     }
+  }
+  .tip{
+    color: #ff1717;
+    font-size: 14px;
   }
 }
 </style>
