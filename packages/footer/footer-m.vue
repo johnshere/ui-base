@@ -412,7 +412,7 @@
                 </li>
 
                 <li>
-                  <a>Email：service@uzhicai.com</a>
+                  <a>Email：service@youzhicai.com</a>
                 </li>
                 <li>
                   <a>地址：安徽省合肥市滨湖新区金融港A11栋1-2楼</a>
