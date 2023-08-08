@@ -23,14 +23,14 @@
           </ul>
         </div>
         <div class="search-input-content">
-          <select
-            class="search-select-companytype"
-            ref="searchcompanytype"
-            v-show="currentSearchVal === '3'"
-          >
-            <option value="1" selected>供应商</option>
-            <option value="2">采购人</option>
-          </select>
+          <!-- <select -->
+            <!-- class="search-select-companytype" -->
+            <!-- ref="searchcompanytype" -->
+            <!-- v-show="currentSearchVal === '3'" -->
+          <!-- > -->
+            <!-- <option value="1" selected>供应商</option> -->
+            <!-- <option value="2">采购人</option> -->
+          <!-- </select> -->
           <input
             type="text"
             class="classification-input"
