@@ -313,7 +313,7 @@ export default {
     },
     Search() {
       const sltcontent = this.$refs.inputValue.value;
-      const searchcompanytype = this.$refs.searchcompanytype.value;
+      // const searchcompanytype = this.$refs.searchcompanytype.value;
       let redirecturl = "";
       switch (this.currentSearchVal) {
         case "1":
@@ -324,8 +324,7 @@ export default {
           redirecturl =
             "https://www.youzhicai.com/s/3.html?key=" +
             sltcontent +
-            "&type=" +
-            searchcompanytype;
+            "&type=2";
           break;
         case "5":
           redirecturl = "//shangji.youzhicai.com/s/5.html?key=" + sltcontent;
