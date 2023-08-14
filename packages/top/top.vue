@@ -70,7 +70,7 @@
         </div>
 
         <div class="header-nav-right-item header-nav-online-chat">
-          <a style="padding-right: 0" onclick="Feedback()">意见反馈</a>
+          <a onclick="Feedback()">意见反馈</a>
         </div>
 
         <div class="header-nav-right-item header-nav-online-chat">
