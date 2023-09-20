@@ -37,7 +37,7 @@ export default {
 <style lang="less" scoped>
 .common-header {
   margin-bottom: 20px;
-  padding: 20px 12px 12px 12px;
+  padding: 20px 12px 14px 12px;
   border-bottom: 1px solid #e8e8e8;
   overflow: hidden;
   display: flex;
