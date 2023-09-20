@@ -37,12 +37,12 @@ export default {
 <style lang="less" scoped>
 .common-header {
   margin-bottom: 20px;
-  padding: 20px 18px 12px 18px;
+  padding: 20px 12px 12px 12px;
   border-bottom: 1px solid #e8e8e8;
   overflow: hidden;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
 
   .header-title {
     font-size: 16px;
