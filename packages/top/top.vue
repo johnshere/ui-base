@@ -48,29 +48,33 @@
           >
         </div>
 
-        <div class="header-nav-right-item header-nav-wx">
-          <a style="border-left: none">微信公众号</a>
-          <div class="wx-header-code-box clearfix" style="width: 205px">
-            <div style="width: 100px; float: left">
-              <img src="./images/headerwxcode.png" alt="" style="width: 81px" />
-              <p>关注微信公众号</p>
-            </div>
-            <div style="width: 100px; float: left">
-              <img
-                src="./images/headerwxcodesj.png"
-                alt=""
-                style="width: 81px"
-              />
-              <p>捕捉最新商机</p>
-            </div>
-          </div>
-        </div>
+        <!-- <div class="header-nav-right-item header-nav-wx"> -->
+          <!-- <a style="border-left: none">微信公众号</a> -->
+          <!-- <div class="wx-header-code-box clearfix" style="width: 205px"> -->
+            <!-- <div style="width: 100px; float: left"> -->
+              <!-- <img src="./images/headerwxcode.png" alt="" style="width: 81px" /> -->
+              <!-- <p>关注微信公众号</p> -->
+            <!-- </div> -->
+            <!-- <div style="width: 100px; float: left"> -->
+              <!-- <img -->
+                <!-- src="./images/headerwxcodesj.png" -->
+                <!-- alt="" -->
+                <!-- style="width: 81px" -->
+              <!-- /> -->
+              <!-- <p>捕捉最新商机</p> -->
+            <!-- </div> -->
+          <!-- </div> -->
+        <!-- </div> -->
         <div class="header-nav-right-item">
           <a rel="nofollow" href="/HelpCenter/HelpCenterIndex">帮助中心</a>
         </div>
 
         <div class="header-nav-right-item header-nav-online-chat">
-          <a style="padding-right: 0" onclick="Feedback()">意见反馈</a>
+          <a onclick="Feedback()">意见反馈</a>
+        </div>
+
+        <div class="header-nav-right-item header-nav-online-chat">
+          <a rel="nofollow" href="/homeweb/#/charge-standard">收费公示</a>
         </div>
       </div>
     </div>

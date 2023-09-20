@@ -64,7 +64,7 @@ export default {
     }
   }
   .tip{
-    color: #ff1717;
+    color: #f56c6c;
     font-size: 14px;
     font-weight: normal;
   }
