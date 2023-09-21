@@ -11,7 +11,7 @@ export default {
   height: 34px;
   background: #f5f7fa;
   border: 1px solid #dad7e2;
-  border-radius: 6px 6px 0px 0px;
+  border-radius: 2px 2px 0px 0px;
   line-height: 32px;
   padding: 0;
   padding-left: 20px;
