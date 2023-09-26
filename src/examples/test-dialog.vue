@@ -1,6 +1,8 @@
 <template>
   <div>
-    <dialog-ca :visible="true" title="12342134">test</dialog-ca>
+    <dialog-ca :visible="true" title="12342134">
+      <div style="background-color: yellow">test</div>
+    </dialog-ca>
   </div>
 </template>
 

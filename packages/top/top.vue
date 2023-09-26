@@ -4,7 +4,7 @@
       <div>
         <span class="welcome"
           ><span>
-            <span v-if="topInfo.isLogin" :class="topInfo.memberLevel" class="member-img"></span>
+            <span v-if="topInfo.isLogin" :class="topInfo.memberLevel" class="member-icon"></span>
             <a
               class="userName"
               :class="topInfo.isLogin ? 'vipserName' : ''"
@@ -48,29 +48,33 @@
           >
         </div>
 
-        <div class="header-nav-right-item header-nav-wx">
-          <a style="border-left: none">微信公众号</a>
-          <div class="wx-header-code-box clearfix" style="width: 205px">
-            <div style="width: 100px; float: left">
-              <img src="./images/headerwxcode.png" alt="" style="width: 81px" />
-              <p>关注微信公众号</p>
-            </div>
-            <div style="width: 100px; float: left">
-              <img
-                src="./images/headerwxcodesj.png"
-                alt=""
-                style="width: 81px"
-              />
-              <p>捕捉最新商机</p>
-            </div>
-          </div>
-        </div>
+        <!-- <div class="header-nav-right-item header-nav-wx"> -->
+          <!-- <a style="border-left: none">微信公众号</a> -->
+          <!-- <div class="wx-header-code-box clearfix" style="width: 205px"> -->
+            <!-- <div style="width: 100px; float: left"> -->
+              <!-- <img src="./images/headerwxcode.png" alt="" style="width: 81px" /> -->
+              <!-- <p>关注微信公众号</p> -->
+            <!-- </div> -->
+            <!-- <div style="width: 100px; float: left"> -->
+              <!-- <img -->
+                <!-- src="./images/headerwxcodesj.png" -->
+                <!-- alt="" -->
+                <!-- style="width: 81px" -->
+              <!-- /> -->
+              <!-- <p>捕捉最新商机</p> -->
+            <!-- </div> -->
+          <!-- </div> -->
+        <!-- </div> -->
         <div class="header-nav-right-item">
           <a rel="nofollow" href="/HelpCenter/HelpCenterIndex">帮助中心</a>
         </div>
 
         <div class="header-nav-right-item header-nav-online-chat">
-          <a style="padding-right: 0" onclick="Feedback()">意见反馈</a>
+          <a onclick="Feedback()">意见反馈</a>
+        </div>
+
+        <div class="header-nav-right-item header-nav-online-chat">
+          <a rel="nofollow" href="/homeweb/#/charge-standard">收费公示</a>
         </div>
       </div>
     </div>
@@ -79,7 +83,7 @@
 
 <script>
 export default {
-  name: "uTop",
+  name: "UTop",
   props: {
     topInfo: {
       type: Object,
@@ -109,19 +113,13 @@ export default {
   float: left;
   font-size: 12px;
   color: #bbb;
-  > img {
+  .member-icon {
+    display: inline-block;
     width: 22px;
     height: 22px;
     vertical-align: middle;
     margin-right: 5px;
-  }
-  .member-img {
-    display: inline-block;
-    width: 22px;
-    height: 22px;
-    background-position: center center;
     background-repeat: no-repeat;
-    vertical-align: middle;
   }
   .userName {
     color: #bbb;
@@ -166,7 +164,6 @@ export default {
   padding: 0 10px;
   margin-top: 6px;
   border-left: 1px solid #505a6d;
-  border-right: 1px solid #505a6d;
 }
 
 .header .register:hover {

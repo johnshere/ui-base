@@ -1,6 +1,7 @@
 <template>
   <div class="u-header-wrap">
-    <div class="search-box">
+    <div class="search-box"  ref="searchBox">
+      <div>
       <div class="yzc-logo">
         <a href="/">
           <img src="./images/navlogo.png" alt="" />
@@ -22,14 +23,14 @@
           </ul>
         </div>
         <div class="search-input-content">
-          <select
-            class="search-select-companytype"
-            ref="searchcompanytype"
-            v-show="currentSearchVal === '3'"
-          >
-            <option value="1" selected>供应商</option>
-            <option value="2">采购人</option>
-          </select>
+          <!-- <select -->
+            <!-- class="search-select-companytype" -->
+            <!-- ref="searchcompanytype" -->
+            <!-- v-show="currentSearchVal === '3'" -->
+          <!-- > -->
+            <!-- <option value="1" selected>供应商</option> -->
+            <!-- <option value="2">采购人</option> -->
+          <!-- </select> -->
           <input
             type="text"
             class="classification-input"
@@ -65,6 +66,7 @@
         <p class="phone-num">400-0099-555</p>
         <p class="contact-us-words">客服咨询<br />客户服务</p>
       </div>
+    </div>
     </div>
     <!-- 菜单 -->
     <div class="item-block-box nav-box">
@@ -137,6 +139,29 @@
             </ul>
           </li>
           <li class="nav-box-line">|</li>
+          <li :class="caCert ? 'platform-active' : ''" class="platform-services-nav" style="width: 122px;">
+                <a class="" @mouseover="caCert = true" @mouseleave="caCert = false">CA证书办理</a>
+                <img src="./images/trianglenavdown.png" alt="" 
+                  style="margin-left:10px; vertical-align: middle;"
+                  :style="{ transform: caCert ? 'rotate(-180deg)' : '' }"
+                  @mouseover="caCert = true"
+                  @mouseleave="caCert = false"  
+                >
+                <ul 
+                class="platform-services-nav-lists" 
+                style="height: auto; width: 122px;"
+                v-show="caCert"
+                @mouseover="caCert = true"
+                @mouseleave="caCert = false"
+                >
+                    <li>
+                        <a href="/homeweb/#/baseService" class="">平台基础服务</a>
+                    </li>
+                    <li>
+                        <a href="/homeweb/#/caExplain/index" class="secondAddClass">手机扫码签章</a>
+                    </li>
+                </ul>
+            </li>
           <li
             class="platform-services-nav"
             style="width: 105px"
@@ -212,10 +237,10 @@
                 >
               </li>
               <li>
-                <a href="/purservice/index">采购商服务</a>
+                <a href="/homeweb/#/purservice">采购人服务</a>
               </li>
               <li>
-                <a href="/SupService/index">供应商服务</a>
+                <a href="/homeweb/#/supService">供应商服务</a>
               </li>
 
               <li>
@@ -253,8 +278,12 @@ export default {
       inputValue: "",
       purchaseArea: false,
       bidService: false,
+      caCert: false,
       platService: false,
     };
+  },
+  mounted() {
+    window.addEventListener("scroll", this.handleScroll, true);
   },
   computed: {
     currentPlace() {
@@ -266,9 +295,25 @@ export default {
     handleTab(code) {
       this.currentSearchVal = code;
     },
+    handleScroll() {
+      var top = document.body.scrollTop || document.documentElement.scrollTop;
+      if(top > 30) {
+        this.$refs.searchBox.style.position = "fixed";
+        this.$refs.searchBox.style.top = "30px";
+        this.$refs.searchBox.style.marginTop = "0";
+        this.$refs.searchBox.style.left = "50%";
+        this.$refs.searchBox.style.transform = "translate(-50%)";
+      } else {
+        this.$refs.searchBox.style.position = "static";
+        this.$refs.searchBox.style.top = "0";
+        this.$refs.searchBox.style.marginTop = "30px";
+        this.$refs.searchBox.style.left = "0";
+        this.$refs.searchBox.style.transform = "translate(0)";
+      }
+    },
     Search() {
       const sltcontent = this.$refs.inputValue.value;
-      const searchcompanytype = this.$refs.searchcompanytype.value;
+      // const searchcompanytype = this.$refs.searchcompanytype.value;
       let redirecturl = "";
       switch (this.currentSearchVal) {
         case "1":
@@ -279,8 +324,7 @@ export default {
           redirecturl =
             "https://www.youzhicai.com/s/3.html?key=" +
             sltcontent +
-            "&type=" +
-            searchcompanytype;
+            "&type=2";
           break;
         case "5":
           redirecturl = "//shangji.youzhicai.com/s/5.html?key=" + sltcontent;
@@ -324,20 +368,27 @@ a:hover {
 .u-header-wrap {
   width: 100%;
   height: 100px;
-  position: fixed;
-  z-index: 200;
-  top: 30px;
-  left: 50%;
-  transform: translate(-50%);
+  // top: 30px;
+  // left: 50%;
+  // transform: translate(-50%);
   background: #fff;
+  z-index: 200;
   .search-box-fixed,
   .search-box {
-    width: 1200px;
     height: 100px;
     padding: 0;
     box-sizing: content-box;
-    width: 1200px;
+    width: 100%;
+    margin-top: 30px;
+    z-index: 200;
+    background: #fff;
+    >div {
+      width: 1200px;
     margin: 0 auto;
+
+    }
+    // left: 50%;
+    // transform: translate(-50%);
   }
 
   .wholeSeachBtn {
@@ -478,11 +529,13 @@ a:hover {
     color: #41465a;
     font-weight: 600;
     font-size: 16px;
+    margin-top: 2px;
   }
   .contact-us-words {
     float: left;
     margin-top: -10px;
     margin-left: 10px;
+    line-height: 20px;
   }
   .search-input-content .seachBtn {
     float: left;

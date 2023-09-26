@@ -1,13 +1,15 @@
 {
   "name": "ui-base",
-  "version": "0.1.0",
+  "version": "0.1.5",
   "private": true,
+  "description": "前端公共组件 公共UI-组件库",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
-  "types": "types/index.d.ts",
+  "main": "packages/index.js",
+  "typings": "types/index.d.ts",
   "dependencies": {
     "vue": "^2.6.11"
   },

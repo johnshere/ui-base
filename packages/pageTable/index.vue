@@ -1,12 +1,13 @@
 <template>
   <div class="u-page-table">
     <el-table
+      ref="table"
       :data="data"
       style="width: 100%"
       :size="size"
       border
       v-bind="$attrs"
-      v-on="$listeners"
+      v-on="tableListener"
     >
       <slot />
       <div slot="empty">
@@ -17,6 +18,7 @@
     </el-table>
     <div v-if="data.length > 0" class="u-page-table__pagination">
       <el-pagination
+        ref="pagination"
         :page-sizes="pageSizes"
         :layout="layout"
         v-bind="$attrs"
@@ -55,8 +57,16 @@ export default {
       type: String,
     },
   },
+  computed:{
+    tableListener(){
+      // table和pagination的current-change同名，并且没啥用
+      const currentChange = this.$listeners['current-row-change'] || function(){}
+      return Object.assign({},this.$listeners,{'current-change':currentChange})
+    }
+  }
 };
 </script>
+
 <style lang="less">
 .u-page-table {
   .el-table {
@@ -75,8 +85,10 @@ export default {
       }
     }
   }
-  &__pagination .el-pagination{
-    margin: 24px 0;
+  &__pagination {
+    .el-pagination {
+      margin: 24px 0;
+    }
   }
   &__empty {
     background: url("./empty.png") no-repeat;
