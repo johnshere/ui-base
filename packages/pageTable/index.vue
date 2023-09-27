@@ -93,11 +93,9 @@ export default {
   &__empty {
     background: url("./empty.png") no-repeat;
     width: 300px;
-    height: 240px;
     margin: 0 auto;
     background-size: 100%;
-    padding-top: 134px;
-    margin-top: 56px;
+    padding-top: 140px;
   }
 }
 </style>
