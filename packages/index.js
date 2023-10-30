@@ -6,6 +6,9 @@ import UTop from "./top";
 import USelect from "./form/select";
 import URadio from "./form/radio";
 import UButton from "./uelement/u-button";
+import UForm from "./uelement/u-form";
+import UFormItem from "./uelement/u-form-item";
+import ULink from "./uelement/u-link";
 
 export * from "./utils";
 
@@ -16,6 +19,9 @@ export const Top = UTop;
 export const Select = USelect;
 export const Radio = URadio;
 export const Button = UButton;
+export const Form = UForm;
+export const FormItem = UFormItem;
+export const Link = ULink;
 
 const components = {
   Title,
@@ -25,6 +31,9 @@ const components = {
   Select,
   Radio,
   UButton,
+  UForm,
+  UFormItem,
+  ULink,
 };
 
 const install = function (Vue, options) {
