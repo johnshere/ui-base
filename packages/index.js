@@ -36,7 +36,7 @@ const components = {
   ULink,
 };
 
-const install = function (Vue, options) {
+const install = function (Vue, options = {}) {
   Vue.prototype.$UBase = {
     size: options.size || "",
   };
