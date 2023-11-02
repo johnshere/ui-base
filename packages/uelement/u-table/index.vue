@@ -30,7 +30,7 @@ export default {
 <style lang="scss" scoped>
 ::v-deep .el-table__empty-block{
   height: 200px !important;
-  background: url(../../../assets/index_images/no-data.png) no-repeat center;
+  background: url(./no-data.png) no-repeat center;
   background-position: center 30px;
 }
 ::v-deep .el-table__empty-text{
