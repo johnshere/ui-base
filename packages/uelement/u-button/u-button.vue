@@ -38,3 +38,13 @@ export default {
   },
 };
 </script>
+<style lang="scss" scoped>
+::v-deep .el-button {
+  .el-button--primary.is-plain:not(:hover):not(:focus) {
+    background: none;
+  }
+  & + .el-button {
+    margin-left: 12px;
+  }
+}
+</style>
