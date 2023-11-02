@@ -52,7 +52,6 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-@import "~@/styles/variables.scss";
 ::v-deep .required{
   position: relative;
   padding-left: 20px !important;
@@ -63,9 +62,9 @@ export default {
   top: 50%;
   margin-top: -14px;
   content: '*';
-  color: $emphasizeColor;
+  color: #f56c6c;
 }
 ::v-deep .el-descriptions-item__label.is-bordered-label{
-  background: $headBgColor;
+  background: #f6f7fb;
 }
 </style>

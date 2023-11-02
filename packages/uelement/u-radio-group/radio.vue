@@ -21,7 +21,7 @@ import { Radio, RadioGroup } from "element-ui";
 import Dictionary from  "../dictionary/dictionary" 
 
 export default {
-  name: "URadio", 
+  name: "URadioGroup", 
   components:{
      Radio, RadioGroup
   }, 

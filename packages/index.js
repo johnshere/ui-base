@@ -13,7 +13,7 @@ import UFormItem from "./uelement/u-form-item";
 import ULink from "./uelement/u-link";
 import UDescriptions from "./uelement/u-descriptions";
 import UTable from "./uelement/u-table";
-import UTableColumn from './uelement/UTableColumn.js'
+import UTableColumn from './uelement/u-table/UTableColumn.js'
 
 export * from "./utils";
 
@@ -52,6 +52,7 @@ const coverComponents = {
 };
 
 const install = function (Vue, options = {}) {
+  console.log('ui-base install')
   Vue.prototype.$UBase = {
     size: options.size || "",
   };
@@ -62,7 +63,7 @@ const install = function (Vue, options = {}) {
    */
   componentKeys.forEach(function (key) {
     let component = ElementUI[key];
-    if (!Vue.prototype.isComponent(component)) {
+    if (!component?.name || component instanceof Function) {
       return;
     }
     // 覆盖element原有组件
@@ -70,7 +71,7 @@ const install = function (Vue, options = {}) {
       component = coverComponents[key]
     }
 
-    const name = component.name.replace('El', 'U')
+    const name = 'U' + key
     Vue.component(name, component);
   });
   /**
