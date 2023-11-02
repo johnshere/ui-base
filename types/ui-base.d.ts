@@ -5,7 +5,10 @@ import { UDialog } from "./dialog";
 import { UPageTable } from './pageTable'
 import { UTop } from './top'
 import { USelect } from './select'
-import { URadio } from './radio'
+import { URadioGroup } from './radio'
+import { UDescriptions } from './descriptions'
+import { UTable } from './table'
+import { UTableColumn } from './table-column'
 
 /** utils */
 export * from './utils'
@@ -22,9 +25,14 @@ export class Top extends UTop { }
 
 /** Select Component */
 export class Select extends USelect { }
-/** Radio Component */
-export class Radio extends URadio { }
-
+/** RadioGroup Component */
+export class RadioGroup extends URadioGroup { }
+/** Descriptions Component */
+export class Descriptions extends UDescriptions { }
+/** Table Component */
+export class Table extends UTable { }
+/** TableColumn Component */
+export class TableColumn extends UTableColumn { }
 
 export const version: string;
 
