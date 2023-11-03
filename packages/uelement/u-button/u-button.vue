@@ -4,6 +4,7 @@
     :loading="loading"
     v-on="$listeners"
     @click="execute"
+    class="u-button"
     onclick="return false"
   >
     <template v-for="slot in Object.keys($scopedSlots)" :slot="slot">
@@ -39,12 +40,10 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-::v-deep .el-button {
-  .el-button--primary.is-plain:not(:hover):not(:focus) {
-    background: none;
-  }
-  & + .el-button {
-    margin-left: 12px;
-  }
+.u-button.el-button--primary.is-plain:not(:hover):not(:focus) {
+  background: none;
+}
+.el-button + .el-button {
+  margin-left: 12px;
 }
 </style>

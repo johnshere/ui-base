@@ -28,18 +28,18 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-::v-deep .el-table thead th.el-table__cell {
-  color: #606266;
-  font-weight: bold;
-  background: #f6f7fb;
-}
-::v-deep .el-table {
+.el-table ::v-deep {
   &__cell:last-child .el-button {
     margin-left: 0;
     margin-right: 12px;
     &:last-child {
       margin-right: 0;
     }
+  }
+  thead th.el-table__cell {
+    color: #606266;
+    font-weight: bold;
+    background: #f6f7fb;
   }
 }
 ::v-deep .el-table__empty-block {
