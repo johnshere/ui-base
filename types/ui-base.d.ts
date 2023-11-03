@@ -10,6 +10,7 @@ import { UDescriptions } from './descriptions'
 import { UTable } from './table'
 import { UTableColumn } from './table-column'
 import { UTitleCard } from './title-card'
+import { URichEditor, URichView } from './rich'
 
 /** utils */
 export * from './utils'
@@ -36,6 +37,10 @@ export class Table extends UTable { }
 export class TableColumn extends UTableColumn { }
 /** TitleCard Component */
 export class TitleCard extends UTitleCard { }
+/** RichEditor Component */
+export class RichEditor extends URichEditor { }
+/** RichView Component */
+export class RichView extends URichView { }
 
 export const version: string;
 
