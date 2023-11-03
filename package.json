@@ -11,6 +11,8 @@
   "main": "packages/index.js",
   "typings": "types/index.d.ts",
   "dependencies": {
+    "@tinymce/tinymce-vue": "^3.2.8",
+    "tinymce": "^5.10.7",
     "vue": "^2.6.11"
   },
   "devDependencies": {

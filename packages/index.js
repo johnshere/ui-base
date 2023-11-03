@@ -14,6 +14,9 @@ import ULink from "./uelement/u-link";
 import UDescriptions from "./uelement/u-descriptions";
 import UTable from "./uelement/u-table";
 import UTableColumn from './uelement/u-table/UTableColumn.js'
+import UTitleCard from "./title-card";
+import URichEditor from "./RichEditor";
+import URichView from "./RichView";
 
 export * from "./utils";
 
@@ -30,12 +33,18 @@ export const Link = ULink;
 export const Descriptions = UDescriptions;
 export const Table = UTable;
 export const TableColumn = UTableColumn;
+export const TitleCard = UTitleCard;
+export const RichEditor = URichEditor;
+export const RichView = URichView;
 
 //  新增的、非element组件
 const newComponents = {
   Title,
   PageTable,
   Top,
+  TitleCard,
+  RichEditor,
+  RichView,
 };
 // 覆盖element组件
 const coverComponents = {

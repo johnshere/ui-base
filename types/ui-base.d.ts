@@ -9,6 +9,7 @@ import { URadioGroup } from './radio'
 import { UDescriptions } from './descriptions'
 import { UTable } from './table'
 import { UTableColumn } from './table-column'
+import { UTitleCard } from './title-card'
 
 /** utils */
 export * from './utils'
@@ -33,6 +34,8 @@ export class Descriptions extends UDescriptions { }
 export class Table extends UTable { }
 /** TableColumn Component */
 export class TableColumn extends UTableColumn { }
+/** TitleCard Component */
+export class TitleCard extends UTitleCard { }
 
 export const version: string;
 
