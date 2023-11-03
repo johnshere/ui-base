@@ -68,6 +68,20 @@ export default {
 </script>
 
 <style lang="less">
+::v-deep .el-table thead th.el-table__cell {
+  color: #606266;
+  font-weight: bold;
+  background: #f6f7fb;
+}
+::v-deep .el-table {
+  &__cell:last-child .el-button {
+    margin-left: 0;
+    margin-right: 12px;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
 .u-page-table {
   .el-table {
     .el-table__header th {

@@ -28,17 +28,31 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-::v-deep .el-table__empty-block{
+::v-deep .el-table thead th.el-table__cell {
+  color: #606266;
+  font-weight: bold;
+  background: #f6f7fb;
+}
+::v-deep .el-table {
+  &__cell:last-child .el-button {
+    margin-left: 0;
+    margin-right: 12px;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+::v-deep .el-table__empty-block {
   height: 200px !important;
   background: url(./no-data.png) no-repeat center;
   background-position: center 30px;
 }
-::v-deep .el-table__empty-text{
+::v-deep .el-table__empty-text {
   padding-top: 70px;
   color: #ccc;
 }
 .adapter-screen {
-  ::v-deep .el-table__header{
+  ::v-deep .el-table__header {
     width: 100% !important;
   }
   ::v-deep .el-table__header col{
