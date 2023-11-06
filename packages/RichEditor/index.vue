@@ -42,9 +42,9 @@ import 'tinymce/plugins/print'
 import 'tinymce/plugins/preview'
 import 'tinymce/plugins/searchreplace'
 // import 'tinymce/plugins/fullscreen';
-import '@/assets/tinymce/plugins/fullscreen'
+import './plugins/fullscreen'
 // import 'tinymce/plugins/formatpainter';
-import '@/assets/tinymce/plugins/formatpainter'
+import './plugins/formatpainter'
 
 export default {
   name: 'URichEditor',
