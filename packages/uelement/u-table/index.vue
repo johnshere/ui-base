@@ -28,8 +28,8 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.el-table ::v-deep {
-  &__cell:last-child .el-button {
+::v-deep {
+  .el-table__cell:last-child .el-button {
     margin-left: 0;
     margin-right: 12px;
     &:last-child {
