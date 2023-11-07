@@ -4,38 +4,46 @@ import "./style/index.less";
 import UTitle from "./title";
 import UPageTable from "./pageTable";
 import UTop from "./top";
-import UDialog from "./uelement/u-dialog";
-import USelect from "./uelement/u-select";
-import URadioGroup from "./uelement/u-radio-group";
-import UButton from "./uelement/u-button";
-import UForm from "./uelement/u-form";
-import UFormItem from "./uelement/u-form-item";
-import ULink from "./uelement/u-link";
-import UDescriptions from "./uelement/u-descriptions";
-import UTable from "./uelement/u-table";
-import UTableColumn from './uelement/u-table/UTableColumn.js'
 import UTitleCard from "./title-card";
 import URichEditor from "./RichEditor";
 import URichView from "./RichView";
 
+import UForm from "./uelement/u-form";
+import UFormItem from "./uelement/u-form-item";
+import URadioGroup from "./uelement/u-radio-group";
+import USelect from "./uelement/u-select";
+import UCascader from "./uelement/u-cascader";
+import UDatePicker from "./uelement/u-date-picker";
+
+import UDialog from "./uelement/u-dialog";
+import UButton from "./uelement/u-button";
+import ULink from "./uelement/u-link";
+import UDescriptions from "./uelement/u-descriptions";
+import UTable from "./uelement/u-table";
+import UTableColumn from './uelement/u-table/UTableColumn.js'
+
 export * from "./utils";
 
 export const Title = UTitle;
-export const Dialog = UDialog;
+export const TitleCard = UTitleCard;
 export const PageTable = UPageTable;
 export const Top = UTop;
-export const Select = USelect;
-export const RadioGroup = URadioGroup;
-export const Button = UButton;
+export const RichEditor = URichEditor;
+export const RichView = URichView;
+
 export const Form = UForm;
 export const FormItem = UFormItem;
+export const Select = USelect;
+export const RadioGroup = URadioGroup;
+export const Cascader = UCascader;
+export const DatePicker = UDatePicker;
+
+export const Dialog = UDialog;
+export const Button = UButton;
 export const Link = ULink;
 export const Descriptions = UDescriptions;
 export const Table = UTable;
 export const TableColumn = UTableColumn;
-export const TitleCard = UTitleCard;
-export const RichEditor = URichEditor;
-export const RichView = URichView;
 
 //  新增的、非element组件
 const newComponents = {
@@ -48,12 +56,15 @@ const newComponents = {
 };
 // 覆盖element组件
 const coverComponents = {
-  Dialog,
-  Select,
-  RadioGroup,
-  Button,
   Form,
   FormItem,
+  Select,
+  RadioGroup,
+  Cascader,
+  DatePicker,
+
+  Dialog,
+  Button,
   Link,
   Descriptions,
   Table,
