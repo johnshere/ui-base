@@ -51,7 +51,7 @@ export default {
   },
 };
 </script>
-<style lang="scss" scoped>
+<style lang="less" scoped>
 ::v-deep .required{
   position: relative;
   padding-left: 20px !important;

@@ -27,7 +27,7 @@ export default {
   },
 };
 </script>
-<style lang="scss" scoped>
+<style lang="less" scoped>
 ::v-deep {
   .el-table__cell:last-child .el-button {
     margin-left: 0;
