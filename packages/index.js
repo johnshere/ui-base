@@ -1,4 +1,4 @@
-import ElementUI from 'element-ui'
+import ElementUI from "element-ui";
 
 import "./style/index.less";
 import UTitle from "./title";
@@ -21,7 +21,7 @@ import UButton from "./uelement/u-button";
 import ULink from "./uelement/u-link";
 import UDescriptions from "./uelement/u-descriptions";
 import UTable from "./uelement/u-table";
-import UTableColumn from './uelement/u-table/UTableColumn.js'
+import UTableColumn from "./uelement/u-table/UTableColumn.js";
 
 export * from "./utils";
 
@@ -55,7 +55,7 @@ const newComponents = {
   TitleCard,
   RichEditor,
   RichView,
-  ColPreset
+  ColPreset,
 };
 // 覆盖element组件
 const coverComponents = {
@@ -75,7 +75,7 @@ const coverComponents = {
 };
 
 const install = function (Vue, options = {}) {
-  console.log('ui-base install')
+  console.log("ui-base install");
   Vue.prototype.$UBase = {
     size: options.size || "",
   };
@@ -91,10 +91,10 @@ const install = function (Vue, options = {}) {
     }
     // 覆盖element原有组件
     if (coverComponents[key]) {
-      component = coverComponents[key]
+      component = coverComponents[key];
     }
 
-    const name = 'U' + key
+    const name = "U" + key;
     Vue.component(name, component);
   });
   /**
