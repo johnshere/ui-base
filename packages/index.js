@@ -7,6 +7,7 @@ import UTop from "./top";
 import UTitleCard from "./title-card";
 import URichEditor from "./RichEditor";
 import URichView from "./RichView";
+import UColPreset from "./col-preset";
 
 import UForm from "./uelement/u-form";
 import UFormItem from "./uelement/u-form-item";
@@ -30,6 +31,7 @@ export const PageTable = UPageTable;
 export const Top = UTop;
 export const RichEditor = URichEditor;
 export const RichView = URichView;
+export const ColPreset = UColPreset;
 
 export const Form = UForm;
 export const FormItem = UFormItem;
@@ -53,6 +55,7 @@ const newComponents = {
   TitleCard,
   RichEditor,
   RichView,
+  ColPreset
 };
 // 覆盖element组件
 const coverComponents = {
