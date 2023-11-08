@@ -99,6 +99,7 @@ export default {
   }
   &__pagination {
     .el-pagination {
+      float: right;
       margin: 24px 0;
     }
   }
