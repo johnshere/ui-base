@@ -98,6 +98,11 @@ export default {
     }
   }
   &__pagination {
+    &:after {
+      content: "";
+      display: block;
+      clear: both;
+    }
     .el-pagination {
       float: right;
       margin: 24px 0;

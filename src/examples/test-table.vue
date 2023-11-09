@@ -39,7 +39,7 @@ export default {
   components: { pageTable },
   data() {
     return {
-      tableData: [],
+      tableData: [{}],
     }
   },
 };
