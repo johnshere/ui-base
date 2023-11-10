@@ -8,6 +8,7 @@ import UTitleCard from "./title-card";
 import URichEditor from "./RichEditor";
 import URichView from "./RichView";
 import UColPreset from "./col-preset";
+import UTeleport from "./teleport";
 
 import UForm from "./uelement/u-form";
 import UFormItem from "./uelement/u-form-item";
@@ -32,6 +33,7 @@ export const Top = UTop;
 export const RichEditor = URichEditor;
 export const RichView = URichView;
 export const ColPreset = UColPreset;
+export const Teleport = UTeleport;
 
 export const Form = UForm;
 export const FormItem = UFormItem;
@@ -56,6 +58,7 @@ const newComponents = {
   RichEditor,
   RichView,
   ColPreset,
+  Teleport
 };
 // 覆盖element组件
 const coverComponents = {
