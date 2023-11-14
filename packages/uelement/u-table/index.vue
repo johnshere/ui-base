@@ -10,9 +10,7 @@
       <slot :name="slot" />
     </template>
     <div slot="empty">
-      <slot name="empty">
-        <div class="u-page-table__empty">暂无数据</div>
-      </slot>
+      <div class="u-page-table__empty">暂无数据</div>
     </div>
   </el-table>
 </template>
