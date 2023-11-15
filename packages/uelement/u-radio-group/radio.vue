@@ -1,14 +1,7 @@
 <template>
-  <el-radio-group
-    v-bind="$attrs"
-    v-on="$listeners"
-  >
-    <el-radio
-      v-for="(item,i) in list"
-      :key="i"
-      v-bind="item"
-    >
-      {{item.text}}
+  <el-radio-group v-bind="$attrs" v-on="_listeners">
+    <el-radio v-for="(item, i) in list" :key="i" v-bind="item">
+      {{ item.text }}
     </el-radio>
     <template v-for="(_, name) in $scopedSlots" v-slot:[name]="data">
       <slot :name="name" v-bind="data"></slot>
@@ -17,14 +10,27 @@
 </template>
 
 <script>
-import { Radio, RadioGroup } from "element-ui";
-import Dictionary from  "../dictionary/dictionary" 
+import Dictionary from "../dictionary/dictionary";
 
 export default {
-  name: "URadioGroup", 
-  components:{
-     Radio, RadioGroup
-  }, 
+  name: "URadioGroup",
   mixins: [Dictionary],
-}
+  props: {
+    readonly: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  computed: {
+    _listeners() {
+      const { input } = this;
+      return Object.assign({}, this.$listeners, { input });
+    },
+  },
+  methods: {
+    input(v) {
+      !this.readonly && this.$emit("input", v);
+    },
+  },
+};
 </script>
