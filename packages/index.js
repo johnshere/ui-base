@@ -12,6 +12,7 @@ import UTeleport from "./teleport";
 
 import UForm from "./uelement/u-form";
 import UFormItem from "./uelement/u-form-item";
+import URadio from "./uelement/u-radio";
 import URadioGroup from "./uelement/u-radio-group";
 import USelect from "./uelement/u-select";
 import UCascader from "./uelement/u-cascader";
@@ -38,6 +39,7 @@ export const Teleport = UTeleport;
 export const Form = UForm;
 export const FormItem = UFormItem;
 export const Select = USelect;
+export const Radio = URadio;
 export const RadioGroup = URadioGroup;
 export const Cascader = UCascader;
 export const DatePicker = UDatePicker;
@@ -65,6 +67,7 @@ const coverComponents = {
   Form,
   FormItem,
   Select,
+  Radio,
   RadioGroup,
   Cascader,
   DatePicker,
