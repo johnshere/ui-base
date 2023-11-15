@@ -1,7 +1,7 @@
 <template>
   <el-button type="text" @click.stop>
     <u-popover v-model="visible" placement="left" width="220">
-      <p>确认删除该条记录吗？</p>
+      <p>{{ title }}</p>
       <div style="text-align: right; margin: 0">
         <el-button size="mini" type="text" :click="() => (visible = false)">
           取消
@@ -16,7 +16,7 @@
         </el-button>
       </div>
       <el-link slot="reference" type="danger" :underline="false">
-        删除
+        {{ label }}
       </el-link>
     </u-popover>
   </el-button>
@@ -25,6 +25,14 @@
 export default {
   name: "UConfirmDelete",
   props: {
+    title: {
+      type: String,
+      default: "确认删除该条记录吗？",
+    },
+    label: {
+      type: String,
+      default: "删除",
+    },
     click: {
       type: Function,
       required: true,
