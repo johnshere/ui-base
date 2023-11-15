@@ -1,4 +1,4 @@
-import Radio from '../u-radio/radio-group.vue';
+import Radio from './radio.vue'
 /* istanbul ignore next */
 Radio.install = function (Vue) {
     Vue.component(Radio.name, Radio);
