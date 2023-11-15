@@ -3,7 +3,7 @@
     <u-popover v-model="visible" placement="left" width="220">
       <p>{{ title }}</p>
       <div style="text-align: right; margin: 0">
-        <el-button size="mini" type="text" :click="() => (visible = false)">
+        <el-button size="mini" type="text" @click="visible = false">
           取消
         </el-button>
         <el-button
