@@ -1,7 +1,12 @@
 <template>
   <el-radio-group v-bind="$attrs" v-on="_listeners">
-    <el-radio v-for="(item, i) in list" :key="i" v-bind="item">
-      {{ item.text }}
+    <el-radio
+      v-for="item in list"
+      :key="item.value"
+      :label="item.value"
+      :disabled="item.disabled"
+    >
+      {{ item.label }}
     </el-radio>
     <template v-for="(_, name) in $scopedSlots" v-slot:[name]="data">
       <slot :name="name" v-bind="data"></slot>
@@ -34,4 +39,3 @@ export default {
   },
 };
 </script>
-ui-base/packages/uelement/dictionary/dictionaryui-base/packages/uelement/u-radio/radio.vue

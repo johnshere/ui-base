@@ -85,9 +85,7 @@ const coverComponents = {
 
 const install = function (Vue, options = {}) {
   console.log("ui-base install");
-  Vue.prototype.$UBase = {
-    size: options.size || "",
-  };
+  Vue.prototype.$UBase = Object.assign({}, options);
 
   let componentKeys = Object.keys(ElementUI);
   /**

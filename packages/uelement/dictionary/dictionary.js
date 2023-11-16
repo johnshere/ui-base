@@ -5,15 +5,19 @@ export default {
       type: Array,
       default: () => ([])
     },
-    codeKey: {
-      type: [Number, String],
+    dicType: {
+      type: [Number, String, Symbol],
       default: ''
-    }
+    },
+    fieldNames: {
+      type: Object,
+      default: () => null
+    },
   },
   data: () => ({ list: [] }),
   watch: {
     data(list) {
-      if (this.codeKey) return
+      if (this.dicType) return
       this.resolveData(list)
     }
   },
@@ -22,26 +26,21 @@ export default {
   },
   methods: {
     resolveData(list) {
-      if (typeof this.dataHandle == 'function') {
-        return this.dataHandle(list)
-      } else {
-        this.list = list
-      }
-      console.log("no option handle for " + this.codeKey)
+      const fieldNames = this.fieldNames || this.$UBase.dictionary?.fieldNames
+      const { value = 'value', label = 'label', disabled = 'disabled' } = fieldNames || {}
+      this.list = list?.map(item => ({ value: item[value], label: item[label], disabled: item[disabled] })) || []
     },
     // 获取字典数据
     getCodeData() {
       let resolve = this.resolveData
 
-      if (!this.codeKey || !this.data.length) {
+      if (!this.dicType && !this.data?.length) {
         return resolve(this.data)
       }
 
       // 获取字典数据
-      // let res = await xxxx
-      let res = { success: true } // todo test
-      if (res.success) {
-        return resolve(res.data)
+      if (typeof this.$UBase.dictionary?.handle == 'function') {
+        this.$UBase.dictionary?.handle?.(this.dicType).then(data => resolve(data))
       }
     }
   }
