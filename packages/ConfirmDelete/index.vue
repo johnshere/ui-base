@@ -2,7 +2,7 @@
   <el-button type="text" @click.stop>
     <u-popover v-model="visible" placement="left" width="220">
       <p>
-        <el-link type="warning" style="margin-right: 6px">
+        <el-link type="warning" :underline="false" style="margin-right: 6px">
           <i class="el-icon-question" />
         </el-link>
         {{ title }}

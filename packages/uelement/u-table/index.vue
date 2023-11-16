@@ -36,13 +36,15 @@ export default {
       .el-button {
         margin-left: 0;
         margin-right: 12px;
+        &.el-button--small {
+          font-size: 14px;
+        }
         &:last-child {
           margin-right: 0;
         }
       }
       .el-link {
         vertical-align: unset;
-        font-size: 12px;
       }
     }
     thead th.el-table__cell {
