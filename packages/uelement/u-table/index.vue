@@ -31,20 +31,40 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-::v-deep {
-  .el-table__cell:last-child .el-button {
-    margin-left: 0;
-    margin-right: 12px;
-    &:last-child {
-      margin-right: 0;
+  .el-table ::v-deep {
+    .el-table__cell:last-child {
+      .el-button {
+        margin-left: 0;
+        margin-right: 12px;
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+      .el-link {
+        vertical-align: unset;
+        font-size: 12px;
+      }
+    }
+    thead th.el-table__cell {
+      color: #606266;
+      font-weight: bold;
+      background: #f6f7fb;
+    }
+    .el-table__header th {
+      font-weight: bold;
+      background-color: #f5f7fa;
+      color: #333;
+    }
+    // td {
+    //   padding: 5px 0;
+    // }
+    th {
+      padding: 10px 0;
+      &.center {
+        text-align: center;
+      }
     }
   }
-  thead th.el-table__cell {
-    color: #606266;
-    font-weight: bold;
-    background: #f6f7fb;
-  }
-}
 .adapter-screen {
   ::v-deep .el-table__header {
     width: 100% !important;

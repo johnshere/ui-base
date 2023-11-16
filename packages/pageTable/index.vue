@@ -70,11 +70,17 @@ export default {
 <style lang="less">
 .u-page-table {
   .el-table {
-    &__cell:last-child .el-button {
-      margin-left: 0;
-      margin-right: 12px;
-      &:last-child {
-        margin-right: 0;
+    .el-table__cell:last-child {
+      .el-button {
+        margin-left: 0;
+        margin-right: 12px;
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+      .el-link {
+        vertical-align: unset;
+        font-size: 12px;
       }
     }
     thead th.el-table__cell {
