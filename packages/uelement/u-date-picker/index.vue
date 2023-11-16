@@ -1,5 +1,5 @@
 <template>
-  <el-date-picker :style="style" v-bind="$attrs" v-on="$listeners">
+  <el-date-picker v-bind="$attrs" v-on="$listeners">
     <template v-for="slot in Object.keys($scopedSlots)" :slot="slot">
       <slot :name="slot" />
     </template>
@@ -8,13 +8,10 @@
 <script>
 export default {
   name: "UDatePicker",
-  props: {
-    style: {
-      type: [Object, String],
-      default: () => {
-        return { width: '100%'};
-      },
-    },
-  },
 };
 </script>
+<style lang="less" scoped>
+.el-date-editor {
+  width: 100%;
+}
+</style>

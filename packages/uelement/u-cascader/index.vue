@@ -1,5 +1,5 @@
 <template>
-  <el-cascader :style="style" v-bind="$attrs" v-on="$listeners">
+  <el-cascader v-bind="$attrs" v-on="$listeners">
     <template v-for="slot in Object.keys($scopedSlots)" :slot="slot">
       <slot :name="slot" />
     </template>
@@ -8,13 +8,10 @@
 <script>
 export default {
   name: "UCascader",
-  props: {
-    style: {
-      type: [Object, String],
-      default: () => {
-        return { width: '100%'};
-      },
-    },
-  },
 };
 </script>
+<style lang="less" scoped>
+.el-cascader {
+  width: 100%;
+}
+</style>
