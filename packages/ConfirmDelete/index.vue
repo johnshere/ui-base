@@ -1,7 +1,12 @@
 <template>
   <el-button type="text" @click.stop>
     <u-popover v-model="visible" placement="left" width="220">
-      <p>{{ title }}</p>
+      <p>
+        <el-link type="warning" style="margin-right: 6px">
+          <i class="el-icon-question" />
+        </el-link>
+        {{ title }}
+      </p>
       <div style="text-align: right; margin: 0">
         <el-button size="mini" type="text" @click="visible = false">
           取消
