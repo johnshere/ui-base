@@ -66,11 +66,15 @@ export default {
     }
   },
   data() {
+    const language_url = this.$UBase.language_url;
+    if (!language_url) {
+      throw new Error('URichEditor: $UBase.language_url is required')
+    }
     return {
       editorVisible: false,
       editorOption: {
         inline: location.href.includes('isPdf=1') || location.href.includes('isPrint=1'),
-        language_url: '/supplypur-front/langs/zh-Hans.js', // 指定中文包
+        language_url, // 指定中文包
         language: 'zh-Hans', // 中文
         height: 500, // 高度
         browser_spellcheck: true, // 拼写检查
