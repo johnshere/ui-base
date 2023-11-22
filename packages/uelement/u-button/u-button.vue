@@ -1,7 +1,7 @@
 <template>
   <el-button
     v-bind="$attrs"
-    :loading="loading"
+    :loading="loading || _loading"
     v-on="$listeners"
     @click="execute"
     class="u-button"
@@ -20,19 +20,24 @@ export default {
       type: Function,
       default: null,
     },
+    loading: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
-      loading: false,
+      // eslint-disable-next-line vue/no-reserved-keys
+      _loading: false,
     };
   },
   methods: {
     execute() {
       if (this.click) {
-        this.loading = true;
+        this._loading = true;
         const p = this.click();
         Promise.resolve(p).finally(() => {
-          this.loading = false;
+          this._loading = false;
         });
       }
     },
