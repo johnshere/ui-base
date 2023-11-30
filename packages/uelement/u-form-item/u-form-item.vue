@@ -20,7 +20,8 @@ export default {
   computed: {
     _label() {
       if (!this.colon) return this.label;
-      return this.label?.endsWith("：") ? this.label : this.label + "：";
+      const hasColon = this.label?.endsWith("：") || this.label?.endsWith(":");
+      return hasColon ? this.label : this.label + ":";
     },
   },
 };
