@@ -13,58 +13,56 @@
 </template>
 <script>
 export default {
-  name: 'UDescriptions',
+  name: "UDescriptions",
   props: {
     contentStyle: {
       type: Object,
       default: () => {
-        return {}
-      }
+        return {};
+      },
     },
     labelStyle: {
       type: Object,
       default: () => {
-        return {}
-      }
-    }
+        return {};
+      },
+    },
   },
   data() {
-    return {
-    };
+    return {};
   },
   computed: {
     contentStyle_() {
       if (!this.contentStyle.width && !this.labelStyle.width) {
-        return Object.assign({ width: '100px' }, this.contentStyle);
+        return Object.assign({ width: "400px" }, this.contentStyle);
       }
       return this.contentStyle;
     },
     labelStyle_() {
       if (!this.contentStyle.width && !this.labelStyle.width) {
-        return Object.assign({ width: '50px' }, this.labelStyle);
+        return Object.assign({ width: "200px" }, this.labelStyle);
       }
       return this.labelStyle;
-    }
+    },
   },
-  methods: {
-
-  },
+  methods: {},
 };
 </script>
 <style lang="less" scoped>
-::v-deep .required{
+::v-deep .required {
   position: relative;
   padding-left: 20px !important;
 }
-::v-deep .required::before{
+::v-deep .required::before {
   position: absolute;
   left: 12px;
   top: 50%;
   margin-top: -14px;
-  content: '*';
+  content: "*";
   color: #f56c6c;
 }
-::v-deep .el-descriptions-item__label.is-bordered-label{
+::v-deep .el-descriptions-item__label.is-bordered-label {
   background: #f6f7fb;
+  color: #606266;
 }
 </style>
