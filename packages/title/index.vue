@@ -1,7 +1,7 @@
 <template>
   <div
     class="common-header"
-    :style="{ background: bgColor }"
+    :style="u_style"
   >
     <div class="header-title">
       <div>
@@ -24,12 +24,19 @@ export default {
   props: {
     bgColor: {
       type: String,
-      default: '#fff'
+      default: ''
     },
     title: {
       type: String,
       default:    ''
     } 
+   },
+   computed: {
+    'u_style' () {
+      const style = {}
+      this.bgColor && (style['background-color'] = this.bgColor)
+      return style
+    }
    }
 }
 </script>
@@ -43,6 +50,7 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+  background-color: #fff;
 
   .header-title {
     font-size: 16px;
