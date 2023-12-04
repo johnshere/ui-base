@@ -13,6 +13,7 @@ import UConfirmDelete from "./ConfirmDelete";
 
 import UForm from "./uelement/u-form";
 import UFormItem from "./uelement/u-form-item";
+import UInput from "./uelement/u-input";
 import URadio from "./uelement/u-radio";
 import URadioGroup from "./uelement/u-radio-group";
 import USelect from "./uelement/u-select";
@@ -40,6 +41,7 @@ export const ConfirmDelete = UConfirmDelete;
 
 export const Form = UForm;
 export const FormItem = UFormItem;
+export const Input = UInput;
 export const Select = USelect;
 export const Radio = URadio;
 export const RadioGroup = URadioGroup;
@@ -69,6 +71,7 @@ const newComponents = {
 const coverComponents = {
   Form,
   FormItem,
+  Input,
   Select,
   Radio,
   RadioGroup,
