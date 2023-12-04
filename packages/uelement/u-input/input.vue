@@ -22,7 +22,6 @@ export default {
   },
   methods: {
     input(value) {
-      console.log(this.$UBase['input.trim'])
       if (this.trim || this.$UBase['input.trim']) {
         value = value.replace(/^\s+|\s+$/gm,'');
       }
