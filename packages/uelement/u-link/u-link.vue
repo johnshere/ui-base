@@ -30,7 +30,7 @@ export default {
         this.loading = true;
         const p = this.click();
         Promise.resolve(p).finally(() => {
-          this.loading = true;
+          this.loading = false;
         });
       }
     },
