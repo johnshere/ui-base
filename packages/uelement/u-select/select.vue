@@ -11,7 +11,24 @@ import Dictionary from "../dictionary/dictionary"
 
 export default {
   name: "USelect",
-  mixins: [Dictionary]
+  mixins: [Dictionary],
+  props: {
+    readonly: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  computed: {
+    _listeners() {
+      const { input } = this;
+      return Object.assign({}, this.$listeners, { input });
+    },
+  },
+  methods: {
+    input(v) {
+      !this.readonly && this.$emit("input", v);
+    },
+  },
 };
 </script>
 
