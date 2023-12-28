@@ -438,17 +438,23 @@
         <!-- footer-comprehensive-info-box 左边栏目-->
       </div>
       <div class="footer-tips">
-        <p style="width:100%;">建议浏览器内核在IE9以上，分辨率1280*800以上</p>
-        <p>Copyright©2016安徽省优质采科技发展有限责任公司</p>
-        <p style="margin-left: 40px;"> 版权所有 <a href="//beian.miit.gov.cn" target="_blank">皖ICP备18021510号</a></p><img src="./images/nationalemblemicon.png" alt="">
+            <p style="width:100%;">建议浏览器内核在IE9以上，分辨率1280*800以上</p>
+            <p>Copyright©2016安徽省优质采科技发展有限责任公司</p>
+            <p style="margin-left: 40px;"> 版权所有 <a href="//beian.miit.gov.cn" target="_blank">皖ICP备18021510号</a></p><img src="./images/nationalemblemicon.png" alt="">
+            
+            <p style="margin-left: 40px;"><a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=34011102001571" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img src="./images/nationalemblemicon.png" style="float:left;" /><p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">皖公网安备 34011102001571号</p></a></p>
+            <p class="beImg" style="margin-right:10px;">
+                <!--可信网站图片LOGO安装开始-->
+                <!-- <script src="//kxlogo.knet.cn/seallogo.dll?sn=e170320110106670225hpg000000&amp;size=1" rel="nofollow"></script> -->
+                <!--可信网站图片LOGO安装结束-->
+            </p>
+            <a target="cyxyv" href="https://v.yunaq.com/certificate?domain=www.youzhicai.com&from=label&code=90030"> <img src="./images/label_lg_90030.png" style="width: 70px;"></a>
+            <a target="cyxyv" href="/images/mscene/BusinessLicense.jpg">
+                <img src="./images/businesslicensemark.png" style="width: 70px;">
 
-        <p class="beImg" style="margin-right:10px;">
-          <!-- <script src="static/js/seallogo.js" rel="nofollow" /> -->
-        </p>
-        <a target="cyxyv" href="https://v.yunaq.com/certificate?domain=www.uzhicai.com&from=label&code=90030"> <img src="./images/label_lg_90030.png" style="width: 70px;"></a>
-        <a target="cyxyv" href="/images/mscene/BusinessLicense.jpg">
-          <img src="./images/businesslicensemark.png" style="width: 70px;">
-        </a>
+            </a>
+            <a href="https://www.youzhicai.com/HelpCenter/HelpCenterIndex" target="_blank" style="margin-left:10px">规则中心</a>
+            <a href="https://cdn.youzhicai.com/Bscene/file/隐私协议.pdf" target="_blank" style="margin-left:10px">隐私协议</a>
       </div>
     </div>
   </div>
