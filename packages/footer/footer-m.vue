@@ -453,8 +453,8 @@
                 <img src="./images/businesslicensemark.png" style="width: 70px;">
 
             </a>
-            <a href="https://www.youzhicai.com/HelpCenter/HelpCenterIndex" target="_blank" style="margin-left:10px">规则中心</a>
-            <a href="https://cdn.youzhicai.com/Bscene/file/隐私协议.pdf" target="_blank" style="margin-left:10px">隐私协议</a>
+            <a href="https://www.youzhicai.com/HelpCenter/HelpCenterIndex" target="_blank" style="margin-left:10px; vertical-align: sub;">规则中心</a>
+            <a href="https://cdn.youzhicai.com/Bscene/file/隐私协议.pdf" target="_blank" style="margin-left:10px; vertical-align: sub;">隐私协议</a>
       </div>
     </div>
   </div>
