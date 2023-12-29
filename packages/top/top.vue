@@ -66,15 +66,15 @@
           <!-- </div> -->
         <!-- </div> -->
         <div class="header-nav-right-item">
-          <a rel="nofollow" href="/HelpCenter/HelpCenterIndex">帮助中心</a>
+          <a rel="nofollow" href="https://www.youzhicai.com/HelpCenter/HelpCenterIndex">帮助中心</a>
         </div>
 
-        <div class="header-nav-right-item header-nav-online-chat">
+        <div class="header-nav-right-item header-nav-online-chat header-nav-feedback">
           <a onclick="Feedback()">意见反馈</a>
         </div>
 
         <div class="header-nav-right-item header-nav-online-chat">
-          <a rel="nofollow" href="/homeweb/#/charge-standard">收费公示</a>
+          <a rel="nofollow" href="https://www.youzhicai.com/homeweb/#/charge-standard">收费公示</a>
         </div>
       </div>
     </div>
