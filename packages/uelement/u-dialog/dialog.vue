@@ -3,6 +3,12 @@ import { Dialog } from "element-ui";
 export default {
   name: "UDialog",
   extends: Dialog,
+  props: {
+    closeOnClickModal: {
+      type: Boolean,
+      default: false,
+    },
+  },
 };
 </script>
 <style lang="less" scoped>
