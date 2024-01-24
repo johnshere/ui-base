@@ -18,6 +18,7 @@
     </el-table>
     <div v-if="data.length > 0" class="u-page-table__pagination">
       <el-pagination
+        background 
         ref="pagination"
         :page-sizes="pageSizes"
         :layout="layout"
