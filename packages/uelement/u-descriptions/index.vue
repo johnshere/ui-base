@@ -59,7 +59,7 @@ export default {
   top: 50%;
   margin-top: -14px;
   content: "*";
-  color: #f56c6c;
+  color: #fe3434;
 }
 ::v-deep .el-descriptions-item__label.is-bordered-label {
   background: #f6f7fb;

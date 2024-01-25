@@ -1,8 +1,5 @@
 <template>
-  <div
-    class="common-header"
-    :style="u_style"
-  >
+  <div class="common-header" :style="u_style">
     <div class="header-title">
       <div>
         <span class="el-button--primary"></span>
@@ -20,25 +17,25 @@
 
 <script>
 export default {
-  name: 'UTitle',
+  name: "UTitle",
   props: {
     bgColor: {
       type: String,
-      default: ''
+      default: "",
     },
     title: {
       type: String,
-      default:    ''
-    } 
-   },
-   computed: {
-    'u_style' () {
-      const style = {}
-      this.bgColor && (style['background-color'] = this.bgColor)
-      return style
-    }
-   }
-}
+      default: "",
+    },
+  },
+  computed: {
+    u_style() {
+      const style = {};
+      this.bgColor && (style["background-color"] = this.bgColor);
+      return style;
+    },
+  },
+};
 </script>
 
 <style lang="less" scoped>
@@ -71,8 +68,8 @@ export default {
       -webkit-print-color-adjust: exact;
     }
   }
-  .tip{
-    color: #f56c6c;
+  .tip {
+    color: #fe3434;
     font-size: 14px;
     font-weight: normal;
   }
