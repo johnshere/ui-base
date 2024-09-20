@@ -57,6 +57,9 @@ export default {
         }
       }
     },
+    clearValidate(props) {
+      this.$refs.form.clearValidate(props);
+    },
     resetFields() {
       this.$refs.form.resetFields();
     },

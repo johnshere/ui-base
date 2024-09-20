@@ -29,11 +29,13 @@ export default {
       printClassName: isAdapter ? "adapter-screen" : "",
     };
   },
-  methods: {
-    toggleRowSelection() {
-      this.$refs.table.toggleRowSelection(...arguments);
-    },
-  },
+  created() {
+    "clearSelection,toggleRowSelection,toggleAllSelection,toggleRowExpansion,setCurrentRow,clearSort,clearFilter,doLayout,sort"
+      .split(",")
+      .forEach((fn) => {
+        this[fn] = (...args) => this.$refs.table[fn](...args);
+      });
+  }
 };
 </script>
 <style lang="less" scoped>
