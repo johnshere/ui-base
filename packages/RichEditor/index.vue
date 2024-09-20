@@ -95,13 +95,14 @@ export default {
           'undo redo | forecolor backcolor | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | outdent indent | formatselect fontselect fontsizeselect | formatpainter',
           'removeformat blockquote subscript superscript | numlist bullist hr table| link image media charmap anchor pagebreak codesample searchreplace | ltr rtl | print preview fullscreen',
         ],
-        // setup: function(editor){ //设置默认字体样式
-        //   editor.on('init', function(e) {
-        //     this.getBody().style.fontSize = '16px';
-        //     this.getBody().style.color = '#000';
-        //     this.getBody().style.fontFamily = '宋体';
-        //   });
-        // },
+        setup: (editor) => {
+          editor.on('init', function(e) {
+            // this.getBody().style.fontSize = '16px';
+            // this.getBody().style.color = '#000';
+            // this.getBody().style.fontFamily = '宋体';
+            editor.editorContainer?.classList.add('el-input__inner')
+          });
+        },
       },
     }
   },
@@ -151,6 +152,9 @@ export default {
     animation-name: fadeIn;
     animation-duration: 1.8s;
     animation-fill-mode: forwards;
+    &.el-input__inner {
+      padding: 0;
+    }
   }
 
   // 修复为默认样式
