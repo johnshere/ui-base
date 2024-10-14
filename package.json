@@ -1,6 +1,7 @@
 {
   "name": "ui-base",
   "version": "0.2.26",
+  "private": false,
   "description": "前端公共组件 公共UI-组件库",
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -11,10 +12,11 @@
     "registry": "https://nexus.uzhicai.com/repository/npm-hosted/"
   },
   "main": "packages/index.js",
+  "module": "packages/index.js",
   "typings": "types/index.d.ts",
   "files": [
-    "packages",
-    "types"
+    "packages/*",
+    "types/*"
   ],
   "dependencies": {
     "@tinymce/tinymce-vue": "^3.2.8",
@@ -38,5 +40,6 @@
     "less-loader": "^5.0.0",
     "prettier": "^2.2.1",
     "vue-template-compiler": "^2.6.11"
-  }
+  },
+  "license": "ISC"
 }
