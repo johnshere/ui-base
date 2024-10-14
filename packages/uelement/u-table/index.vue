@@ -6,8 +6,8 @@
     :class="printClassName"
     v-on="$listeners"
   >
-    <template v-for="slot in Object.keys($scopedSlots)" :slot="slot">
-      <div v-if="slot === 'empty'" slot="empty">
+    <template v-for="(slot, i) in Object.keys($scopedSlots)" :slot="slot">
+      <div v-if="slot === 'empty'" :key="i" slot="empty">
         <div class="u-page-table__empty">
           <slot :name="slot" />
         </div>
@@ -26,7 +26,10 @@ export default {
     const isAdapter =
       location.href.includes("isPrint=1") || location.href.includes("isPdf=1");
     return {
-      printClassName: isAdapter ? "adapter-screen" : "",
+      printClassName: {
+        "adapter-screen": isAdapter,
+        "u-table": true
+      }
     };
   },
   created() {
@@ -40,6 +43,7 @@ export default {
 </script>
 <style lang="less" scoped>
 .el-table ::v-deep {
+  overflow: visible;
   .el-table__cell:last-child {
     .el-button {
       margin-left: 0;
