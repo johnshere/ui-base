@@ -8,8 +8,15 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
+  "publishConfig": {
+    "registry": "https://nexus.uzhicai.com/repository/npm-hosted/"
+  },
   "main": "packages/index.js",
   "typings": "types/index.d.ts",
+  "files": [
+    "types",
+    "packages"
+  ],
   "dependencies": {
     "@tinymce/tinymce-vue": "^3.2.8",
     "tinymce": "^5.10.7",
