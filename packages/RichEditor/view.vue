@@ -10,49 +10,53 @@
     <!-- <div class="output">
       <div v-html="content" />
     </div> -->
-    <iframe ref="iframe" frameborder="0" class="output" width="100%" height="100%" scrolling="no">
+    <iframe
+      ref="iframe"
+      frameborder="0"
+      class="output"
+      width="100%"
+      height="100%"
+      scrolling="no"
+    >
     </iframe>
   </div>
 </template>
 
 <script>
-
 export default {
-  name: 'URichView',
+  name: "URichView",
   props: {
     value: {
       type: String,
-      default: '',
-    },
-  },
-  data() {
-    return {}
-  },
-  computed: {
-    content: {
-      set(value) {
-        this.$emit('input', value)
-      },
-      get() {
-        return this.value || ''
-      },
+      default: "",
     },
   },
   watch: {
-    async content() {
-      this.$refs.iframe?.contentDocument.write(this.content || '')
-      await new Promise(r=>setTimeout(r,100))
-      const iframe = this.$refs.iframe
-      const height = iframe.contentWindow.document.body.scrollHeight
-      iframe.style.height = height + 'px'
-      setTimeout(()=>this.fitIframeHeight(),100)
-    }
-  }
-}
+    async value(val) {
+      this.setContent();
+    },
+  },
+  mounted() {
+    this.setContent();
+  },
+  methods: {
+    async setContent() {
+      await new Promise((r) => setTimeout(r, 100));
+      const iframe = this.$refs.iframe;
+      if (!iframe) return;
+      iframe.contentDocument.write(this.value || "");
+      await new Promise((r) => setTimeout(r, 300));
+      const height = iframe.contentWindow.document.body.scrollHeight;
+      iframe.style.height = height + "px";
+      iframe.contentDocument.body.style.margin = 0;
+      iframe.contentDocument.body.style.marginTop = 6;
+    },
+  },
+};
 </script>
 
 <style lang="less" scoped>
-@import '../style/common.less';
+@import "../style/common.less";
 @keyframes fadeIn {
   0% {
     opacity: 0;
