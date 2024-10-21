@@ -40,16 +40,18 @@ export default {
     this.setContent();
   },
   methods: {
-    async setContent() {
-      await new Promise((r) => setTimeout(r, 100));
-      const iframe = this.$refs.iframe;
-      if (!iframe) return;
-      iframe.contentDocument.write(this.value || "");
-      await new Promise((r) => setTimeout(r, 300));
-      const height = iframe.contentWindow.document.body.scrollHeight;
-      iframe.style.height = height + "px";
-      iframe.contentDocument.body.style.margin = 0;
-      iframe.contentDocument.body.style.marginTop = 6;
+    setContent() {
+      if (this.timer) clearTimeout(this.timer)
+      this.timer = setTimeout(async () => {
+        const iframe = this.$refs.iframe;
+        if (!iframe) return this.setContent();
+        iframe.contentDocument.write(this.value || "");
+        await new Promise((r) => setTimeout(r, 300));
+        const height = iframe.contentWindow.document.body.scrollHeight;
+        iframe.style.height = height + "px";
+        iframe.contentDocument.body.style.margin = 0;
+        iframe.contentDocument.body.style.marginTop = 6;
+      }, 200);
     },
   },
 };
