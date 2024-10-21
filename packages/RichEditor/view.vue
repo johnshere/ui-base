@@ -7,9 +7,11 @@
 -->
 <template>
   <div class="rich-text">
-    <div class="output">
+    <!-- <div class="output">
       <div v-html="content" />
-    </div>
+    </div> -->
+    <iframe ref="iframe" frameborder="0" class="output" width="100%" height="100%" scrolling="no">
+    </iframe>
   </div>
 </template>
 
@@ -36,10 +38,21 @@ export default {
       },
     },
   },
+  watch: {
+    async content() {
+      this.$refs.iframe?.contentDocument.write(this.content || '')
+      await new Promise(r=>setTimeout(r,100))
+      const iframe = this.$refs.iframe
+      const height = iframe.contentWindow.document.body.scrollHeight
+      iframe.style.height = height + 'px'
+      setTimeout(()=>this.fitIframeHeight(),100)
+    }
+  }
 }
 </script>
 
 <style lang="less" scoped>
+@import '../style/common.less';
 @keyframes fadeIn {
   0% {
     opacity: 0;
@@ -50,24 +63,16 @@ export default {
   }
 }
 .rich-text {
-  .output {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    overflow-y: auto;
-    resize: vertical;
-  }
-
-  // 修复为默认样式
+  width: 100%;
+  height: 100%;
   color: #353535;
+  position: relative;
+  overflow: auto;
+  .scrollBar();
 
-  ::v-deep {
-    strong {
-      font-weight: bold;
-    }
-    em {
-      font-style: italic;
-    }
+  .output {
+    margin: 0;
+    resize: vertical;
   }
 }
 </style>

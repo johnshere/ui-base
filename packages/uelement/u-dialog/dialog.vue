@@ -13,6 +13,7 @@ export default {
 </script>
 <style lang="less" scoped>
 .el-dialog {
+  text-align: left;
   &__header {
     width: 100%;
     height: 38px;
