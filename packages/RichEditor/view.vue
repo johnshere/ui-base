@@ -17,8 +17,7 @@
       width="100%"
       height="100%"
       scrolling="no"
-    >
-    </iframe>
+    />
   </div>
 </template>
 
@@ -39,19 +38,47 @@ export default {
   mounted() {
     this.setContent();
   },
+  beforeDestroy() {
+    if (this.timer) clearTimeout(this.timer);
+    top.removeEventListener("resize", this.resize);
+  },
   methods: {
     setContent() {
-      if (this.timer) clearTimeout(this.timer)
+      if (this.timer) clearTimeout(this.timer);
       this.timer = setTimeout(async () => {
         const iframe = this.$refs.iframe;
         if (!iframe) return this.setContent();
         iframe.contentDocument.write(this.value || "");
         await new Promise((r) => setTimeout(r, 300));
-        const height = iframe.contentWindow.document.body.scrollHeight;
-        iframe.style.height = height + "px";
+
         iframe.contentDocument.body.style.margin = 0;
         iframe.contentDocument.body.style.marginTop = 6;
+        const tRoot = top.document.documentElement;
+        if (tRoot.getAttribute("flexableid") && tRoot.style.fontSize) {
+          this.setScale();
+          if (!this.resize) {
+            this.resize = () => this.setScale();
+            top.addEventListener("resize", this.resize);
+          }
+        } else {
+          const height = iframe.contentWindow.document.body.scrollHeight;
+          iframe.style.height = height + "px";
+        }
       }, 200);
+    },
+    setScale() {
+      const iframe = this.$refs.iframe;
+      const cwin = iframe.contentWindow;
+      const height = cwin.document.body.scrollHeight;
+      const root = cwin.document.documentElement;
+      const tRoot = top.document.documentElement;
+      const tFontSize = parseFloat(tRoot.style.fontSize) || 0;
+      const scale = tFontSize * 0.01;
+      root.style.transform = "scale(" + scale + ")";
+      root.style.transformOrigin = "top left";
+      root.style.width =
+        parseFloat(getComputedStyle(iframe).width) / scale + "px";
+      iframe.style.height = height * scale + "px";
     },
   },
 };
