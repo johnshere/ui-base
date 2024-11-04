@@ -51,8 +51,10 @@ export default {
         iframe.contentDocument.write(this.value || "");
         await new Promise((r) => setTimeout(r, 300));
 
-        iframe.contentDocument.body.style.margin = 0;
-        iframe.contentDocument.body.style.marginTop = 6;
+        if (iframe.contentDocument.body) {
+          iframe.contentDocument.body.style.margin = 0;
+          iframe.contentDocument.body.style.marginTop = 6;
+        }
         const tRoot = top.document.documentElement;
         if (tRoot.getAttribute("flexableid") && tRoot.style.fontSize) {
           this.setScale();
