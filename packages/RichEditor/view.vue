@@ -17,6 +17,7 @@
       width="100%"
       height="100%"
       scrolling="no"
+      @load="loaded"
     />
   </div>
 </template>
@@ -49,28 +50,31 @@ export default {
         const iframe = this.$refs.iframe;
         if (!iframe) return this.setContent();
         iframe.contentDocument.write(this.value || "");
-        await new Promise((r) => setTimeout(r, 300));
-
-        if (iframe.contentDocument.body) {
-          iframe.contentDocument.body.style.margin = 0;
-          iframe.contentDocument.body.style.marginTop = 6;
-        }
-        const tRoot = top.document.documentElement;
-        if (tRoot.getAttribute("flexableid") && tRoot.style.fontSize) {
-          this.setScale();
-          if (!this.resize) {
-            this.resize = () => this.setScale();
-            top.addEventListener("resize", this.resize);
-          }
-        } else {
-          const height = iframe.contentWindow.document.body.scrollHeight;
-          iframe.style.height = height + "px";
-        }
       }, 200);
     },
-    setScale() {
+    async loaded() {
+      const iframe = this.$refs.iframe;
+
+      iframe.contentDocument.body.style.margin = 0;
+      iframe.contentDocument.body.style.marginTop = 6;
+      const tRoot = top.document.documentElement;
+      if (tRoot.getAttribute("flexableid") && tRoot.style.fontSize) {
+        top.addEventListener("resize", this.setScale);
+        this.setScale();
+      } else {
+        await new Promise((r) => setTimeout(r, 400));
+        const height = iframe.contentWindow.document.body.scrollHeight;
+        iframe.style.height = height + "px";
+      }
+    },
+    async setScale() {
+      clearTimeout(this.timer2);
       const iframe = this.$refs.iframe;
       const cwin = iframe.contentWindow;
+      if (!cwin.document.body || !cwin.document.documentElement) {
+        this.timer2 = setTimeout(this.setScale, 200);
+        return;
+      }
       const height = cwin.document.body.scrollHeight;
       const root = cwin.document.documentElement;
       const tRoot = top.document.documentElement;
@@ -81,6 +85,7 @@ export default {
       root.style.width =
         parseFloat(getComputedStyle(iframe).width) / scale + "px";
       iframe.style.height = height * scale + "px";
+      this.timer2 = setTimeout(this.setScale, 50);
     },
   },
 };
