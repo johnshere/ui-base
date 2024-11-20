@@ -1,13 +1,22 @@
 <script>
 import { Dialog } from "element-ui";
+import DraggableMixin from "../../utils/draggable";
+
 export default {
   name: "UDialog",
   extends: Dialog,
+  mixins: [DraggableMixin],
   props: {
     closeOnClickModal: {
       type: Boolean,
       default: false,
     },
+  },
+  mounted() {
+    const targetEl = this.$el.querySelector(".el-dialog");
+    const dragEl = this.$el.querySelector(".el-dialog__header");
+    if (!dragEl || !targetEl) return;
+    this.useDraggable(targetEl, dragEl);
   },
 };
 </script>
