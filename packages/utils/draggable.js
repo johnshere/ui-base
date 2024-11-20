@@ -66,10 +66,13 @@ export default {
       };
 
       let cursor;
+      let userSelect;
       const onDraggable = () => {
         if (dragEl && targetEl) {
           cursor = getComputedStyle(dragEl).cursor;
+          userSelect = getComputedStyle(dragEl).userSelect;
           dragEl.style.cursor = "move";
+          dragEl.style.userSelect = "none";
           dragEl.addEventListener("mousedown", onMousedown);
         }
       };
@@ -78,6 +81,7 @@ export default {
       const offDraggable = () => {
         if (dragEl && targetEl) {
           dragEl.style.cursor = cursor || (cursor = "auto");
+          dragEl.style.userSelect = userSelect || (userSelect = "auto");
           dragEl.removeEventListener("mousedown", onMousedown);
         }
       };
