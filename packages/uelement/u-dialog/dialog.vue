@@ -12,11 +12,25 @@ export default {
       default: false,
     },
   },
-  mounted() {
-    const targetEl = this.$el.querySelector(".el-dialog");
-    const dragEl = this.$el.querySelector(".el-dialog__header");
-    if (!dragEl || !targetEl) return;
-    this.useDraggable(targetEl, dragEl);
+  watch: {
+    visible(val) {
+      if (!val) return;
+      const doc = this.$options.propsData.destroyOnClose;
+      const isDestroyOnClose = doc === "" || doc === true;
+      if (isDestroyOnClose) {
+        this.initDrag();
+      } else if (!this.dragEl) {
+        this.initDrag();
+      }
+    },
+  },
+  methods: {
+    initDrag() {
+      this.targetEl = this.$el.querySelector(".el-dialog");
+      this.dragEl = this.$el.querySelector(".el-dialog__header");
+      if (!this.dragEl || !this.targetEl) return;
+      this.useDraggable(this.targetEl, this.dragEl);
+    },
   },
 };
 </script>
