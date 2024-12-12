@@ -85,7 +85,6 @@ export default {
       root.style.width =
         parseFloat(getComputedStyle(iframe).width) / scale + "px";
       iframe.style.height = height * scale + "px";
-      this.timer2 = setTimeout(this.setScale, 50);
     },
   },
 };
