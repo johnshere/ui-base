@@ -149,6 +149,7 @@ export default {
 }
 .rich-text {
   ::v-deep .tox-tinymce {
+    display: flex;
     animation-name: fadeIn;
     animation-duration: 1.8s;
     animation-fill-mode: forwards;
