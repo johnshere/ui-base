@@ -79,14 +79,19 @@ export default {
       }
       const height = cwin?.document?.body?.scrollHeight;
       if (!height) return;
+
       const tRoot = top.document.documentElement;
       const tFontSize = parseFloat(tRoot.style.fontSize) || 0;
-      const scale = tFontSize * 0.01;
-      root.style.transform = "scale(" + scale + ")";
-      root.style.transformOrigin = "top left";
-      root.style.width =
-        parseFloat(getComputedStyle(iframe).width) / scale + "px";
-      iframe.style.height = height * scale + "px";
+      if (tFontSize) {
+        const scale = tFontSize * 0.01;
+        root.style.transform = "scale(" + scale + ")";
+        root.style.transformOrigin = "top left";
+        root.style.width =
+          parseFloat(getComputedStyle(iframe).width) / scale + "px";
+        iframe.style.height = height * scale + "px";
+      } else {
+        iframe.style.height = height + "px";
+      }
     },
   },
 };
