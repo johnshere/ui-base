@@ -51,7 +51,6 @@ export default {
       this.setScale();
     },
     async loaded() {
-      this._isIframeLoaded = true;
       const iframe = this.$refs.iframe;
 
       iframe.contentDocument.body.style.margin = 0;
@@ -60,8 +59,11 @@ export default {
       if (tRoot.getAttribute("flexableid") && tRoot.style.fontSize) {
         top.addEventListener("resize", this.setScale);
       } else {
-        await new Promise((r) => setTimeout(r, 400));
-        const height = iframe.contentWindow.document.body.scrollHeight;
+        let height;
+        while (!height) {
+          height = iframe?.contentWindow?.document?.body?.scrollHeight;
+          await new Promise((r) => setTimeout(r, 100));
+        }
         iframe.style.height = height + "px";
       }
     },
@@ -75,7 +77,8 @@ export default {
         cwin = iframe?.contentWindow;
         root = cwin?.document.documentElement;
       }
-      const height = cwin.document.body.scrollHeight;
+      const height = cwin?.document?.body?.scrollHeight;
+      if (!height) return;
       const tRoot = top.document.documentElement;
       const tFontSize = parseFloat(tRoot.style.fontSize) || 0;
       const scale = tFontSize * 0.01;
