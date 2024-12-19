@@ -60,8 +60,10 @@ export default {
         top.addEventListener("resize", this.setScale);
       } else {
         let height;
-        while (!height) {
+        let count = 0;
+        while (count < 2) {
           height = iframe?.contentWindow?.document?.body?.scrollHeight;
+          if (height) count++;
           await new Promise((r) => setTimeout(r, 100));
         }
         iframe.style.height = height + "px";
