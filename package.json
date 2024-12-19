@@ -1,6 +1,6 @@
 {
   "name": "ui-base",
-  "version": "0.2.42",
+  "version": "0.2.43",
   "private": false,
   "description": "前端公共组件 公共UI-组件库",
   "scripts": {
