@@ -2,9 +2,9 @@ import ElementUI from "element-ui";
 
 import "./style/index.less";
 import UTitle from "./title";
+import UTitleCard from "./title-card";
 import UPageTable from "./pageTable";
 import UTop from "./top";
-import UTitleCard from "./title-card";
 import URichEditor from "./RichEditor";
 import URichView from "./RichView";
 import UColPreset from "./col-preset";

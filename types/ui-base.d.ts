@@ -1,46 +1,42 @@
 import Vue from "vue/types/umd";
 import { UComponent } from "./component";
 import { UTitle } from "./title";
-import { UDialog } from "./dialog";
+import { UTitleCard } from "./title-card";
 import { UPageTable } from './pageTable'
 import { UTop } from './top'
-import { USelect } from './select'
+import { URichEditor, URichView } from './rich'
+import { UColPreset } from "./col-preset";
+import { UTeleport } from './teleport'
+import { UConfirmDelete } from './ConfirmDelete'
+
 import { URadioGroup } from './radio'
 import { UDescriptions } from './descriptions'
+import { USelect } from './select'
 import { UTable } from './table'
 import { UTableColumn } from './table-column'
-import { UTitleCard } from './title-card'
-import { URichEditor, URichView } from './rich'
+
+import { UDialog } from "./dialog";
 
 /** utils */
 export * from './utils'
 
-
-/** Title Component */
 export class Title extends UTitle { }
-/** Dialog Component */
-export class Dialog extends UDialog { }
-/** PageTable Component */
-export class PageTable extends UPageTable { }
-/** Top Component */
-export class Top extends UTop { }
-
-/** Select Component */
-export class Select extends USelect { }
-/** RadioGroup Component */
-export class RadioGroup extends URadioGroup { }
-/** Descriptions Component */
-export class Descriptions extends UDescriptions { }
-/** Table Component */
-export class Table extends UTable { }
-/** TableColumn Component */
-export class TableColumn extends UTableColumn { }
-/** TitleCard Component */
 export class TitleCard extends UTitleCard { }
-/** RichEditor Component */
+export class PageTable extends UPageTable { }
+export class Top extends UTop { }
 export class RichEditor extends URichEditor { }
-/** RichView Component */
 export class RichView extends URichView { }
+export class ColPreset extends UColPreset { }
+export class Teleport extends UTeleport { }
+export class ConfirmDelete extends UConfirmDelete { }
+
+export class Select extends USelect { }
+export class RadioGroup extends URadioGroup { }
+
+export class Dialog extends UDialog { }
+export class Descriptions extends UDescriptions { }
+export class Table extends UTable { }
+export class TableColumn extends UTableColumn { }
 
 export const version: string;
 
