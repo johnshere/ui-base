@@ -61,7 +61,7 @@ export default {
       } else {
         let height;
         let count = 0;
-        while (count < 2) {
+        while (count < 4) {
           height = iframe?.contentWindow?.document?.body?.scrollHeight;
           if (height) count++;
           await new Promise((r) => setTimeout(r, 100));
