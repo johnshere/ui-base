@@ -1,6 +1,18 @@
+ // 显式声明类型引用：https://github.com/microsoft/TypeScript/pull/58176#issuecomment-2052698294
+import type {} from 'vue2/types/common';
+import type {} from 'vue2/types/v3-component-options';
+import type {} from 'vue2/types/v3-component-public-instance';
+import type {} from '@vue3/shared';
+
+// import { version } from './package.json'
+
+// 组件导出
+export * from '.';
+
+
 import ElementUI from "element-ui";
 
-import "./style/index.less";
+import "./style/index.scss";
 import UTitle from "./title";
 import UTitleCard from "./title-card";
 import UPageTable from "./pageTable";
@@ -90,7 +102,7 @@ const install = function (Vue, options = {}) {
   console.log("ui-base install");
   Vue.prototype.$UBase = Object.assign({}, options);
 
-  let componentKeys = Object.keys(ElementUI);
+  const componentKeys = Object.keys(ElementUI);
   /**
    * UElement组件注册
    */
@@ -119,7 +131,7 @@ if (typeof window !== "undefined" && window.Vue) {
 }
 
 export default {
-  version: require("../package.json").version,
+  // version,
   install,
   ...newComponents,
   ...coverComponents,

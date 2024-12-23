@@ -32,7 +32,7 @@ export default {
 };
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 div.el-select {
   width: 100%;
 }

@@ -34,7 +34,7 @@ export default {
   },
 };
 </script>
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .el-dialog {
   text-align: left;
   &__header {

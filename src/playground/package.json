@@ -1,0 +1,25 @@
+{
+    "name": "playground",
+    "private": true,
+    "version": "0.0.0",
+    "type": "module",
+    "scripts": {
+        "dev:vue2": "cross-env VITE_VUE_VERSION=2 vite",
+        "dev:vue3": "cross-env VITE_VUE_VERSION=3 vite"
+    },
+    "devDependencies": {
+        "@vitejs/plugin-vue": "^5.0.5",
+        "@vitejs/plugin-vue2": "^2.3.1",
+        "nib": "^1.2.0",
+        "stylus": "^0.57.0",
+        "typescript": "^5.2.2",
+        "vite": "^5.3.1",
+        "vue-tsc": "^2.0.21"
+    },
+    "dependencies": {
+        "element-plus": "^2.9.0",
+        "element-ui": "^2.15.14",
+        "vue-router3": "npm:vue-router@^3.6.5",
+        "vue-router4": "npm:vue-router@^4.4.0"
+    }
+}

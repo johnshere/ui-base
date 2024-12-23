@@ -6,20 +6,20 @@
  * @Description:
 -->
 <template>
-  <div class="rich-text">
-    <!-- <div class="output">
+    <div class="rich-text">
+        <!-- <div class="output">
       <div v-html="content" />
     </div> -->
-    <iframe
-      ref="iframe"
-      frameborder="0"
-      class="output"
-      width="100%"
-      height="100%"
-      scrolling="no"
-      @load="loaded"
-    />
-  </div>
+        <iframe
+            ref="iframe"
+            frameborder="0"
+            class="output"
+            width="100%"
+            height="100%"
+            scrolling="no"
+            @load="loaded"
+        />
+    </div>
 </template>
 
 <script>
@@ -32,14 +32,14 @@ export default {
     },
   },
   watch: {
-    async value(val) {
+    async value() {
       this.setContent();
     },
   },
   mounted() {
     this.setContent();
   },
-  beforeDestroy() {
+  beforeUnmount() {
     if (this.timer) clearTimeout(this.timer);
     top.removeEventListener("resize", this.resize);
   },
@@ -99,8 +99,8 @@ export default {
 };
 </script>
 
-<style lang="less" scoped>
-@import "../style/common.less";
+<style lang="scss" scoped>
+@import "../style/common.scss";
 @keyframes fadeIn {
   0% {
     opacity: 0;

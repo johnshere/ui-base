@@ -1,32 +1,34 @@
 <template>
-  <div class="u-page-table">
-    <el-table
-      ref="table"
-      :data="data"
-      style="width: 100%"
-      :size="size"
-      border
-      v-bind="$attrs"
-      v-on="tableListener"
-    >
-      <slot />
-      <div slot="empty">
-        <slot name="empty">
-          <div class="u-page-table__empty">暂无数据</div>
-        </slot>
-      </div>
-    </el-table>
-    <div v-if="data.length > 0" class="u-page-table__pagination">
-      <el-pagination
-        background 
-        ref="pagination"
-        :page-sizes="pageSizes"
-        :layout="layout"
-        v-bind="$attrs"
-        v-on="$listeners"
-      />
+    <div class="u-page-table">
+        <el-table
+            ref="table"
+            :data="data"
+            style="width: 100%"
+            :size="size"
+            border
+            v-bind="$attrs"
+            v-on="tableListener"
+        >
+            <slot />
+            <template #empty>
+                <div>
+                    <slot name="empty">
+                        <div class="u-page-table__empty">暂无数据</div>
+                    </slot>
+                </div>
+            </template>
+        </el-table>
+        <div v-if="data.length > 0" class="u-page-table__pagination">
+            <el-pagination
+                ref="pagination" 
+                background
+                :page-sizes="pageSizes"
+                :layout="layout"
+                v-bind="$attrs"
+                v-on="listeners"
+            />
+        </div>
     </div>
-  </div>
 </template>
 
 <script>
@@ -59,16 +61,20 @@ export default {
     },
   },
   computed:{
+    listeners(){
+      // eslint-disable-next-line vue/no-deprecated-dollar-listeners-api
+      return Object.assign({},this.$listeners)
+    },
     tableListener(){
       // table和pagination的current-change同名，并且没啥用
-      const currentChange = this.$listeners['current-row-change'] || function(){}
-      return Object.assign({},this.$listeners,{'current-change':currentChange})
+      const currentChange = this.listeners['current-row-change'] || function(){}
+      return Object.assign({},this.listeners,{'current-change':currentChange})
     }
   }
 };
 </script>
 
-<style lang="less">
+<style lang="scss">
 .u-page-table {
   .el-table {
     .el-table__cell:last-child {

@@ -137,7 +137,7 @@ export default {
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 @keyframes fadeIn {
   0% {
     opacity: 0;

@@ -41,7 +41,7 @@ export default {
   }
 };
 </script>
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .el-table ::v-deep {
   overflow: visible;
   .el-table__cell:last-child {

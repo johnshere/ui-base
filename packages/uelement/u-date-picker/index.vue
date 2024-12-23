@@ -10,7 +10,7 @@ export default {
   name: "UDatePicker",
 };
 </script>
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .el-date-editor {
   width: 100%;
 }

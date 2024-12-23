@@ -1,0 +1,46 @@
+{
+    "name": "ui-base",
+    "version": "0.0.0",
+    "description": "Vue 2/3 ui-base components",
+    "keywords": [],
+    "license": "ISC",
+    "author": "",
+    "sideEffects": [
+        "dist/*",
+        "styles/**/*.css",
+        "styles/src/**/*.styl",
+        "esm/components/*/style/*",
+        "cjs/components/*/style/*"
+    ],
+    "exports": {
+        ".": {
+            "require": "./cjs/index.js",
+            "import": "./esm/index.mjs",
+            "types": "./esm/index.d.ts"
+        },
+        "./esm": "./esm/index.mjs",
+        "./cjs": "./cjs/index.js",
+        "./esm/*.mjs": "./esm/*.mjs",
+        "./esm/*": "./esm/*.mjs",
+        "./cjs/*.js": "./cjs/*.js",
+        "./cjs/*": "./cjs/*.js",
+        "./*": "./*"
+    },
+    "main": "cjs/index.js",
+    "module": "esm/index.mjs",
+    "types": "esm/index.d.ts",
+    "scripts": {},
+    "dependencies": {
+    },
+    "peerDependencies": {
+        "@tinymce/tinymce-vue": "^3.2.8",
+        "tinymce": "^5.10.7",
+        "nib": "*",
+        "stylus": "*"
+    },
+    "_peerDependencies": {
+        "element-plus": "^2.9.0",
+        "element-ui": "^2.15.14",
+        "vue": "^2.7 || ^3.2"
+    }
+}
