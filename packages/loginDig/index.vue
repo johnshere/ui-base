@@ -39,7 +39,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
 .login_window {
   ::v-deep .el-dialog {
     width: 800px;

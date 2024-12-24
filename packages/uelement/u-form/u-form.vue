@@ -67,7 +67,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
 form[isView="true"],
 form[isView=""],
 form[is-view="true"],

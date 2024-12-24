@@ -38,7 +38,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
 .common-header {
   margin-bottom: 20px;
   padding: 20px 12px 14px 12px;

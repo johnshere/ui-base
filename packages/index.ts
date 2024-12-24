@@ -10,7 +10,7 @@ export * from '.';
 
 import ElementUI from "element-ui";
 
-import "./style/index.scss";
+import "./style/index.less";
 import UTitle from "./title";
 import UTitleCard from "./title-card";
 import UPageTable from "./pageTable";

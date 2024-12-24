@@ -44,7 +44,7 @@ export default {
   },
 };
 </script>
-<style lang="scss" scoped>
+<style lang="less" scoped>
 .u-button.el-button--primary.is-plain:not(:hover):not(:focus) {
   background: none;
 }

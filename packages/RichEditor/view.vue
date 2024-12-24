@@ -99,7 +99,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
 @import "../style/common.scss";
 @keyframes fadeIn {
   0% {

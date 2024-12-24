@@ -74,7 +74,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="less">
 .u-page-table {
   .el-table {
     .el-table__cell:last-child {
