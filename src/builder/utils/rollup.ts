@@ -91,9 +91,9 @@ export function generateCommonPluginConfig() {
             })) as any,
         postcss({
             extract: false,
-            // plugins: [
-            //     postcssurl({ url: 'inline' }),
-            // ]
+            plugins: [
+                postcssurl({ url: 'inline' }),
+            ]
         }),
         image(),
         nodeResolve({
