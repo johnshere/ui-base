@@ -1,70 +1,51 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
-import {select} from '@inquirer/prompts';
-import {VUE2_PKG_NAME, VUE3_PKG_NAME} from '@shared/config/constance';
-import {PROJECT_OUTPUT_PATH, PROJECT_ROOT_PATH} from '@shared/config/paths';
-import {genNextVersion, getVersion, recordVersion} from '@shared/utils';
+import { select } from '@inquirer/prompts';
+import { PKG_PREFIX, VUE2_PKG_NAME, VUE3_PKG_NAME } from '@shared/config/constance';
+import { PACKAGES_ROOT_PATH, PROJECT_OUTPUT_PATH, PROJECT_ROOT_PATH } from '@shared/config/paths';
+import { genNextVersion, getVersion } from '@shared/utils';
 import chalk from 'chalk';
 import consola from 'consola';
 import execa from 'execa';
 import fs from 'fs';
 import path from 'path';
 
-const DEPLOY_PACKAGES: {name: string; path: string; version: string}[] = [
+const DEPLOY_PACKAGES: { name: string; path: string; version: string }[] = [
     {
         name: VUE2_PKG_NAME,
         path: path.join(PROJECT_OUTPUT_PATH, VUE2_PKG_NAME),
-        version: getVersion(VUE2_PKG_NAME),
+        version: getVersion(),
     },
     {
         name: VUE3_PKG_NAME,
         path: path.join(PROJECT_OUTPUT_PATH, VUE3_PKG_NAME),
-        version: getVersion(VUE3_PKG_NAME),
+        version: getVersion(),
     },
 ];
 
-const VERSION_OPTIONS = ['prerelease', 'patch', 'minor', 'major'] as const;
+const VERSION_OPTIONS = ['prerelease', 'patch', 'minor'] as const;
 
 /**
  * 主执行函数
  */
 async function main() {
-    const publishType = await select({
-        message: '请选择发布的内容',
+    // 选择是否需要build
+    const isBuild = await select({
+        message: '是否需要构建组件库？',
         choices: [
-            ...DEPLOY_PACKAGES.map(item => {
-                const version = item.version;
-                const spaces = new Array(30 - item.name.length)
-                    .fill(' ')
-                    .join('');
-                return {
-                    name: `${item.name}` + spaces + `(version: ${version})`,
-                    value: item.name,
-                };
-            }),
             {
-                name: 'all',
-                value: 'all',
+                name: '是',
+                value: true,
             },
             {
-                name: chalk.red('退出发布'),
-                value: 'exit',
+                name: '否',
+                value: false,
             },
         ],
     });
-
-    switch (publishType) {
-        // 发布 npm 包
-        case VUE2_PKG_NAME:
-        case VUE3_PKG_NAME:
-            await publishNpmPackage(publishType);
-            break;
-        // 合并发布 ui-base-vue2 和 ui-base-vue3
-        case 'all':
-            await publishComponents();
-            break;
-        case 'exit':
-            consola.info('脚本已退出');
+    if (isBuild) {
+        buildComponents();
     }
+    await publishComponents();
 }
 
 main();
@@ -81,13 +62,13 @@ async function publishNpmPackage(packageName: string, version?: string) {
     if (!fs.existsSync(pkgPath)) {
         throw new Error(`无法查找到 ${pkgPath} 目录，请确认是否已经编译出内容`);
     }
-    const pkgJSON = require(path.join(pkgPath, 'package.json'));
+    const pkgJSON = require(path.join(PACKAGES_ROOT_PATH, 'package.json'));
     if (!pkgJSON) {
         throw new Error(`无法查找到 ${packageName} 对应的 package.json`);
     }
 
     // 覆写版本号
-    const currentPkgVersion = getVersion(packageName);
+    const currentPkgVersion = pkgJSON.version;
     let selectedVersion = version;
     if (!selectedVersion) {
         selectedVersion = (await select({
@@ -103,6 +84,13 @@ async function publishNpmPackage(packageName: string, version?: string) {
         })) as string;
     }
     pkgJSON.version = selectedVersion;
+    if (packageName === VUE2_PKG_NAME) {
+        Object.assign(pkgJSON.dependencies, pkgJSON._element_vue2)
+    } else {
+        Object.assign(pkgJSON.dependencies, pkgJSON._element_vue3)
+    }
+    delete pkgJSON._element_vue2;
+    delete pkgJSON._element_vue3;
     fs.writeFileSync(
         path.join(pkgPath, 'package.json'),
         JSON.stringify(pkgJSON, null, 4),
@@ -118,16 +106,6 @@ async function publishNpmPackage(packageName: string, version?: string) {
         },
     );
 
-    // 记录版本值
-    recordVersion(packageName, selectedVersion);
-
-    // 还原版本号
-    pkgJSON.version = '0.0.0';
-    fs.writeFileSync(
-        path.join(pkgPath, 'package.json'),
-        JSON.stringify(pkgJSON, null, 4),
-    );
-
     consola.success(
         `🥳 ${packageName} 发布成功，版本号：${chalk.green(selectedVersion)}`,
     );
@@ -137,7 +115,6 @@ async function publishNpmPackage(packageName: string, version?: string) {
  * 合并发布 ui-base-vue2 和 ui-base-vue3
  */
 async function publishComponents() {
-    buildComponents();
     const vue2PkgInfo = DEPLOY_PACKAGES.find(
         item => item.name === VUE2_PKG_NAME,
     );
@@ -157,27 +134,38 @@ async function publishComponents() {
             `未同时找到 ${VUE2_PKG_NAME} 与 ${VUE3_PKG_NAME} 目录，请确认是否已经编译出内容`,
         );
     }
+    const pkgJSON = require(path.join(PACKAGES_ROOT_PATH, 'package.json'));
+
 
     const selectedVersion = (await select({
         message: '请选择包版本的升级类型：',
         choices: VERSION_OPTIONS.map(key => {
-            const nextVue2Version = genNextVersion(vue2PkgInfo.version, key);
-            const nextVue3Version = genNextVersion(vue3PkgInfo.version, key);
+            const nextVersion = genNextVersion(pkgJSON.version, key);
+            const nvs = nextVersion.split('.').slice(1);
+            const nextVersion2 = `2.${nvs.join('.')}`
+            const nextVersion3 = `3.${nvs.join('.')}`
             return {
                 name: key,
-                value: `${nextVue2Version}|${nextVue3Version}`,
+                value: `${nextVersion}|${nextVersion2}|${nextVersion3}`,
                 description:
-                    `当前版本号：${VUE2_PKG_NAME}@${chalk.red(vue2PkgInfo.version)}, ` +
-                    `${VUE3_PKG_NAME}@${chalk.red(vue3PkgInfo.version)}` +
+                    `当前版本号：${PKG_PREFIX} ${chalk.red(pkgJSON.version)}, ` +
                     '\n' +
-                    `选择此选项后，将生成的新版本号：${VUE2_PKG_NAME}@${chalk.red(nextVue2Version)}, ` +
-                    `${VUE3_PKG_NAME}@${chalk.red(nextVue3Version)}`,
+                    `选择此选项后，将生成的新版本号：${PKG_PREFIX}@${chalk.red(nextVersion2)}, ` +
+                    `${PKG_PREFIX}@${chalk.red(nextVersion3)}`,
             };
         }),
     })) as string;
-    const [nextVue2Version, nextVue3Version] = selectedVersion.split('|');
-    await publishNpmPackage(VUE2_PKG_NAME, nextVue2Version);
-    await publishNpmPackage(VUE3_PKG_NAME, nextVue3Version);
+    const [nextVersion, nextVersion2, nextVersion3] = selectedVersion.split('|');
+    await publishNpmPackage(VUE2_PKG_NAME, nextVersion2);
+    await publishNpmPackage(VUE3_PKG_NAME, nextVersion3);
+    pkgJSON.version = nextVersion;
+    fs.writeFileSync(
+        path.join(PACKAGES_ROOT_PATH, 'package.json'),
+        JSON.stringify(pkgJSON, null, 4),
+    );
+    consola.success(
+        `🥳 组件库发布成功，版本号：${chalk.green(selectedVersion)}`,
+    );
 }
 
 /** 构建组件库 */

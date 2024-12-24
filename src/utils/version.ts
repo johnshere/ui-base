@@ -1,41 +1,33 @@
-import {PROJECT_ROOT_PATH} from '@shared/config/paths';
+import { PACKAGES_ROOT_PATH } from '@shared/config/paths';
 import fs from 'fs';
 import path from 'path';
 
 /**
- * 获取 version.json 文件内容
+ * 获取 package.json 文件内容
  */
-export function getVersionFileContent() {
-    return JSON.parse(
-        fs.readFileSync(path.join(PROJECT_ROOT_PATH, 'version.json'), 'utf-8')
-    ) as Record<string, any>;
+export function getPackageFileJson() {
+    try {
+        const pkgPath = path.join(PACKAGES_ROOT_PATH, 'package.json')
+        if (!fs.existsSync(pkgPath)) {
+            return
+        }
+        const pkgContent = fs.readFileSync(pkgPath, 'utf-8')
+        return JSON.parse(pkgContent) as Record<string, any>;
+    } catch (error) {
+        console.log(error)
+        throw error
+    }
 }
 
 /**
  * 获取指定包版本信息
  */
-export function getVersion(packageName: string) {
-    return getVersionFileContent()[packageName];
-}
-
-/**
- * 记录版本信息
- */
-export function recordVersion(packageName: string, version: string) {
-    const existsVersionInfo = getVersionFileContent();
-    if (!Object.keys(existsVersionInfo).includes(packageName)) {
-        throw new Error(`${packageName} 不存在与 version.json，请先添加记录`);
+export function getVersion() {
+    const json = getPackageFileJson()
+    if (!json) {
+        return
     }
-    existsVersionInfo[packageName] = version;
-    fs.writeFileSync(
-        path.join(PROJECT_ROOT_PATH, 'version.json'),
-        JSON.stringify(existsVersionInfo, null, 4),
-        'utf-8'
-    );
-}
-
-export function getPackageVersion(packageName: string) {
-    return getVersionFileContent()[packageName];
+    return json.version as string;
 }
 
 /**

@@ -18,7 +18,7 @@
     "dev:vue3": "pnpm --filter ./src/playground run dev:vue3",
     "postinstall": "husky install",
     "lint-staged": "lint-staged",
-    "publish": "pnpm --filter ./scripts run publish"
+    "publish": "pnpm --filter ./src/scripts run publish"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": "eslint",
