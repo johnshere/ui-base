@@ -2,7 +2,7 @@
 
 import alias from '@rollup/plugin-alias';
 import commonjs from '@rollup/plugin-commonjs';
-import {nodeResolve} from '@rollup/plugin-node-resolve';
+import { nodeResolve } from '@rollup/plugin-node-resolve';
 import vue3 from '@vitejs/plugin-vue';
 import vue2 from '@vitejs/plugin-vue2';
 import path from 'path';
@@ -10,26 +10,28 @@ import esbuild from 'rollup-plugin-esbuild';
 import replace from '@rollup/plugin-replace';
 import image from '@rollup/plugin-image';
 import postcss from 'rollup-plugin-postcss'
-import less from 'rollup-plugin-less'
+import postcssurl from 'postcss-url';
 import * as vue2Compiler from 'vue2/compiler-sfc';
 import * as vue3Compiler from 'vue3/compiler-sfc';
-import {esbuildConfig, nodeResolveExt} from '../config';
-import {IS_VUE2, PKG_NAME} from './constance';
-import {compsSrcPath} from './paths';
+import { esbuildConfig, nodeResolveExt } from '../config';
+import { IS_VUE2, PKG_NAME } from './constance';
+import { compsSrcPath } from './paths';
+import { PROJECT_OUTPUT_PATH } from '@shared/config/paths';
+import { VUE2_PKG_NAME, VUE3_PKG_NAME } from '@shared/config/constance';
 
 function getPackageDependencies(
     pkgPath: string,
 ): Record<'dependencies' | 'peerDependencies', string[]> {
     const manifest = require(pkgPath);
-    const {dependencies = {}, peerDependencies = {}} = manifest;
+    const { dependencies = {}, peerDependencies = {} } = manifest;
     return {
         dependencies: Object.keys(dependencies),
         peerDependencies: Object.keys(peerDependencies),
     };
 }
 
-export const generateExternal = async (options: {full: boolean}) => {
-    const {dependencies, peerDependencies} = getPackageDependencies(
+export const generateExternal = async (options: { full: boolean }) => {
+    const { dependencies, peerDependencies } = getPackageDependencies(
         path.resolve(compsSrcPath, 'package.json'),
     );
 
@@ -82,15 +84,17 @@ export function generateCommonPluginConfig() {
         }),
         (IS_VUE2
             ? vue2({
-                  compiler: vue2Compiler as any,
-              })
+                compiler: vue2Compiler as any,
+            })
             : vue3({
-                  compiler: vue3Compiler as any,
-              })) as any,
+                compiler: vue3Compiler as any,
+            })) as any,
         postcss({
-            extract: true,
+            extract: false,
+            // plugins: [
+            //     postcssurl({ url: 'inline' }),
+            // ]
         }),
-        // less(),
         image(),
         nodeResolve({
             extensions: nodeResolveExt,
