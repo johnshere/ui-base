@@ -30,17 +30,19 @@
     "module": "esm/index.mjs",
     "types": "esm/index.d.ts",
     "scripts": {},
-    "dependencies": {
-    },
     "peerDependencies": {
         "@tinymce/tinymce-vue": "^3.2.8",
-        "tinymce": "^5.10.7",
-        "nib": "*",
-        "stylus": "*"
-    },
-    "_peerDependencies": {
         "element-plus": "^2.9.0",
         "element-ui": "^2.15.14",
+        "lodash": "4.17.5",
+        "nib": "*",
+        "stylus": "*",
+        "tinymce": "^5.10.7"
+    },
+    "_peerDependencies": {
         "vue": "^2.7 || ^3.2"
+    },
+    "devDependencies": {
+        "@types/lodash": "4.17.5"
     }
 }

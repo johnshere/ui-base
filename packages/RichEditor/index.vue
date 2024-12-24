@@ -6,18 +6,19 @@
  * @Description:
 -->
 <template>
-  <div class="rich-text">
-    <editor
-      v-if="editorVisible"
-      :id="id"
-      v-model="content"
-      :init="editorOption"
-      v-bind="$attrs"
-    />
-  </div>
+    <div class="rich-text">
+        <editor
+            v-if="editorVisible"
+            :id="id"
+            v-model="content"
+            :init="editorOption"
+            v-bind="$attrs"
+        />
+    </div>
 </template>
 
 <script>
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import tinymce from 'tinymce/tinymce'
 import Editor from '@tinymce/tinymce-vue'
 import 'tinymce/icons/default/icons'
@@ -96,7 +97,7 @@ export default {
           'removeformat blockquote subscript superscript | numlist bullist hr table| link image media charmap anchor pagebreak codesample searchreplace | ltr rtl | print preview fullscreen',
         ],
         setup: (editor) => {
-          editor.on('init', function(e) {
+          editor.on('init', function() {
             // this.getBody().style.fontSize = '16px';
             // this.getBody().style.color = '#000';
             // this.getBody().style.fontFamily = '宋体';

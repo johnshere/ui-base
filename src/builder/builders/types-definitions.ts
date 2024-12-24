@@ -5,18 +5,17 @@ import del from 'del';
 import glob from 'fast-glob';
 import fs from 'fs';
 import fsPromises from 'fs/promises';
-import {dest, src} from 'gulp';
+import { dest, src } from 'gulp';
 import path from 'path';
-import {Project, ResolutionHost, SourceFile, ts} from 'ts-morph';
+import { Project, ResolutionHost, SourceFile, ts } from 'ts-morph';
 import * as vue2Compiler from 'vue2/compiler-sfc';
 import * as vue3Compiler from 'vue3/compiler-sfc';
-import {buildConfig, BuildModule} from '../config';
-import {IS_VUE2} from '../utils/constance';
-import {excludeFiles} from '../utils';
+import { buildConfig, BuildModule } from '../config';
+import { IS_VUE2 } from '../utils/constance';
+import { excludeFiles } from '../utils';
 import {
     builderPath,
     distPath,
-    projectPath,
     packagesPath,
     compsSrcPath,
 } from '../utils/paths';
@@ -31,7 +30,7 @@ export async function generateTypesDefinitions() {
         compilerOptions: {
             emitDeclarationOnly: true,
             outDir: GENERATE_TYPES_DIR,
-            baseUrl: projectPath,
+            baseUrl: packagesPath,
             preserveSymlinks: true,
         },
         tsConfigFilePath: path.resolve(builderPath, 'tsconfig.build.json'),
@@ -135,7 +134,7 @@ function customModuleResolution(
             // console.log('=========================');
             const compilerOptions = getCompilerOptions();
             const resolvedModules: ts.ResolvedModule[] = [];
-            for (const moduleName of moduleNames.map(removeTsExtension)) {
+            for (const moduleName of moduleNames) {
                 const result = ts.resolveModuleName(
                     moduleName,
                     containingFileRealPath,
@@ -180,6 +179,10 @@ function mapModuleAlias(moduleName: string) {
     if (['vue', 'vue2', 'vue3'].includes(moduleName)) {
         moduleName = IS_VUE2 ? 'vue2' : 'vue3';
     }
+    // 根据构建目标修正 Vue 索引的版本
+    if (['element-ui', 'element-plus'].includes(moduleName)) {
+        moduleName = IS_VUE2 ? 'element-ui' : 'element-plus';
+    }
     // 正确索引到 @src
     moduleName = moduleName.replace('@src', compsSrcPath);
     return moduleName;
@@ -216,7 +219,7 @@ async function addSourceFile(project: Project) {
                 const descriptor = IS_VUE2
                     ? (sfc as vue2Compiler.SFCDescriptor)
                     : (sfc as vue3Compiler.SFCParseResult).descriptor;
-                const {script, scriptSetup} = descriptor;
+                const { script, scriptSetup } = descriptor;
                 if (script || scriptSetup) {
                     let content = script?.content ?? '';
                     if (scriptSetup) {
@@ -264,7 +267,7 @@ export const outputContentReplacer = (option: {
     content: string;
     sourceFile: SourceFile;
 }) => {
-    const {content, sourceFile} = option;
+    const { content, sourceFile } = option;
     const getAliasRealPath = (aliasTo: string) => {
         return path.relative(path.dirname(sourceFile.getFilePath()), aliasTo);
     };
@@ -319,5 +322,5 @@ export async function copyTypes() {
     }
 
     await Promise.all([copyTypes('esm'), copyTypes('cjs')]);
-    await del(GENERATE_TYPES_DIR, {force: true});
+    await del(GENERATE_TYPES_DIR, { force: true });
 }

@@ -4,8 +4,6 @@ import type {} from 'vue2/types/v3-component-options';
 import type {} from 'vue2/types/v3-component-public-instance';
 import type {} from '@vue3/shared';
 
-// import { version } from './package.json'
-
 // 组件导出
 export * from '.';
 
@@ -45,7 +43,7 @@ export const Title = UTitle;
 export const TitleCard = UTitleCard;
 export const PageTable = UPageTable;
 export const Top = UTop;
-export const RichEditor = URichEditor;
+export const RichEditor = URichEditor as any;
 export const RichView = URichView;
 export const ColPreset = UColPreset;
 export const Teleport = UTeleport;
@@ -131,7 +129,6 @@ if (typeof window !== "undefined" && window.Vue) {
 }
 
 export default {
-  // version,
   install,
   ...newComponents,
   ...coverComponents,

@@ -26,7 +26,7 @@ export default defineConfig({
     ],
     resolve: {
         alias: {
-            element: IS_VUE2 ? 'element-ui' : 'element-plus',
+            'element-ui': IS_VUE2 ? 'element-ui' : 'element-plus',
             vue: IS_VUE2 ? 'vue2' : 'vue3',
             'vue-router': IS_VUE2 ? 'vue-router3' : 'vue-router4',
             '@': path.resolve(__dirname, './src/'),

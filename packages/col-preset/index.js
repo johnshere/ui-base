@@ -1,4 +1,4 @@
-// import { Col } from "element";
+// import { Col } from "element-ui";
 const component = {
   name: 'UColPreset',
   render() {

@@ -21,7 +21,7 @@ const isWatch = process.argv.includes('--watchBuild');
 
 function logInfo() {
     return new Promise((resolve, reject) => {
-        figlet(`Uni Comps Veu${process.env.VUE_VERSION}`, (err, data) => {
+        figlet(`Ui Base Veu${process.env.VUE_VERSION}`, (err, data) => {
             if (err) {
                 reject(err);
                 return;
