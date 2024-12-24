@@ -102,9 +102,6 @@ export default {
       background-color: #f5f7fa;
       color: #333;
     }
-    // td {
-    //   padding: 5px 0;
-    // }
     th {
       padding: 10px 0;
       &.center {

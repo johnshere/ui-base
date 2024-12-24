@@ -49,19 +49,19 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-::v-deep .required {
+::v-deep(.required) {
   position: relative;
   padding-left: 20px !important;
+  &::before {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    margin-top: -14px;
+    content: "*";
+    color: #fe3434;
+  }
 }
-::v-deep .required::before {
-  position: absolute;
-  left: 12px;
-  top: 50%;
-  margin-top: -14px;
-  content: "*";
-  color: #fe3434;
-}
-::v-deep .el-descriptions-item__label.is-bordered-label {
+::v-deep(.el-descriptions-item__label.is-bordered-label) {
   background: #f6f7fb;
   color: #606266;
 }

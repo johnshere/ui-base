@@ -41,7 +41,7 @@ export default {
 
 <style lang="less" scoped>
 .login_window {
-  ::v-deep .el-dialog {
+  ::v-deep(.el-dialog) {
     width: 800px;
     height: 582px;
     .el-dialog__header {
@@ -57,7 +57,7 @@ export default {
     }
   }
 
-  ::v-deep .el-dialog__body {
+  ::v-deep(.el-dialog__body) {
     padding: 0;
   }
 }

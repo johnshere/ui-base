@@ -72,7 +72,7 @@ form[isView="true"],
 form[isView=""],
 form[is-view="true"],
 form[is-view=""] {
-  ::v-deep .el-form-item {
+  ::v-deep(.el-form-item) {
     margin-bottom: 0;
   }
 }

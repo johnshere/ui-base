@@ -24,7 +24,7 @@ export default {
 .el-cascader {
   width: 100%;
 }
-::v-deep .el-cascader-menu__wrap {
+::v-deep(.el-cascader-menu__wrap) {
   height: 204px;
 }
 </style>

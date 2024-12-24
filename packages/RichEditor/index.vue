@@ -149,7 +149,7 @@ export default {
   }
 }
 .rich-text {
-  ::v-deep .tox-tinymce {
+  ::v-deep(.tox-tinymce) {
     display: flex;
     animation-name: fadeIn;
     animation-duration: 1.8s;
@@ -159,10 +159,9 @@ export default {
     }
   }
 
-  // 修复为默认样式
   color: #353535;
 
-  ::v-deep {
+  ::v-deep() {
     strong {
       font-weight: bold;
     }

@@ -91,24 +91,18 @@ importers:
       '@tinymce/tinymce-vue':
         specifier: ^3.2.8
         version: 3.2.8(vue@3.2.47)
-      element-plus:
-        specifier: ^2.9.0
-        version: 2.9.1(vue@3.2.47)
       element-ui:
         specifier: ^2.15.14
         version: 2.15.14(vue@3.2.47)
       lodash:
         specifier: 4.17.5
         version: 4.17.5
-      nib:
-        specifier: '*'
-        version: 1.2.0(stylus@0.57.0)
-      stylus:
-        specifier: '*'
-        version: 0.57.0
       tinymce:
         specifier: ^5.10.7
         version: 5.10.9
+      vue:
+        specifier: ^2.7 || ^3.2
+        version: 3.2.47
 
     devDependencies:
       '@types/lodash':
@@ -235,6 +229,9 @@ importers:
       '@types/nib':
         specifier: ^1.1.0
         version: 1.1.2
+      '@types/rollup-plugin-less':
+        specifier: ^1.1.5
+        version: 1.1.5
       '@types/stylus':
         specifier: ^0.48.38
         version: 0.48.43
@@ -1106,6 +1103,9 @@ packages:
   '@types/eslint__js@8.42.3':
     resolution: {integrity: sha512-alfG737uhmPdnvkrLdZLcEKJ/B8s9Y4hrZ+YAdzUeoArBlSUERA2E87ROfOaS4jd/C45fzOoZzidLc1IPwLqOw==}
 
+  '@types/estree@0.0.39':
+    resolution: {integrity: sha512-EYNwp3bU+98cpU4lAWYYL7Zz+2gryWH1qbdDTidVd6hkiR6weksdbMadyXKXNPEkQFhXM+hVO9ZygomHXp+AIw==}
+
   '@types/estree@1.0.6':
     resolution: {integrity: sha512-AYnb1nQyY49te+VRAVgmzfcgjYS91mY5P0TKUDCLEM+gNnA+3T6rWITXRLYCpahpqSQbN5cE+gHpnPyXjHWxcw==}
 
@@ -1139,6 +1139,9 @@ packages:
   '@types/json-schema@7.0.15':
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
 
+  '@types/less@3.0.7':
+    resolution: {integrity: sha512-+SD1DrM8EwJsilPFSR1IMMGWOTg5sO1waewoJ1k3BHCvU07zQThy8t2wTfxvHz//R0uK3koAUl9WbWwal0H+YA==}
+
   '@types/lodash-es@4.17.12':
     resolution: {integrity: sha512-0NgftHUcV4v34VhXm8QBSftKVXtbkBG3ViCjs6+eJ5a6y6Mi/jiFGPc1sC7QK+9BFhWrURE3EOggmWaSxL9OzQ==}
 
@@ -1162,6 +1165,9 @@ packages:
 
   '@types/resolve@1.20.2':
     resolution: {integrity: sha512-60BCwRFOZCQhDncwQdxxeOEEkbc5dIMccYLwbxsS4TUNeVECQ/pBJ0j09mrHOl/JJvpRPGwO9SvE4nR2Nb/a4Q==}
+
+  '@types/rollup-plugin-less@1.1.5':
+    resolution: {integrity: sha512-m4BDbs04cztW16Hc1+AoUz8Iox58Vz2PUuPKccc3vJ2H1oIPRk3IPT2llBPPcSfsOyObATYs6PHduWaaw/24Lw==}
 
   '@types/streamx@2.9.5':
     resolution: {integrity: sha512-IHYsa6jYrck8VEdSwpY141FTTf6D7boPeMq9jy4qazNrFMA4VbRz/sw5LSsfR7jwdDcx0QKWkUexZvsWBC2eIQ==}
@@ -4014,6 +4020,10 @@ packages:
     resolution: {integrity: sha512-DlmYghq9ozqhrGHEEUoPXpDq9isXuejioj4toBiMXEpp7K8jlsaURcC2iMFa/J6E81vWuq5cYYafStcOgyFDUg==}
     hasBin: true
 
+  rollup@0.63.5:
+    resolution: {integrity: sha512-dFf8LpUNzIj3oE0vCvobX6rqOzHzLBoblyFp+3znPbjiSmSvOoK2kMKx+Fv9jYduG1rvcCfCveSgEaQHjWRF6g==}
+    hasBin: true
+
   rollup@4.28.1:
     resolution: {integrity: sha512-61fXYl/qNVinKmGSTHAZ6Yy8I3YIJC/r2m9feHo6SwVAVcLT5MPwOUFe7EuURA/4m0NR8lXG4BBXuo/IZEsjMg==}
     engines: {node: '>=18.0.0', npm: '>=8.0.0'}
@@ -5355,6 +5365,8 @@ snapshots:
     dependencies:
       '@types/eslint': 9.6.1
 
+  '@types/estree@0.0.39': {}
+
   '@types/estree@1.0.6': {}
 
   '@types/expect@1.20.4': {}
@@ -5399,6 +5411,8 @@ snapshots:
 
   '@types/json-schema@7.0.15': {}
 
+  '@types/less@3.0.7': {}
+
   '@types/lodash-es@4.17.12':
     dependencies:
       '@types/lodash': 4.17.5
@@ -5422,6 +5436,12 @@ snapshots:
   '@types/picomatch@3.0.1': {}
 
   '@types/resolve@1.20.2': {}
+
+  '@types/rollup-plugin-less@1.1.5':
+    dependencies:
+      '@types/less': 3.0.7
+      '@types/node': 18.19.68
+      rollup: 0.63.5
 
   '@types/streamx@2.9.5':
     dependencies:
@@ -8620,6 +8640,11 @@ snapshots:
   rollup@0.34.13:
     dependencies:
       source-map-support: 0.4.18
+
+  rollup@0.63.5:
+    dependencies:
+      '@types/estree': 0.0.39
+      '@types/node': 18.19.68
 
   rollup@4.28.1:
     dependencies:

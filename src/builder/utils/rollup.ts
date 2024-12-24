@@ -9,6 +9,8 @@ import path from 'path';
 import esbuild from 'rollup-plugin-esbuild';
 import replace from '@rollup/plugin-replace';
 import image from '@rollup/plugin-image';
+import postcss from 'rollup-plugin-postcss'
+import less from 'rollup-plugin-less'
 import * as vue2Compiler from 'vue2/compiler-sfc';
 import * as vue3Compiler from 'vue3/compiler-sfc';
 import {esbuildConfig, nodeResolveExt} from '../config';
@@ -85,6 +87,10 @@ export function generateCommonPluginConfig() {
             : vue3({
                   compiler: vue3Compiler as any,
               })) as any,
+        postcss({
+            extract: true,
+        }),
+        // less(),
         image(),
         nodeResolve({
             extensions: nodeResolveExt,

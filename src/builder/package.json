@@ -53,6 +53,7 @@
         "@types/gulp-rename": "^2.0.1",
         "@types/gulp-stylus": "^2.7.4",
         "@types/nib": "^1.1.0",
+        "@types/rollup-plugin-less": "^1.1.5",
         "@types/stylus": "^0.48.38",
         "unplugin-vue-setup-extend-plus": "^1.0.1"
     },

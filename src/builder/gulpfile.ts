@@ -48,7 +48,7 @@ const mainTask = series(
     withTaskName('🎙 generate types definitions', generateTypesDefinitions),
     parallel(
         // 拷贝 package.json
-        withTaskName('📄 generate package.json', generatePackageJSON),
+        // withTaskName('📄 generate package.json', generatePackageJSON),
         // 将生成的 types 拷贝到各个模块的目录下
         withTaskName('📄 copy types to each module file', copyTypes),
     ),

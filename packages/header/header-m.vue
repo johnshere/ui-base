@@ -368,9 +368,6 @@ a:hover {
 .u-header-wrap {
   width: 100%;
   height: 100px;
-  // top: 30px;
-  // left: 50%;
-  // transform: translate(-50%);
   background: #fff;
   z-index: 200;
   .search-box-fixed,
@@ -387,8 +384,6 @@ a:hover {
     margin: 0 auto;
 
     }
-    // left: 50%;
-    // transform: translate(-50%);
   }
 
   .wholeSeachBtn {
@@ -728,10 +723,6 @@ a:hover {
   text-indent: 10px;
   display: block;
 }
-
-// .platform-services-nav-lists .secondAddClass {
-//   color: #e5301e !important;
-// }
 
 .platform-services-nav-lists li:hover a {
   color: #e5301e !important;

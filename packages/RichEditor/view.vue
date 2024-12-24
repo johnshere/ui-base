@@ -105,7 +105,6 @@ export default {
   color: #353535;
   position: relative;
   overflow: auto;
-  .scrollBar();
 
   .output {
     margin: 0;
