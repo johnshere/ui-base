@@ -10,16 +10,15 @@
         <!-- <div class="output">
       <div v-html="content" />
     </div> -->
-        <iframe
-            ref="iframe"
-            frameborder="0"
-            class="output"
-            width="100%"
-            height="100%"
-            scrolling="no"
-            @load="loaded"
-        />
-    </div>
+    <iframe
+      ref="iframe"
+      frameborder="0"
+      class="output"
+      width="100%"
+      height="100%"
+      scrolling="no"
+    />
+  </div>
 </template>
 
 <script>
@@ -45,40 +44,30 @@ export default {
   },
   methods: {
     async setContent() {
+      clearTimeout(this._timer);
       const iframe = this.$refs.iframe;
-      while (!iframe) await new Promise((r) => setTimeout(r, 200));
+      if (!iframe) {
+        this._timer = setTimeout(() => this.setContent(), 200);
+        return;
+      }
       iframe.contentDocument.write(this.value || "");
-      this.setScale();
-    },
-    async loaded() {
-      const iframe = this.$refs.iframe;
-
-      iframe.contentDocument.body.style.margin = 0;
-      iframe.contentDocument.body.style.marginTop = 6;
-      const tRoot = top.document.documentElement;
-      if (tRoot.getAttribute("flexableid") && tRoot.style.fontSize) {
-        top.addEventListener("resize", this.setScale);
-      } else {
-        let height;
-        let count = 0;
-        while (count < 4) {
-          height = iframe?.contentWindow?.document?.body?.scrollHeight;
-          if (height) count++;
-          await new Promise((r) => setTimeout(r, 100));
+      if (this.value) {
+        iframe.contentDocument.body.style.margin = 0;
+        iframe.contentDocument.body.style.marginTop = 6;
+        this.setScale();
+        const tRoot = top.document.documentElement;
+        if (tRoot.getAttribute("flexableid") && tRoot.style.fontSize) {
+          top.addEventListener("resize", this.setScale);
         }
+      } else {
+        const height = iframe?.contentWindow?.document?.body?.scrollHeight;
         iframe.style.height = height + "px";
       }
     },
     async setScale() {
-      let iframe = this.$refs.iframe;
-      let cwin = iframe?.contentWindow;
-      let root = cwin?.document.documentElement;
-      while (!iframe || !cwin?.document.body || !root) {
-        await new Promise((r) => setTimeout(r, 100));
-        iframe = this.$refs.iframe;
-        cwin = iframe?.contentWindow;
-        root = cwin?.document.documentElement;
-      }
+      const iframe = this.$refs.iframe;
+      const cwin = iframe?.contentWindow;
+      const root = cwin?.document.documentElement;
       const height = cwin?.document?.body?.scrollHeight;
       if (!height) return;
 
@@ -100,7 +89,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-@import "../style/common.scss";
+@import "../style/common.less";
 @keyframes fadeIn {
   0% {
     opacity: 0;
