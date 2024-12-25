@@ -18,8 +18,7 @@
 </template>
 
 <script>
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import tinymce from 'tinymce/tinymce'
+import 'tinymce/tinymce'
 import Editor from '@tinymce/tinymce-vue'
 import 'tinymce/icons/default/icons'
 import 'tinymce/skins/ui/oxide/skin.css'
@@ -46,6 +45,7 @@ import 'tinymce/plugins/searchreplace'
 import './plugins/fullscreen'
 // import 'tinymce/plugins/formatpainter';
 import './plugins/formatpainter'
+import './plugins/zh-Hans'
 
 export default {
   name: 'URichEditor',
@@ -67,15 +67,15 @@ export default {
     }
   },
   data() {
-    const language_url = this.$UBase.language_url;
-    if (!language_url) {
-      throw new Error('URichEditor: $UBase.language_url is required')
-    }
+    // const language_url = this.$UBase.language_url;
+    // if (!language_url) {
+    //   throw new Error('URichEditor: $UBase.language_url is required')
+    // }
     return {
       editorVisible: false,
       editorOption: {
         inline: location.href.includes('isPdf=1') || location.href.includes('isPrint=1'),
-        language_url, // 指定中文包
+        // language_url, // 指定中文包
         language: 'zh-Hans', // 中文
         height: 500, // 高度
         browser_spellcheck: true, // 拼写检查
