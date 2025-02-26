@@ -62,10 +62,11 @@ async function publishNpmPackage(packageName: string, version?: string) {
     if (!fs.existsSync(pkgPath)) {
         throw new Error(`无法查找到 ${pkgPath} 目录，请确认是否已经编译出内容`);
     }
-    const pkgJSON = require(path.join(PACKAGES_ROOT_PATH, 'package.json'));
-    if (!pkgJSON) {
+    const pkgfile = require(path.join(PACKAGES_ROOT_PATH, 'package.json'));
+    if (!pkgfile) {
         throw new Error(`无法查找到 ${packageName} 对应的 package.json`);
     }
+    const pkgJSON = JSON.parse(JSON.stringify(pkgfile))
 
     // 覆写版本号
     const currentPkgVersion = pkgJSON.version;
@@ -84,13 +85,15 @@ async function publishNpmPackage(packageName: string, version?: string) {
         })) as string;
     }
     pkgJSON.version = selectedVersion;
+    delete pkgJSON.dependencies['element-ui']
+    delete pkgJSON.dependencies['element-plus']
     if (packageName === VUE2_PKG_NAME) {
-        Object.assign(pkgJSON.dependencies, pkgJSON._element_vue2)
+        Object.assign(pkgJSON.dependencies, pkgJSON._vue2)
     } else {
-        Object.assign(pkgJSON.dependencies, pkgJSON._element_vue3)
+        Object.assign(pkgJSON.dependencies, pkgJSON._vue3)
     }
-    delete pkgJSON._element_vue2;
-    delete pkgJSON._element_vue3;
+    delete pkgJSON._vue2;
+    delete pkgJSON._vue3;
     fs.writeFileSync(
         path.join(pkgPath, 'package.json'),
         JSON.stringify(pkgJSON, null, 4),
@@ -98,8 +101,14 @@ async function publishNpmPackage(packageName: string, version?: string) {
 
     // 执行 npm 发布指令
     const isPrerelease = selectedVersion.includes('-');
+    let tag = isPrerelease ? 'prerelease' : 'latest'
+    if (isPrerelease) {
+        tag = 'prerelease'
+    } else {
+        tag = packageName === VUE3_PKG_NAME ? 'next' : 'latest'
+    }
     execa.commandSync(
-        `pnpm publish --access public --no-git-checks --tag ${isPrerelease ? 'prerelease' : 'latest'}`,
+        `pnpm publish --access public --no-git-checks --tag ${tag}`,
         {
             cwd: pkgPath,
             stdio: 'inherit',
@@ -134,13 +143,13 @@ async function publishComponents() {
             `未同时找到 ${VUE2_PKG_NAME} 与 ${VUE3_PKG_NAME} 目录，请确认是否已经编译出内容`,
         );
     }
-    const pkgJSON = require(path.join(PACKAGES_ROOT_PATH, 'package.json'));
+    const pkj = require(path.join(PACKAGES_ROOT_PATH, 'package.json'));
 
 
     const selectedVersion = (await select({
         message: '请选择包版本的升级类型：',
         choices: VERSION_OPTIONS.map(key => {
-            const nextVersion = genNextVersion(pkgJSON.version, key);
+            const nextVersion = genNextVersion(pkj.version, key);
             const nvs = nextVersion.split('.').slice(1);
             const nextVersion2 = `2.${nvs.join('.')}`
             const nextVersion3 = `3.${nvs.join('.')}`
@@ -148,7 +157,7 @@ async function publishComponents() {
                 name: key,
                 value: `${nextVersion}|${nextVersion2}|${nextVersion3}`,
                 description:
-                    `当前版本号：${PKG_PREFIX} ${chalk.red(pkgJSON.version)}, ` +
+                    `当前版本号：${PKG_PREFIX} ${chalk.red(pkj.version)}, ` +
                     '\n' +
                     `选择此选项后，将生成的新版本号：${PKG_PREFIX}@${chalk.red(nextVersion2)}, ` +
                     `${PKG_PREFIX}@${chalk.red(nextVersion3)}`,
@@ -156,16 +165,38 @@ async function publishComponents() {
         }),
     })) as string;
     const [nextVersion, nextVersion2, nextVersion3] = selectedVersion.split('|');
-    await publishNpmPackage(VUE2_PKG_NAME, nextVersion2);
-    await publishNpmPackage(VUE3_PKG_NAME, nextVersion3);
-    pkgJSON.version = nextVersion;
+    
+    // 选择是否需要build
+    const vueSelect = await select({
+        message: '发布vue版本？',
+        choices: [
+            {
+                name: 'vue3 + vue2',
+                value: 0,
+            },
+            {
+                name: 'vue3',
+                value: 1,
+            },
+            {
+                name: 'vue2',
+                value: 2,
+            },
+        ],
+    }) as 0 | 1 | 2;
+    if (vueSelect !== 1) {
+        await publishNpmPackage(VUE2_PKG_NAME, nextVersion2);
+    }
+    if (vueSelect !== 2) {
+        await publishNpmPackage(VUE3_PKG_NAME, nextVersion3);
+    }
+    pkj.version = nextVersion;
     fs.writeFileSync(
         path.join(PACKAGES_ROOT_PATH, 'package.json'),
-        JSON.stringify(pkgJSON, null, 4),
+        JSON.stringify(pkj, null, 4),
     );
-    consola.success(
-        `🥳 组件库发布成功，版本号：${chalk.green(selectedVersion)}`,
-    );
+    consola.success(`🥳 组件库发布成功，版本号：${chalk.green(selectedVersion)}`);
+    consola.success(`🥳 组件库安装vue2：ui-base@latest；vue3安装：ui-base@next`);
 }
 
 /** 构建组件库 */
