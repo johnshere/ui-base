@@ -36,6 +36,7 @@ import ULink from "./uelement/u-link";
 import UDescriptions from "./uelement/u-descriptions";
 import UTable from "./uelement/u-table";
 import UTableColumn from "./uelement/u-table/UTableColumn.js";
+import UPagination from "./uelement/u-pagination";
 
 export * from "./utils";
 
@@ -64,6 +65,7 @@ export const Link = ULink;
 export const Descriptions = UDescriptions;
 export const Table = UTable;
 export const TableColumn = UTableColumn;
+export const Pagination = UPagination;
 
 //  新增的、非element组件
 const newComponents = {
@@ -94,6 +96,7 @@ const coverComponents = {
   Descriptions,
   Table,
   TableColumn,
+  Pagination
 };
 
 const install = function (Vue, options = {}) {
