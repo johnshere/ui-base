@@ -1,6 +1,6 @@
 {
     "name": "ui-base",
-    "version": "0.0.1",
+    "version": "0.0.1-6",
     "description": "Vue 2/3 ui-base components",
     "keywords": [],
     "license": "ISC",
@@ -32,19 +32,17 @@
     "scripts": {},
     "dependencies": {
         "@tinymce/tinymce-vue": "^3.2.8",
-        "lodash": "4.17.5",
+        "element-plus": "^2.9.5",
+        "element-ui": "^2.15.14",
         "tinymce": "^5.10.7",
-        "vue": "^2.7 || ^3.2",
-        "element-ui": "^2.15.14"
+        "vue": "^2.7 || ^3.2"
     },
     "_vue3": {
-        "element-plus": "^2.9.0"
+        "@tinymce/tinymce-vue": "^6.1.0",
+        "element-plus": "^2.9.5"
     },
     "_vue2": {
         "element-ui": "^2.15.14"
-    },
-    "devDependencies": {
-        "@types/lodash": "4.17.5"
     },
     "publishConfig": {
         "registry": "https://nexus.uzhicai.com/repository/npm-hosted/"

@@ -18,7 +18,7 @@ import { IS_VUE2, PKG_NAME } from './constance';
 import { compsSrcPath } from './paths';
 import { PROJECT_OUTPUT_PATH } from '@shared/config/paths';
 import { VUE2_PKG_NAME, VUE3_PKG_NAME } from '@shared/config/constance';
-
+// import terser from '@rollup/plugin-terser';
 function getPackageDependencies(
     pkgPath: string,
 ): Record<'dependencies' | 'peerDependencies', string[]> {
@@ -74,13 +74,30 @@ function styleModuleResolver() {
 export function generateCommonPluginConfig() {
     return [
         replace({
-            'process.env.VUE_VERSION': process.env.VUE_VERSION,
+            delimiters: ['', ''], // 禁用默认分隔符，允许全局匹配
+            preventAssignment: false, // 允许替换非赋值语句
+            sourceMap: true,
+            values: {
+                'process.env.VUE_VERSION': process.env.VUE_VERSION!,
+                '{ Dialog } from': IS_VUE2 ? '{ Dialog } from' : '{ ElDialog as Dialog } from',
+                // 匹配 import { TableColumn } from 'element-ui'
+                '{ TableColumn } from': IS_VUE2 ? '{ TableColumn } from' : '{ ElTableColumn as TableColumn } from',
+                'element-ui': IS_VUE2 ? 'element-ui' : 'element-plus',
+                'ElementUI': IS_VUE2 ? 'ElementUI' : 'ElementPlus',
+            },
         }),
         styleModuleResolver(),
         alias({
-            entries: {
-                '@src': compsSrcPath,
-            },
+            entries: [
+                {
+                    find: '@src',
+                    replacement: compsSrcPath,
+                },
+                {
+                    find: 'element-ui',
+                    replacement: IS_VUE2 ? 'element-ui' : 'element-plus',  // 保留路径后缀
+                },  
+            ],
         }),
         (IS_VUE2
             ? vue2({
@@ -101,5 +118,6 @@ export function generateCommonPluginConfig() {
         }),
         commonjs(),
         esbuild(esbuildConfig),
+        // terser()
     ];
 }

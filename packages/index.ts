@@ -101,7 +101,14 @@ const coverComponents = {
 
 const install = function (Vue, options = {}) {
   console.log("ui-base install");
-  Vue.prototype.$UBase = Object.assign({}, options);
+  // 版本检测
+  if (Vue.version?.startsWith('3.')) {
+    // 兼容 Vue3 的 globalProperties
+    Vue.config.globalProperties.$UBase = Object.assign({}, options);
+  } else {
+    // Vue2 的原型链方式
+    Vue.prototype.$UBase = Object.assign({}, options);
+  }
 
   const componentKeys = Object.keys(ElementUI);
   /**

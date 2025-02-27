@@ -146,9 +146,10 @@ function customModuleResolution(
                 } else {
                     // 无法解析的模块不影响 dts 的生成，所以只是警告（如果是非 assets 模块则不需要理会，其他模块最好排查一下错误原因）
                     if (!/\.(css|styl|style)/.test(moduleName)) {
-                        consola.warn(
-                            `[types definition] Cannot resolve module: ${moduleName}`
-                        );
+                        // 太多了，隐藏
+                        // consola.warn(
+                        //     `[types definition] Cannot resolve module: ${moduleName}`
+                        // );
                     }
                     resolvedModules.push(undefined as any);
                 }
