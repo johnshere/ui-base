@@ -5,7 +5,7 @@
     v-on="$listeners"
     @click="execute"
   >
-    <template v-for="slot in Object.keys($scopedSlots)" :slot="slot">
+    <template v-for="slot in Object.keys($slots)" :slot="slot">
       <i v-show="loading" class="el-icon-loading" /><slot :name="slot" />
     </template>
   </el-link>

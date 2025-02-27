@@ -1,7 +1,7 @@
 <template>
   <el-select v-bind="$attrs" v-on="_listeners">
     <el-option v-for="(item, i) in list" :key="i" v-bind="item" />
-    <template v-for="(_, name) in $scopedSlots" v-slot:[name]="data">
+    <template v-for="(_, name) in $slots" v-slot:[name]="data">
       <slot :name="name" v-bind="data"></slot>
     </template>
   </el-select>

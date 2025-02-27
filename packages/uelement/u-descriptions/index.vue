@@ -6,7 +6,7 @@
     :label-style="labelStyle_"
     v-on="$listeners"
   >
-    <template v-for="slot in Object.keys($scopedSlots)" :slot="slot">
+    <template v-for="slot in Object.keys($slots)" :slot="slot">
       <slot :name="slot" />
     </template>
   </el-descriptions>

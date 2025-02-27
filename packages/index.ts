@@ -110,22 +110,12 @@ const install = function (Vue, options = {}) {
     Vue.prototype.$UBase = Object.assign({}, options);
   }
 
-  const componentKeys = Object.keys(ElementUI);
   /**
    * UElement组件注册
    */
-  componentKeys.forEach(function (key) {
-    let component = ElementUI[key];
-    if (!component?.name || component instanceof Function) {
-      return;
-    }
-    // 覆盖element原有组件
-    if (coverComponents[key]) {
-      component = coverComponents[key];
-    }
-
+  Object.keys(coverComponents).forEach(function (key) {
     const name = "U" + key;
-    Vue.component(name, component);
+    Vue.component(name, coverComponents[key]);
   });
   /**
    * 新增自定义组件注册

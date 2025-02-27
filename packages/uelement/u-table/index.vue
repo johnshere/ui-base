@@ -6,7 +6,7 @@
     :class="printClassName"
     v-on="$listeners"
   >
-    <template v-for="(slot, i) in Object.keys($scopedSlots)" :slot="slot">
+    <template v-for="(slot, i) in Object.keys($slots)" :slot="slot">
       <div v-if="slot === 'empty'" :key="i" slot="empty">
         <div class="u-page-table__empty">
           <slot :name="slot" />
@@ -14,7 +14,7 @@
       </div>
       <slot v-else :name="slot" />
     </template>
-    <div v-if="!Object.keys($scopedSlots).includes('empty')" slot="empty">
+    <div v-if="!Object.keys($slots).includes('empty')" slot="empty">
       <div class="u-page-table__empty">暂无数据</div>
     </div>
   </el-table>

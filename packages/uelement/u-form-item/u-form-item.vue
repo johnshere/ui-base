@@ -1,6 +1,6 @@
 <template>
   <el-form-item :label="_label" v-bind="$attrs" v-on="$listeners">
-    <template v-for="(_, name) in $scopedSlots" v-slot:[name]="data">
+    <template v-for="(_, name) in $slots" v-slot:[name]="data">
       <slot :name="name" v-bind="data" />
     </template>
   </el-form-item>

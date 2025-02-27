@@ -1,6 +1,6 @@
 <template>
   <el-input v-bind="$attrs" v-on="_listeners">
-    <template v-for="(_, name) in $scopedSlots" v-slot:[name]="data">
+    <template v-for="(_, name) in $slots" v-slot:[name]="data">
       <slot :name="name" v-bind="data" />
     </template>
   </el-input>

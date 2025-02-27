@@ -1,6 +1,6 @@
 <template>
   <el-date-picker v-bind="$attrs" v-on="$listeners">
-    <template v-for="slot in Object.keys($scopedSlots)" :slot="slot">
+    <template v-for="slot in Object.keys($slots)" :slot="slot">
       <slot :name="slot" />
     </template>
   </el-date-picker>
