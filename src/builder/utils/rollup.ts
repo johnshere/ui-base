@@ -18,7 +18,7 @@ import { IS_VUE2, PKG_NAME } from './constance';
 import { compsSrcPath } from './paths';
 import { PROJECT_OUTPUT_PATH } from '@shared/config/paths';
 import { VUE2_PKG_NAME, VUE3_PKG_NAME } from '@shared/config/constance';
-import transformToElementPlus from './transformToElementPlus';
+import transformToVue3 from './transformToVue3';
 // import terser from '@rollup/plugin-terser';
 function getPackageDependencies(
     pkgPath: string,
@@ -74,7 +74,7 @@ function styleModuleResolver() {
  */
 export function generateCommonPluginConfig() {
     return [
-        transformToElementPlus,
+        transformToVue3,
         styleModuleResolver(),
         alias({
             entries: [
