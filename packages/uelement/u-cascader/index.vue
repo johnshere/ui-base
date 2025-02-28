@@ -3,7 +3,7 @@
     :append-to-body="false"
     v-bind="$attrs"
     ref="cascader"
-    v-on="$listeners"
+    v-on="listeners"
   >
     <template v-for="slot in Object.keys($slots)" :slot="slot">
       <slot :name="slot" />
@@ -17,6 +17,17 @@ export default {
   name: "UCascader",
   components: {
     [Cascader.name]: Cascader,
+  },
+  computed:{
+    listeners(){
+      if (process.env.VUE_VERSION === '3') {
+        const listeners = {}
+        Object.keys(this.$attrs).forEach(key => key.startsWith('on')&&(listeners[key] = this.$attrs[key]))
+        return listeners
+      } else {
+        return { ...this.$listeners }
+      }
+    },
   },
   methods: {
     getCheckedNodes() {

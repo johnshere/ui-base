@@ -21,10 +21,12 @@ export default {
   },
   computed: {
     _listeners() {
-      const isVue3 = process.env.VUE_VERSION === '3';
-      return {
-        ...this.$listeners,
-        [isVue3 ? 'onInput' : 'input']: this.input // 关键修复点
+      if (process.env.VUE_VERSION === '3') {
+        const listeners = {}
+        Object.keys(this.$attrs).forEach(key => key.startsWith('on')&&(listeners[key] = this.$attrs[key]))
+        return { ...listeners, 'input': this.input }
+      } else {
+        return { ...this.$listeners, 'input': this.input }
       }
     },
   },

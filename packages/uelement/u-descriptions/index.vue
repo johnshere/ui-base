@@ -4,7 +4,7 @@
     v-bind="$attrs"
     :content-style="contentStyle_"
     :label-style="labelStyle_"
-    v-on="$listeners"
+    v-on="listeners"
   >
     <template v-for="slot in Object.keys($slots)" :slot="slot">
       <slot :name="slot" />
@@ -18,6 +18,17 @@ export default {
   name: "UDescriptions",
   components: {
     [Descriptions.name]: Descriptions
+  },
+  computed:{
+    listeners(){
+      if (process.env.VUE_VERSION === '3') {
+        const listeners = {}
+        Object.keys(this.$attrs).forEach(key => key.startsWith('on')&&(listeners[key] = this.$attrs[key]))
+        return listeners
+      } else {
+        return { ...this.$listeners }
+      }
+    },
   },
   props: {
     contentStyle: {

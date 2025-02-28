@@ -4,7 +4,7 @@
     size="medium"
     v-bind="$attrs"
     :class="printClassName"
-    v-on="$listeners"
+    v-on="listeners"
   >
     <template v-for="(slot, i) in Object.keys($slots)" :slot="slot">
       <div v-if="slot === 'empty'" :key="i" slot="empty">
@@ -36,6 +36,17 @@ export default {
         "u-table": true
       }
     };
+  },
+  computed:{
+    listeners(){
+      if (process.env.VUE_VERSION === '3') {
+        const listeners = {}
+        Object.keys(this.$attrs).forEach(key => key.startsWith('on')&&(listeners[key] = this.$attrs[key]))
+        return listeners
+      } else {
+        return { ...this.$listeners }
+      }
+    },
   },
   created() {
     "clearSelection,toggleRowSelection,toggleAllSelection,toggleRowExpansion,setCurrentRow,clearSort,clearFilter,doLayout,sort"

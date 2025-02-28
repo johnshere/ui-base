@@ -1,5 +1,5 @@
 <template>
-  <el-form ref="form" v-bind="$attrs" v-on="$listeners">
+  <el-form ref="form" v-bind="$attrs" v-on="listeners">
     <template v-for="key in Object.keys($slots)" v-slot:[key]="data">
       <slot :name="key" v-bind="{ ...data }" />
     </template>
@@ -12,6 +12,17 @@ export default {
   name: "UForm",
   components: {
     [Form.name]: Form
+  },
+  computed:{
+    listeners(){
+      if (process.env.VUE_VERSION === '3') {
+        const listeners = {}
+        Object.keys(this.$attrs).forEach(key => key.startsWith('on')&&(listeners[key] = this.$attrs[key]))
+        return listeners
+      } else {
+        return { ...this.$listeners }
+      }
+    },
   },
   methods: {
     async scrollToError(scrollOption) {

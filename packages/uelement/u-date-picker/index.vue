@@ -1,5 +1,5 @@
 <template>
-  <el-date-picker v-bind="$attrs" v-on="$listeners">
+  <el-date-picker v-bind="$attrs" v-on="listeners">
     <template v-for="slot in Object.keys($slots)" :slot="slot">
       <slot :name="slot" />
     </template>
@@ -12,7 +12,18 @@ export default {
   name: "UDatePicker",
   components: {
     [DatePicker.name]: DatePicker
-  }
+  },
+  computed:{
+    listeners(){
+      if (process.env.VUE_VERSION === '3') {
+        const listeners = {}
+        Object.keys(this.$attrs).forEach(key => key.startsWith('on')&&(listeners[key] = this.$attrs[key]))
+        return listeners
+      } else {
+        return { ...this.$listeners }
+      }
+    },
+  },
 };
 </script>
 <style lang="less" scoped>

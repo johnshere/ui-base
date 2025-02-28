@@ -2,7 +2,7 @@
   <el-link
     v-bind="$attrs"
     :disabled="loading"
-    v-on="$listeners"
+    v-on="listeners"
     @click="execute"
   >
     <template v-for="slot in Object.keys($slots)" :slot="slot">
@@ -22,6 +22,17 @@ export default {
     click: {
       type: Function,
       default: null,
+    },
+  },
+  computed:{
+    listeners(){
+      if (process.env.VUE_VERSION === '3') {
+        const listeners = {}
+        Object.keys(this.$attrs).forEach(key => key.startsWith('on')&&(listeners[key] = this.$attrs[key]))
+        return listeners
+      } else {
+        return { ...this.$listeners }
+      }
     },
   },
   data() {

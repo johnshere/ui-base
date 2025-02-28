@@ -68,8 +68,13 @@ export default {
   },
   computed:{
     listeners(){
-      // eslint-disable-next-line vue/no-deprecated-dollar-listeners-api
-      return { ...this.$listeners }
+      if (process.env.VUE_VERSION === '3') {
+        const listeners = {}
+        Object.keys(this.$attrs).forEach(key => key.startsWith('on')&&(listeners[key] = this.$attrs[key]))
+        return listeners
+      } else {
+        return { ...this.$listeners }
+      }
     },
     tableListener(){
       const isVue3 = process.env.VUE_VERSION === '3';

@@ -2,7 +2,7 @@
   <el-button
     v-bind="$attrs"
     :loading="loading || b_loading"
-    v-on="$listeners"
+    v-on="listeners"
     @click="execute"
     class="u-button"
     onclick="return false"
@@ -35,6 +35,17 @@ export default {
       // eslint-disable-next-line vue/no-reserved-keys
       b_loading: false,
     };
+  },
+  computed:{
+    listeners(){
+      if (process.env.VUE_VERSION === '3') {
+        const listeners = {}
+        Object.keys(this.$attrs).forEach(key => key.startsWith('on')&&(listeners[key] = this.$attrs[key]))
+        return listeners
+      } else {
+        return { ...this.$listeners }
+      }
+    },
   },
   methods: {
     execute() {
