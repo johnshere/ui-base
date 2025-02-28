@@ -17,10 +17,12 @@ export default {
       if (!val) return;
       const doc = this.$options.propsData.destroyOnClose;
       const isDestroyOnClose = doc === "" || doc === true;
-      if (isDestroyOnClose) {
-        this.initDrag();
-      } else if (!this.dragEl) {
-        this.initDrag();
+      if (process.env.VUE_VERSION === "2") {
+        if (isDestroyOnClose) {
+          this.initDrag();
+        } else if (!this.dragEl) {
+          this.initDrag();
+        }
       }
     },
   },

@@ -163,6 +163,9 @@ importers:
       gulp-stylus:
         specifier: ^2.7.1
         version: 2.7.1
+      magic-string:
+        specifier: ^0.30.17
+        version: 0.30.17
       nib:
         specifier: ^1.2.0
         version: 1.2.0(stylus@0.57.0)

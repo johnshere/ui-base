@@ -315,7 +315,7 @@ export async function copyTypes() {
         return new Promise(resolve => {
             src([
                 path.join(GENERATE_TYPES_DIR, '**/*.d.ts'),
-                path.join(GENERATE_TYPES_DIR, compsSrcPath, '**/*.d.ts'),
+                path.join(compsSrcPath, '**/*.d.ts'),
             ])
                 .pipe(dest(buildConfig[module].path))
                 .on('end', resolve);
@@ -323,5 +323,5 @@ export async function copyTypes() {
     }
 
     await Promise.all([copyTypes('esm'), copyTypes('cjs')]);
-    await del(GENERATE_TYPES_DIR, { force: true });
+    // await del(GENERATE_TYPES_DIR, { force: true });
 }

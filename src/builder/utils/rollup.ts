@@ -18,6 +18,7 @@ import { IS_VUE2, PKG_NAME } from './constance';
 import { compsSrcPath } from './paths';
 import { PROJECT_OUTPUT_PATH } from '@shared/config/paths';
 import { VUE2_PKG_NAME, VUE3_PKG_NAME } from '@shared/config/constance';
+import transformToElementPlus from './transformToElementPlus';
 // import terser from '@rollup/plugin-terser';
 function getPackageDependencies(
     pkgPath: string,
@@ -73,19 +74,7 @@ function styleModuleResolver() {
  */
 export function generateCommonPluginConfig() {
     return [
-        replace({
-            delimiters: ['', ''], // 禁用默认分隔符，允许全局匹配
-            preventAssignment: false, // 允许替换非赋值语句
-            sourceMap: true,
-            values: {
-                'process.env.VUE_VERSION': process.env.VUE_VERSION!,
-                '{ Dialog } from': IS_VUE2 ? '{ Dialog } from' : '{ ElDialog as Dialog } from',
-                // 匹配 import { TableColumn } from 'element-ui'
-                '{ TableColumn } from': IS_VUE2 ? '{ TableColumn } from' : '{ ElTableColumn as TableColumn } from',
-                'element-ui': IS_VUE2 ? 'element-ui' : 'element-plus',
-                'ElementUI': IS_VUE2 ? 'ElementUI' : 'ElementPlus',
-            },
-        }),
+        transformToElementPlus,
         styleModuleResolver(),
         alias({
             entries: [

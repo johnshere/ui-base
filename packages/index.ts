@@ -7,9 +7,6 @@ import type {} from '@vue3/shared';
 // 组件导出
 export * from '.';
 
-
-import ElementUI from "element-ui";
-
 import "./style/index.less";
 import UTitle from "./title";
 import UTitleCard from "./title-card";
