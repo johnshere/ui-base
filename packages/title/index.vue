@@ -1,3 +1,10 @@
+<!--
+ * @Author: liujiang
+ * @Date: 2024-02-21 11:23:41
+ * @LastEditors: liujiang liujiang@youzhicai.com
+ * @LastEditTime: 2025-02-28 15:47:32
+ * @Description: 
+-->
 <template>
   <div class="common-header" :style="u_style">
     <div class="header-title">

@@ -13,8 +13,13 @@
   </el-button>
 </template>
 <script>
+import { Button } from 'element-ui'
+
 export default {
   name: "UButton",
+  components: {
+    [Button.name]: Button,
+  },
   props: {
     click: {
       type: Function,

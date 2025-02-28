@@ -6,8 +6,13 @@
   </el-form>
 </template>
 <script>
+import { Form } from 'element-ui';
+
 export default {
   name: "UForm",
+  components: {
+    [Form.name]: Form
+  },
   methods: {
     async scrollToError(scrollOption) {
       scrollOption = Object.assign(scrollOption || {}, {

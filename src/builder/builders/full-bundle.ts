@@ -26,10 +26,12 @@ export async function buildFullBundle() {
                 'tinymce': 'tinymce',
                 '@tinymce/tinymce-vue': '@tinymce/tinymce-vue'
             },
+            sourcemap: false
         },
         {
             format: 'esm',
             file: path.resolve(distPath, 'index.esm.js'),
+            sourcemap: false
         },
     ];
 

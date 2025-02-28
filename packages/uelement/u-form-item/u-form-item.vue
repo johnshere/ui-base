@@ -6,8 +6,13 @@
   </el-form-item>
 </template>
 <script>
+import { FormItem } from 'element-ui';
+
 export default {
   name: "UFormItem",
+  components: {
+    [FormItem.name]: FormItem
+  },
   props: {
     label: {
       type: String,

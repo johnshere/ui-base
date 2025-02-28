@@ -3,7 +3,7 @@ import { IS_VUE2 } from "./constance";
 import { PACKAGES_ROOT_PATH } from "@shared/config/paths";
 import path from "path";
 import fs from 'fs';
-import MagicString from "magic-string";
+// import MagicString from "magic-string";
 
 let EnterFile = fs.readFileSync(path.join(PACKAGES_ROOT_PATH, 'index.ts'), {encoding: 'utf-8'});
 EnterFile = EnterFile.split('const coverComponents = {').pop()!
@@ -43,15 +43,15 @@ const transformToElementPlus: Plugin = {
           });
         }
       }
-      const magicString = new MagicString(code)
-      const map = magicString.generateMap({
-          source: id,
-          includeContent: true,
-          hires: true
-      })
+      // const magicString = new MagicString(code)
+      // const map = magicString.generateMap({
+      //     source: id,
+      //     includeContent: true,
+      //     hires: true
+      // })
       return {
-        code: magicString.toString(),
-        map: map// this.getCombinedSourcemap()
+        code, //: magicString.toString(),
+        map: this.getCombinedSourcemap()
       };
     }
 }

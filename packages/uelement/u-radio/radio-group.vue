@@ -15,10 +15,15 @@
 </template>
 
 <script>
+import { Radio, RadioGroup } from "element-ui";
 import Dictionary from "../dictionary/dictionary";
 
 export default {
   name: "URadioGroup",
+  components: {
+    [RadioGroup.name]: RadioGroup,
+    [Radio.name]: Radio
+  },
   mixins: [Dictionary],
   props: {
     readonly: {

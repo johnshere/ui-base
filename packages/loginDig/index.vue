@@ -11,7 +11,11 @@
 </template>
 
 <script>
+import { Dialog } from 'element-ui'
 export default {
+  components: {
+    [Dialog.name]: Dialog
+  },
   props: {
     loginVisible: {
       default: false,

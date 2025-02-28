@@ -5,8 +5,13 @@
 </template>
 
 <script>
+import { Radio } from 'element-ui';
+
 export default {
   name: "URadio",
+  components: {
+    [Radio.name]: Radio
+  },
   props: {
     readonly: {
       type: Boolean,

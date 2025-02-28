@@ -12,8 +12,13 @@
   </el-descriptions>
 </template>
 <script>
+import { Descriptions } from 'element-ui'
+
 export default {
   name: "UDescriptions",
+  components: {
+    [Descriptions.name]: Descriptions
+  },
   props: {
     contentStyle: {
       type: Object,

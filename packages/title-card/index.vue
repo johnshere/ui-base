@@ -27,8 +27,12 @@
     </div>
 </template>
 <script>
+import UTitle from '../title/index.vue'
 export default {
   name: 'UTitleCard',
+  components: {
+    UTitle
+  },
   props: {
     title: {
       required: true,

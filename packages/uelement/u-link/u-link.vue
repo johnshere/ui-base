@@ -11,8 +11,13 @@
   </el-link>
 </template>
 <script>
+import { Link } from 'element-ui';
+
 export default {
   name: "ULink",
+  components: {
+    [Link.name]: Link
+  },
   props: {
     click: {
       type: Function,

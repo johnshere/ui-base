@@ -32,8 +32,14 @@
 </template>
 
 <script>
+import { Table, TableColumn } from 'element-ui'
+
 export default {
   name: "UPageTable",
+  components: {
+    [Table.name]: Table,
+    [TableColumn.name]: TableColumn
+  },
   props: {
     data: {
       default() {

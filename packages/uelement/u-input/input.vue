@@ -6,8 +6,13 @@
   </el-input>
 </template>
 <script>
+import { Input } from 'element-ui';
+
 export default {
   name: "UInput",
+  components: {
+    [Input.name]: Input
+  },
   props: {
     trim: {
       type: Boolean,

@@ -11,8 +11,13 @@
   </el-cascader>
 </template>
 <script>
+import { Cascader } from 'element-ui'
+
 export default {
   name: "UCascader",
+  components: {
+    [Cascader.name]: Cascader,
+  },
   methods: {
     getCheckedNodes() {
       return this.$refs.cascader.getCheckedNodes();

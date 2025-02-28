@@ -1,6 +1,20 @@
 <template>
-    <el-pagination v-bind="$attrs" class="u-pagination"></el-pagination>
+    <el-pagination v-bind="$attrs" class="u-pagination">
+        <template v-for="(_, name) in $slots" v-slot:[name]="data">
+            <slot :name="name" v-bind="{ ...data }" />
+        </template>
+    </el-pagination>
 </template>
+<script>
+import { Pagination } from 'element-ui';
+
+export default {
+    name: 'UPagination',
+    components: {
+        [Pagination.name]: Pagination
+    }
+}
+</script>
 <style lang="scss" scoped>
 .u-pagination {
     margin-top: 20px;

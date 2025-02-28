@@ -6,8 +6,13 @@
   </el-date-picker>
 </template>
 <script>
+import { DatePicker } from 'element-ui'
+
 export default {
   name: "UDatePicker",
+  components: {
+    [DatePicker.name]: DatePicker
+  }
 };
 </script>
 <style lang="less" scoped>

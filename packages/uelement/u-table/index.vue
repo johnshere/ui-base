@@ -20,8 +20,13 @@
   </el-table>
 </template>
 <script>
+import { Table } from 'element-ui';
+
 export default {
   name: "UTable",
+  components: {
+    [Table.name]: Table,
+  },
   data() {
     const isAdapter =
       location.href.includes("isPrint=1") || location.href.includes("isPdf=1");

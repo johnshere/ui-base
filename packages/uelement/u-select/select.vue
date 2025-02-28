@@ -7,10 +7,15 @@
   </el-select>
 </template>
 <script>
+import { Option, Select } from "element-ui";
 import Dictionary from "../dictionary/dictionary"
 
 export default {
   name: "USelect",
+  components: {
+    [Select.name]: Select,
+    [Option.name]: Option,
+  },
   mixins: [Dictionary],
   props: {
     readonly: {
