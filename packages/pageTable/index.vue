@@ -69,12 +69,23 @@ export default {
   computed:{
     listeners(){
       // eslint-disable-next-line vue/no-deprecated-dollar-listeners-api
-      return Object.assign({},this.$listeners)
+      return { ...this.$listeners }
     },
     tableListener(){
+      const isVue3 = process.env.VUE_VERSION === '3';
       // table和pagination的current-change同名，并且没啥用
       const currentChange = this.listeners['current-row-change'] || function(){}
-      return Object.assign({},this.listeners,{'current-change':currentChange})
+      // return Object.assign({},this.listeners,{'current-change':currentChange})
+      return {
+        ...this.listeners,
+        'current-change': (...args)=>{
+          if(isVue3){
+            currentChange(...args)
+          }else{
+            currentChange.apply(this,args)
+          }
+        }
+      }
     }
   }
 };

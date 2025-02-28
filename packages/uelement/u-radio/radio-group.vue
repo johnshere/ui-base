@@ -33,8 +33,11 @@ export default {
   },
   computed: {
     _listeners() {
-      const { input } = this;
-      return Object.assign({}, this.$listeners, { input });
+      const isVue3 = process.env.VUE_VERSION === '3';
+      return {
+        ...this.$listeners,
+        [isVue3 ? 'onInput' : 'input']: this.input // 关键修复点
+      }
     },
   },
   methods: {
