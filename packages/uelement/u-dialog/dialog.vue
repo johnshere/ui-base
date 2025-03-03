@@ -44,7 +44,7 @@ const component = {
       }
       return true
     },
-    clss() {
+    _clss() {
       return {
         "u-dialog": true,
         "isVue3": process.env.VUE_VERSION === "3"
