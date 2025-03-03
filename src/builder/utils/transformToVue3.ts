@@ -5,12 +5,13 @@ import { IS_VUE2 } from "./constance";
 // import fs from 'fs';
 // import MagicString from "magic-string";
 
+const version = `String(${process.env.VUE_VERSION || ''})`
 const transformToElementPlus: Plugin = {
     name: 'transform-to-element-plus',
     async transform(code: string, id: string) {
       // const existingMap = this.getCombinedSourcemap()
       if (!IS_VUE2) {
-        code = code.replace(/process\.env\.VUE_VERSION/g, process.env.VUE_VERSION || '');
+        code = code.replace(/process\.env\.VUE_VERSION/g, version);
         code = code.replace(/element-ui/g, 'element-plus');
 
         // 通用处理所有element-plus的导入

@@ -19,17 +19,6 @@ export default {
   components: {
     [Descriptions.name]: Descriptions
   },
-  computed:{
-    listeners(){
-      if (process.env.VUE_VERSION === '3') {
-        const listeners = {}
-        Object.keys(this.$attrs).forEach(key => key.startsWith('on')&&(listeners[key] = this.$attrs[key]))
-        return listeners
-      } else {
-        return { ...this.$listeners }
-      }
-    },
-  },
   props: {
     contentStyle: {
       type: Object,
@@ -59,6 +48,15 @@ export default {
         return Object.assign({ width: "200px" }, this.labelStyle);
       }
       return this.labelStyle;
+    },
+    listeners(){
+      if (process.env.VUE_VERSION === '3') {
+        const listeners = {}
+        Object.keys(this.$attrs).forEach(key => key.startsWith('on')&&(listeners[key] = this.$attrs[key]))
+        return listeners
+      } else {
+        return { ...this.$listeners }
+      }
     },
   },
   methods: {},
