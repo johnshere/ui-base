@@ -125,10 +125,8 @@ export default component
     .el-dialog__header,
     .eu-dialog__header {
       position: absolute;
-      left: -1px;
       top: 0;
-      right: -1px;
-      width: unset;
+      left: -0;
     }
     .el-dialog__headerbtn,
     .eu-dialog__headerbtn {
