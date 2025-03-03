@@ -3,7 +3,7 @@
         v-bind="$attrs"
         :draggable="_draggable"
         :close-on-click-modal="closeOnClickModal"
-        class="u-dialog"
+        :class="clss"
         v-on="_listeners"
     >
         <template v-for="(_, name) in $slots" #[name]="data">
@@ -24,9 +24,29 @@ const component = {
   },
   mixins: [DraggableMixin],
   props: {
+    modal: {
+      type: Boolean,
+      default: true,
+    },
+    lockScroll: {
+      type: Boolean,
+      default: true,
+    },
     closeOnClickModal: {
       type: Boolean,
       default: false,
+    },
+    closeOnPressEscape: {
+      type: Boolean,
+      default: false,
+    },
+    showClose: {
+      type: Boolean,
+      default: true,
+    },
+    headerAriaLevel: {
+      type: String,
+      default: '2',
     },
   },
   computed: {
@@ -38,6 +58,12 @@ const component = {
         return this.draggable;
       }
       return true
+    },
+    clss() {
+      return {
+        "u-dialog": true,
+        "isVue3": process.env.VUE_VERSION === "3"
+      }
     }
   },
   watch: {
@@ -80,10 +106,10 @@ if (process.env.VUE_VERSION === "2") {
 export default component
 </script>
 <style lang="less">
-.u-dialog.el-dialog,
-.u-dialog.eu-dialog {
+.u-dialog {
   text-align: left;
-  &__header {
+  .el-dialog__header,
+  .eu-dialog__header {
     width: 100%;
     height: 38px;
     background: #f5f7fa;
@@ -107,6 +133,22 @@ export default component
       .eu-dialog__close {
         font-size: 18px;
       }
+    }
+  }
+  &.isVue3 {
+    padding-top: 56px;
+    .el-dialog__header,
+    .eu-dialog__header {
+      position: absolute;
+      left: -1px;
+      top: 0;
+      right: -1px;
+      width: unset;
+    }
+    .el-dialog__headerbtn,
+    .eu-dialog__headerbtn {
+      top: -3px;
+      right: 0px;
     }
   }
 

@@ -3,7 +3,7 @@ export default {
   props: {
     draggable: {
       type: Boolean,
-      default: false,
+      default: true,
     },
   },
   watch: {
