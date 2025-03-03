@@ -58,11 +58,11 @@ function styleModuleResolver() {
     return {
         name: 'style-module-resolver',
         resolveId(id: string) {
-            if (!/.(styl|stylus|css)$/.test(id)) {
+            if (!/\.(styl|stylus|css)(\?.*)?$/.test(id)) { // 增加对查询参数的匹配
                 return;
             }
             return {
-                id: id.replace(/@src\//g, `${PKG_NAME}/`),
+                id: id.replace(new RegExp(`^@src/(.*)`), `${PKG_NAME}/$1`), // 更精准的路径替换
                 external: 'absolute',
             };
         },
@@ -75,7 +75,6 @@ function styleModuleResolver() {
 export function generateCommonPluginConfig() {
     return [
         transformToVue3,
-        styleModuleResolver(),
         alias({
             entries: [
                 {
@@ -95,6 +94,7 @@ export function generateCommonPluginConfig() {
             : vue3({
                 compiler: vue3Compiler as any,
             })) as any,
+        styleModuleResolver(),
         postcss({
             extract: false,
             plugins: [

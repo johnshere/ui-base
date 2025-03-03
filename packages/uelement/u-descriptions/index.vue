@@ -1,7 +1,7 @@
 <template>
   <el-descriptions
-    size="medium"
     v-bind="$attrs"
+    :size="size"
     :content-style="contentStyle_"
     :label-style="labelStyle_"
     v-on="listeners"
@@ -32,6 +32,15 @@ export default {
       type: Object,
       default: () => {
         return {};
+      },
+    },
+    size: {
+      type: String,
+      default() {
+        if (process.env.VUE_VERSION === '3') {
+          return 'default';
+        }
+        return "medium";
       },
     },
   },

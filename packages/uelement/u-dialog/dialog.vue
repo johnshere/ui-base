@@ -1,11 +1,27 @@
+<template>
+    <el-dialog
+        v-bind="$attrs"
+        :draggable="_draggable"
+        :close-on-click-modal="closeOnClickModal"
+        class="u-dialog"
+        v-on="_listeners"
+    >
+        <template v-for="(_, name) in $slots" #[name]="data">
+            <slot :name="name" v-bind="{ ...data }" />
+        </template>
+    </el-dialog>
+</template>
 <script>
 import { Dialog } from "element-ui";
 import 'element-ui/packages/theme-chalk/src/dialog.scss';
 import DraggableMixin from "../../utils/draggable";
+import listeners from "@src/utils/listeners.ts";
 
-export default {
+const component = {
   name: "UDialog",
-  extends: Dialog,
+  components: {
+    [Dialog.name]: Dialog,
+  },
   mixins: [DraggableMixin],
   props: {
     closeOnClickModal: {
@@ -13,12 +29,34 @@ export default {
       default: false,
     },
   },
+  computed: {
+    _listeners() {
+      return listeners.call(this)
+    },
+    _draggable() {
+      if (this.draggable !== undefined) {
+        return this.draggable;
+      }
+      return true
+    }
+  },
   watch: {
-    visible(val) {
+    async visible(val) {
       if (!val) return;
+      await this.$nextTick();
+      this.init()
+    },
+    async modelValue(val) {
+      if (!val) return;
+      await this.$nextTick();
+      this.init()
+    },
+  },
+  methods: {
+    init() {
       const doc = this.$options.propsData.destroyOnClose;
       const isDestroyOnClose = doc === "" || doc === true;
-      if (process.env.VUE_VERSION === "2") {
+      if (process.env.VUE_VERSION === "2" && this.draggable) {
         if (isDestroyOnClose) {
           this.initDrag();
         } else if (!this.dragEl) {
@@ -26,8 +64,6 @@ export default {
         }
       }
     },
-  },
-  methods: {
     initDrag() {
       this.targetEl = this.$el.querySelector(".el-dialog");
       this.dragEl = this.$el.querySelector(".el-dialog__header");
@@ -36,10 +72,16 @@ export default {
     },
   },
 };
+
+if (process.env.VUE_VERSION === "2") {
+  component.mixins = [DraggableMixin];
+}
+
+export default component
 </script>
-<style lang="less" scoped>
-.el-dialog,
-.eu-dialog {
+<style lang="less">
+.u-dialog.el-dialog,
+.u-dialog.eu-dialog {
   text-align: left;
   &__header {
     width: 100%;

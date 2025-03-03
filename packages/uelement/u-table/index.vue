@@ -1,8 +1,8 @@
 <template>
   <el-table
     ref="table"
-    size="medium"
     v-bind="$attrs"
+    :size="size"
     :class="printClassName"
     v-on="listeners"
   >
@@ -28,6 +28,17 @@ export default {
   name: "UTable",
   components: {
     [Table.name]: Table,
+  },
+  props: {
+    size: {
+      type: String,
+      default() {
+        if (process.env.VUE_VERSION === '3') {
+          return 'default';
+        }
+        return "medium";
+      },
+    },
   },
   data() {
     const isAdapter =

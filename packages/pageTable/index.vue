@@ -52,6 +52,9 @@ export default {
     },
     size: {
       default() {
+        if (process.env.VUE_VERSION === '3') {
+          return 'default';
+        }
         return "medium";
       },
       type: String,
