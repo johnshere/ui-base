@@ -3,7 +3,8 @@
         v-bind="$attrs"
         :draggable="_draggable"
         :close-on-click-modal="closeOnClickModal"
-        :class="clss"
+        :close-on-press-escape="closeOnPressEscape"
+        :class="_clss"
         v-on="_listeners"
     >
         <template v-for="(_, name) in $slots" #[name]="data">
@@ -13,6 +14,7 @@
 </template>
 <script>
 import { Dialog } from "element-ui";
+import 'element-ui/packages/theme-chalk/src/overlay.scss';
 import 'element-ui/packages/theme-chalk/src/dialog.scss';
 import DraggableMixin from "../../utils/draggable";
 import listeners from "@src/utils/listeners.ts";
@@ -22,16 +24,7 @@ const component = {
   components: {
     [Dialog.name]: Dialog,
   },
-  mixins: [DraggableMixin],
   props: {
-    modal: {
-      type: Boolean,
-      default: true,
-    },
-    lockScroll: {
-      type: Boolean,
-      default: true,
-    },
     closeOnClickModal: {
       type: Boolean,
       default: false,
@@ -39,14 +32,6 @@ const component = {
     closeOnPressEscape: {
       type: Boolean,
       default: false,
-    },
-    showClose: {
-      type: Boolean,
-      default: true,
-    },
-    headerAriaLevel: {
-      type: String,
-      default: '2',
     },
   },
   computed: {
