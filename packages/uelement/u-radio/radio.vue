@@ -5,6 +5,7 @@
 </template>
 
 <script>
+import listeners from '@src/utils/listeners.ts';
 import { Radio } from 'element-ui';
 
 export default {
@@ -20,13 +21,7 @@ export default {
   },
   computed: {
     _listeners() {
-      if (process.env.VUE_VERSION === '3') {
-        const listeners = {}
-        Object.keys(this.$attrs).forEach(key => key.startsWith('on')&&(listeners[key] = this.$attrs[key]))
-        return {...listeners, 'input': this.input}
-      } else {
-        return { ...this.$listeners, 'input': this.input }
-      }
+      return listeners.call(this, {'input': this.input})
     },
   },
   methods: {

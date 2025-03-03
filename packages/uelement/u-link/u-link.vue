@@ -11,6 +11,7 @@
   </el-link>
 </template>
 <script>
+import listeners from '@src/utils/listeners.ts';
 import { Link } from 'element-ui';
 
 export default {
@@ -26,13 +27,7 @@ export default {
   },
   computed:{
     listeners(){
-      if (process.env.VUE_VERSION === '3') {
-        const listeners = {}
-        Object.keys(this.$attrs).forEach(key => key.startsWith('on')&&(listeners[key] = this.$attrs[key]))
-        return listeners
-      } else {
-        return { ...this.$listeners }
-      }
+      return listeners.call(this)
     },
   },
   data() {

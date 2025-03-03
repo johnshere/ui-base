@@ -6,12 +6,12 @@ import { IS_VUE2 } from "./constance";
 // import MagicString from "magic-string";
 
 const version = `String(${process.env.VUE_VERSION || ''})`
-const transformToElementPlus: Plugin = {
-    name: 'transform-to-element-plus',
+const transformToVue3: Plugin = {
+    name: 'transform-to-vue3',
     async transform(code: string, id: string) {
       // const existingMap = this.getCombinedSourcemap()
+      code = code.replace(/process\.env\.VUE_VERSION/g, version);
       if (!IS_VUE2) {
-        code = code.replace(/process\.env\.VUE_VERSION/g, version);
         code = code.replace(/element-ui/g, 'element-plus');
 
         // 通用处理所有element-plus的导入
@@ -46,4 +46,4 @@ const transformToElementPlus: Plugin = {
     }
 }
 
-export default transformToElementPlus
+export default transformToVue3
