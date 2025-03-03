@@ -54,32 +54,43 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-.el-table ::v-deep() {
+.el-table ::v-deep(),
+.eu-table ::v-deep() {
   overflow: visible;
-  .el-table__cell:last-child {
-    .el-button {
+  .el-table__cell:last-child,
+  .eu-table__cell:last-child {
+    .el-button,
+    .eu-button {
       margin-left: 0;
       margin-right: 12px;
-      &.el-button--small {
+      &.el-button--small,
+      &.eu-button--small {
         font-size: 14px;
       }
       &:last-child {
         margin-right: 0;
       }
     }
-    .el-link {
+    .el-link,
+    .eu-link {
       vertical-align: unset;
     }
   }
-  thead th.el-table__cell {
-    color: #606266;
-    font-weight: bold;
-    background: #f6f7fb;
+  thead th {
+    &.el-table__cell,
+    &.eu-table__cell {
+      color: #606266;
+      font-weight: bold;
+      background: #f6f7fb;
+    }
   }
-  .el-table__header th {
-    font-weight: bold;
-    background-color: #f5f7fa;
-    color: #333;
+  .el-table__header,
+  .eu-table__header {
+    th {
+      font-weight: bold;
+      background-color: #f5f7fa;
+      color: #333;
+    }
   }
   th {
     padding: 10px 0;
@@ -88,23 +99,23 @@ export default {
     }
   }
 }
-.adapter-screen {
-  ::v-deep(.el-table__header) {
+.adapter-screen ::v-deep() {
+  .el-table__header {
     width: 100% !important;
   }
-  ::v-deep(.el-table__header) col {
+  .el-table__header col {
     width: 25% !important;
   }
-  ::v-deep(.el-table__header) col[name="gutter"] {
+  .el-table__header col[name="gutter"] {
     width: 0 !important;
   }
-  ::v-deep(.el-table__body) {
+  .el-table__body {
     width: 100% !important;
   }
-  ::v-deep(.el-table__body) col {
+  .el-table__body col {
     width: 25% !important;
   }
-  ::v-deep(.el-table__body) col[name="gutter"] {
+  .el-table__body col[name="gutter"] {
     width: 0 !important;
   }
 }

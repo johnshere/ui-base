@@ -65,7 +65,8 @@ export default {
     padding-left: 14px;
     position: relative;
     display: flex;
-    .el-button--primary {
+    .el-button--primary,
+    .eu-button--primary {
       display: inline-block;
       position: absolute;
       left: 0;

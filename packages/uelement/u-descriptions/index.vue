@@ -71,7 +71,8 @@ export default {
     color: #fe3434;
   }
 }
-::v-deep(.el-descriptions-item__label.is-bordered-label) {
+::v-deep(.el-descriptions-item__label.is-bordered-label),
+::v-deep(.eu-descriptions-item__label.is-bordered-label) {
   background: #f6f7fb;
   color: #606266;
 }

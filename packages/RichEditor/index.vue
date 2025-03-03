@@ -154,7 +154,8 @@ export default {
     animation-name: fadeIn;
     animation-duration: 1.8s;
     animation-fill-mode: forwards;
-    &.el-input__inner {
+    &.el-input__inner,
+    &.eu-input__inner {
       padding: 0;
     }
   }

@@ -57,10 +57,15 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-.u-button.el-button--primary.is-plain:not(:hover):not(:focus) {
-  background: none;
+.u-button {
+  &.el-button--primary.is-plain:not(:hover):not(:focus) {
+    background: none;
+  }
+  &.eu-button--primary.is-plain:not(:hover):not(:focus) {
+    background: none;
+  }
 }
-.el-button + .el-button {
+.u-button + .u-button {
   margin-left: 12px;
 }
 </style>

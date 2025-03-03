@@ -95,31 +95,42 @@ export default {
 
 <style lang="less">
 .u-page-table {
-  .el-table {
-    .el-table__cell:last-child {
-      .el-button {
+  .el-table,
+  .eu-table {
+    .el-table__cell:last-child,
+    .eu-table__cell:last-child {
+      .el-button,
+      .eu-button {
         margin-left: 0;
         margin-right: 12px;
-        &.el-button--small {
+        &.el-button--small,
+        &.eu-button--small {
           font-size: 14px;
         }
         &:last-child {
           margin-right: 0;
         }
       }
-      .el-link {
+      .el-link,
+      .eu-link {
         vertical-align: unset;
       }
     }
-    thead th.el-table__cell {
-      color: #606266;
-      font-weight: bold;
-      background: #f6f7fb;
+    thead th {
+      &.el-table__cell,
+      &.eu-table__cell {
+        color: #606266;
+        font-weight: bold;
+        background: #f6f7fb;
+      }
     }
-    .el-table__header th {
-      font-weight: bold;
-      background-color: #f5f7fa;
-      color: #333;
+    .el-table__header,
+    .eu-table__header {
+      th {
+        font-weight: bold;
+        background-color: #f5f7fa;
+        color: #333;
+      }
     }
     th {
       padding: 10px 0;
@@ -134,7 +145,8 @@ export default {
       display: block;
       clear: both;
     }
-    .el-pagination {
+    .el-pagination,
+    .eu-pagination {
       float: right;
       margin: 24px 0;
     }

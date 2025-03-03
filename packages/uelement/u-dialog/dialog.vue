@@ -38,7 +38,8 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-.el-dialog {
+.el-dialog,
+.eu-dialog {
   text-align: left;
   &__header {
     width: 100%;
@@ -51,14 +52,17 @@ export default {
     padding-left: 18px;
     box-sizing: border-box;
 
-    .el-dialog__title {
+    .el-dialog__title,
+    .eu-dialog__title {
       font-size: 16px;
     }
 
-    .el-dialog__headerbtn {
+    .el-dialog__headerbtn,
+    .eu-dialog__headerbtn {
       top: 10px;
       right: 18px;
-      .el-dialog__close {
+      .el-dialog__close,
+      .eu-dialog__close {
         font-size: 18px;
       }
     }

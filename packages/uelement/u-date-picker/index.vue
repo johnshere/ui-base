@@ -23,7 +23,8 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-.el-date-editor {
+.el-date-editor,
+.eu-date-editor {
   width: 100%;
 }
 </style>

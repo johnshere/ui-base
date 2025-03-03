@@ -40,7 +40,8 @@ export default {
 </script>
 
 <style lang="less" scoped>
-div.el-select {
+div.el-select,
+div.eu-select {
   width: 100%;
 }
 </style>

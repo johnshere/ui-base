@@ -46,11 +46,13 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.login_window {
-  ::v-deep(.el-dialog) {
+::v-deep(.login_window) {
+  .el-dialog,
+  .eu-dialog {
     width: 800px;
     height: 582px;
-    .el-dialog__header {
+    .el-dialog__header,
+    .eu-dialog__header {
       border-bottom: 1px solid #eee;
       font-size: 14px;
       color: #333;
@@ -63,7 +65,8 @@ export default {
     }
   }
 
-  ::v-deep(.el-dialog__body) {
+  .el-dialog__body,
+  .eu-dialog__body {
     padding: 0;
   }
 }

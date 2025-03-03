@@ -33,10 +33,12 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-.el-cascader {
+.el-cascader,
+.eu-cascader {
   width: 100%;
 }
-::v-deep(.el-cascader-menu__wrap) {
+::v-deep(.el-cascader-menu__wrap),
+::v-deep(.eu-cascader-menu__wrap) {
   height: 204px;
 }
 </style>
