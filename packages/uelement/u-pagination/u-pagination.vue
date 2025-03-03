@@ -7,6 +7,7 @@
 </template>
 <script>
 import { Pagination } from 'element-ui';
+import 'element-ui/packages/theme-chalk/src/pagination.scss';
 
 export default {
     name: 'UPagination',

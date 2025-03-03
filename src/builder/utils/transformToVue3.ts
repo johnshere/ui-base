@@ -12,6 +12,7 @@ const transformToVue3: Plugin = {
       // const existingMap = this.getCombinedSourcemap()
       code = code.replace(/process\.env\.VUE_VERSION/g, version);
       if (!IS_VUE2) {
+        code = code.replace(/element-ui\/packages\/theme-chalk/g, 'element-plus/theme-chalk');
         code = code.replace(/element-ui/g, 'element-plus');
 
         // 通用处理所有element-plus的导入

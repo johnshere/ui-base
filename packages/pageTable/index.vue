@@ -34,6 +34,8 @@
 <script>
 import listeners from '@src/utils/listeners.ts';
 import { Table, TableColumn } from 'element-ui'
+import 'element-ui/packages/theme-chalk/src/table.scss';
+import 'element-ui/packages/theme-chalk/src/table-column.scss';
 
 export default {
   name: "UPageTable",

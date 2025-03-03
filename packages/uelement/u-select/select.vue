@@ -8,6 +8,8 @@
 </template>
 <script>
 import { Option, Select } from "element-ui";
+import 'element-ui/packages/theme-chalk/src/select.scss';
+import 'element-ui/packages/theme-chalk/src/option.scss';
 import Dictionary from "../dictionary/dictionary"
 import listeners from "@src/utils/listeners.ts";
 

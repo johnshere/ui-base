@@ -16,6 +16,8 @@
 
 <script>
 import { Radio, RadioGroup } from "element-ui";
+import 'element-ui/packages/theme-chalk/src/radio-group.scss';
+import 'element-ui/packages/theme-chalk/src/radio.scss';
 import Dictionary from "../dictionary/dictionary";
 import listeners from "@src/utils/listeners.ts";
 

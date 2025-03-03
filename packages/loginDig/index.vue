@@ -12,6 +12,8 @@
 
 <script>
 import { Dialog } from 'element-ui'
+import 'element-ui/packages/theme-chalk/src/dialog.scss';
+
 export default {
   components: {
     [Dialog.name]: Dialog

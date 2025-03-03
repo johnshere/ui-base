@@ -22,6 +22,7 @@
 <script>
 import listeners from '@src/utils/listeners.ts';
 import { Table } from 'element-ui';
+import 'element-ui/packages/theme-chalk/src/table.scss';
 
 export default {
   name: "UTable",

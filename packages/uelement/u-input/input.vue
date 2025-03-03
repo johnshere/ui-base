@@ -8,6 +8,7 @@
 <script>
 import listeners from '@src/utils/listeners.ts';
 import { Input } from 'element-ui';
+import 'element-ui/packages/theme-chalk/src/input.scss';
 
 export default {
   name: "UInput",

@@ -16,7 +16,6 @@ import {withTaskName} from './utils';
 import {compsSrcPath, distPath} from './utils/paths';
 import {generatePackageJSON} from './builders/packageJSON';
 import path from 'path';
-import fs from 'fs';
 
 const isWatch = process.argv.includes('--watchBuild');
 
@@ -36,9 +35,7 @@ function logInfo() {
 const mainTask = series(
     withTaskName('👋 check vue info', logInfo),
     // 清理目录
-    withTaskName('🧹clean dist', async () =>{
-        fs.rmdirSync(distPath, {recursive: true});
-    }),
+    withTaskName('🧹clean dist', () => del(distPath, {force: true})),
     parallel(
         // 构建样式
         // withTaskName('💅 build .styl files', buildStylus),

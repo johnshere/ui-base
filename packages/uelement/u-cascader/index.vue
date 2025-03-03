@@ -13,6 +13,7 @@
 <script>
 import listeners from '@src/utils/listeners.ts';
 import { Cascader } from 'element-ui'
+import 'element-ui/packages/theme-chalk/src/cascader.scss';
 
 export default {
   name: "UCascader",

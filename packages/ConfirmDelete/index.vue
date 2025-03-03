@@ -27,8 +27,16 @@
   </el-button>
 </template>
 <script>
+import { Link, Button } from 'element-ui'
+import 'element-ui/packages/theme-chalk/src/link.scss';
+import 'element-ui/packages/theme-chalk/src/button.scss';
+
 export default {
   name: "UConfirmDelete",
+  components: {
+    [Link.name]: Link,
+    [Button.name]: Button,
+  },
   props: {
     title: {
       type: String,

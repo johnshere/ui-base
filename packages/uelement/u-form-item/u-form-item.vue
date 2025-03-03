@@ -8,6 +8,7 @@
 <script>
 import listeners from '@src/utils/listeners.ts';
 import { FormItem } from 'element-ui';
+import 'element-ui/packages/theme-chalk/src/form-item.scss';
 
 export default {
   name: "UFormItem",

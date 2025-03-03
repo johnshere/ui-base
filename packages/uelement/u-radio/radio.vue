@@ -7,6 +7,7 @@
 <script>
 import listeners from '@src/utils/listeners.ts';
 import { Radio } from 'element-ui';
+import 'element-ui/packages/theme-chalk/src/radio.scss';
 
 export default {
   name: "URadio",

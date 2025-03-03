@@ -1,5 +1,6 @@
 <script>
 import { Dialog } from "element-ui";
+import 'element-ui/packages/theme-chalk/src/dialog.scss';
 import DraggableMixin from "../../utils/draggable";
 
 export default {

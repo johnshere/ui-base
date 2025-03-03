@@ -13,6 +13,7 @@
 <script>
 import listeners from '@src/utils/listeners.ts';
 import { Link } from 'element-ui';
+import 'element-ui/packages/theme-chalk/src/link.scss';
 
 export default {
   name: "ULink",

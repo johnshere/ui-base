@@ -14,6 +14,7 @@
 <script>
 import listeners from '@src/utils/listeners.ts';
 import { Descriptions } from 'element-ui'
+import 'element-ui/packages/theme-chalk/src/descriptions.scss';
 
 export default {
   name: "UDescriptions",

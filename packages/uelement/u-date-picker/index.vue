@@ -8,6 +8,7 @@
 <script>
 import listeners from '@src/utils/listeners.ts';
 import { DatePicker } from 'element-ui'
+import 'element-ui/packages/theme-chalk/src/date-picker.scss';
 
 export default {
   name: "UDatePicker",

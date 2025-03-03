@@ -15,6 +15,7 @@
 <script>
 import listeners from '@src/utils/listeners.ts';
 import { Button } from 'element-ui'
+import 'element-ui/packages/theme-chalk/src/button.scss';
 
 export default {
   name: "UButton",
