@@ -39,8 +39,8 @@ const component = {
       return listeners.call(this)
     },
     _draggable() {
-      if (this.draggable !== undefined) {
-        return this.draggable;
+      if (this['draggable'] !== undefined) {
+        return this['draggable'];
       }
       return true
     },
