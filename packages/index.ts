@@ -8,61 +8,89 @@ import type {} from '@vue3/shared';
 export * from '.';
 
 import "./style/index.less";
-import UTitle from "./title";
-import UTitleCard from "./title-card";
-import UPageTable from "./pageTable";
-import UTop from "./top";
-import URichEditor from "./RichEditor";
-import URichView from "./RichView";
-import UColPreset from "./col-preset";
-import UTeleport from "./teleport";
-import UConfirmDelete from "./ConfirmDelete";
+import _Title from "./title";
+import _TitleCard from "./title-card";
+import _PageTable from "./pageTable";
+import _Top from "./top";
+import _RichEditor from "./RichEditor";
+import _RichView from "./RichView";
+import _ColPreset from "./col-preset";
+import _Teleport from "./teleport";
+import _ConfirmDelete from "./ConfirmDelete";
 
-import UForm from "./uelement/u-form";
-import UFormItem from "./uelement/u-form-item";
-import UInput from "./uelement/u-input";
-import URadio from "./uelement/u-radio";
-import URadioGroup from "./uelement/u-radio-group";
-import USelect from "./uelement/u-select";
-import UCascader from "./uelement/u-cascader";
-import UDatePicker from "./uelement/u-date-picker";
+import _Form from "./uelement/u-form";
+import _FormItem from "./uelement/u-form-item";
+import _Input from "./uelement/u-input";
+import _Radio from "./uelement/u-radio";
+import _RadioGroup from "./uelement/u-radio-group";
+import _Select from "./uelement/u-select";
+import _Cascader from "./uelement/u-cascader";
+import _DatePicker from "./uelement/u-date-picker";
 
-import UDialog from "./uelement/u-dialog";
-import UButton from "./uelement/u-button";
-import ULink from "./uelement/u-link";
-import UDescriptions from "./uelement/u-descriptions";
-import UTable from "./uelement/u-table";
-import UTableColumn from "./uelement/u-table/UTableColumn.js";
-import UPagination from "./uelement/u-pagination";
+import _Dialog from "./uelement/u-dialog";
+import _Button from "./uelement/u-button";
+import _Link from "./uelement/u-link";
+import _Descriptions from "./uelement/u-descriptions";
+import _Table from "./uelement/u-table";
+import _TableColumn from "./uelement/u-table/UTableColumn.js";
+import _Pagination from "./uelement/u-pagination";
 
 export * from "./utils";
 
-export const Title = UTitle;
-export const TitleCard = UTitleCard;
-export const PageTable = UPageTable;
-export const Top = UTop;
-export const RichEditor = URichEditor as any;
-export const RichView = URichView;
-export const ColPreset = UColPreset;
-export const Teleport = UTeleport;
-export const ConfirmDelete = UConfirmDelete;
+export const UTitle = _Title;
+export const UTitleCard = _TitleCard;
+export const UPageTable = _PageTable;
+export const UTop = _Top;
+export const URichEditor = _RichEditor as any;
+export const URichView = _RichView;
+export const UColPreset = _ColPreset;
+export const UTeleport = _Teleport;
+export const UConfirmDelete = _ConfirmDelete;
 
-export const Form = UForm;
-export const FormItem = UFormItem;
-export const Input = UInput;
-export const Select = USelect;
-export const Radio = URadio;
-export const RadioGroup = URadioGroup;
-export const Cascader = UCascader;
-export const DatePicker = UDatePicker;
+export const UForm = _Form;
+export const UFormItem = _FormItem;
+export const UInput = _Input;
+export const USelect = _Select;
+export const URadio = _Radio;
+export const URadioGroup = _RadioGroup;
+export const UCascader = _Cascader;
+export const UDatePicker = _DatePicker;
 
-export const Dialog = UDialog;
-export const Button = UButton;
-export const Link = ULink;
-export const Descriptions = UDescriptions;
-export const Table = UTable;
-export const TableColumn = UTableColumn;
-export const Pagination = UPagination;
+export const UDialog = _Dialog;
+export const UButton = _Button;
+export const ULink = _Link;
+export const UDescriptions = _Descriptions;
+export const UTable = _Table;
+export const UTableColumn = _TableColumn;
+export const UPagination = _Pagination;
+
+// 兼容旧代码
+export const Title = _Title;
+export const TitleCard = _TitleCard;
+export const PageTable = _PageTable;
+export const Top = _Top;
+export const RichEditor = _RichEditor as any;
+export const RichView = _RichView;
+export const ColPreset = _ColPreset;
+export const Teleport = _Teleport;
+export const ConfirmDelete = _ConfirmDelete;
+
+export const Form = _Form;
+export const FormItem = _FormItem;
+export const Input = _Input;
+export const Select = _Select;
+export const Radio = _Radio;
+export const RadioGroup = _RadioGroup;
+export const Cascader = _Cascader;
+export const DatePicker = _DatePicker;
+
+export const Dialog = _Dialog;
+export const Button = _Button;
+export const Link = _Link;
+export const Descriptions = _Descriptions;
+export const Table = _Table;
+export const TableColumn = _TableColumn;
+export const Pagination = _Pagination;
 
 //  新增的、非element组件
 const newComponents = {
