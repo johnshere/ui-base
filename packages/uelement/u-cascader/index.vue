@@ -37,8 +37,8 @@ export default {
 .eu-cascader {
   width: 100%;
 }
-::v-deep(.el-cascader-menu__wrap),
-::v-deep(.eu-cascader-menu__wrap) {
+:deep(.el-cascader-menu__wrap),
+:deep(.eu-cascader-menu__wrap) {
   height: 204px;
 }
 </style>

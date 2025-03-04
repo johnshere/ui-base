@@ -89,14 +89,27 @@ export function generateCommonPluginConfig() {
         }),
         (IS_VUE2
             ? vue2({
-                compiler: vue2Compiler as any,
+                compiler: {
+                    ...vue2Compiler,
+                    compileStyleAsync: (opts: any) => {
+                        opts.preprocessLang = 'scss'
+                        return vue2Compiler.compileStyleAsync(opts);
+                    },
+                } as any,
             })
             : vue3({
-                compiler: vue3Compiler as any,
+                compiler: {
+                    ...vue3Compiler,
+                    compileStyleAsync: (opts: any) => {
+                        opts.preprocessLang = 'scss'
+                        return vue3Compiler.compileStyleAsync(opts);
+                    },
+                } as any,
             })) as any,
         styleModuleResolver(),
         postcss({
             extract: false,
+            modules: false,
             plugins: [
                 postcssurl({ url: 'inline' }),
             ]

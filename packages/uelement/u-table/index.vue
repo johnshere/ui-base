@@ -65,8 +65,8 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.el-table ::v-deep(),
-.eu-table ::v-deep() {
+.el-table :deep(),
+.eu-table :deep() {
   overflow: visible;
   .el-table__cell:last-child,
   .eu-table__cell:last-child {
@@ -111,8 +111,8 @@ export default {
   }
 }
 .adapter-screen {
-  ::v-deep(.el-table__header),
-  ::v-deep(.el-table__body) {
+  :deep(.el-table__header),
+  :deep(.el-table__body) {
     width: 100% !important;
     col {
       width: 25% !important;

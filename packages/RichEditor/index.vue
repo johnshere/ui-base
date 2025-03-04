@@ -149,7 +149,8 @@ export default {
   }
 }
 .rich-text {
-  ::v-deep(.tox-tinymce) {
+  color: #353535;
+  :deep(.tox-tinymce) {
     display: flex;
     animation-name: fadeIn;
     animation-duration: 1.8s;
@@ -159,16 +160,11 @@ export default {
       padding: 0;
     }
   }
-
-  color: #353535;
-
-  ::v-deep() {
-    strong {
-      font-weight: bold;
-    }
-    em {
-      font-style: italic;
-    }
+  :deep(strong) {
+    font-weight: bold;
+  }
+  :deep(em) {
+    font-style: italic;
   }
 }
 </style>

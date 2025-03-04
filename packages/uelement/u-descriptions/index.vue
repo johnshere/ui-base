@@ -68,7 +68,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-::v-deep(.required) {
+:deep(.required) {
   position: relative;
   padding-left: 20px !important;
   &::before {
@@ -80,8 +80,8 @@ export default {
     color: #fe3434;
   }
 }
-::v-deep(.el-descriptions-item__label.is-bordered-label),
-::v-deep(.eu-descriptions-item__label.is-bordered-label) {
+:deep(.el-descriptions-item__label.is-bordered-label),
+:deep(.eu-descriptions-item__label.is-bordered-label) {
   background: #f6f7fb;
   color: #606266;
 }

@@ -46,7 +46,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-::v-deep(.login_window) {
+.login_window:deep() {
   .el-dialog,
   .eu-dialog {
     width: 800px;
