@@ -148,7 +148,7 @@ export default {
 };
 </script>
 
-<style scoped lang="less">
+<style scoped lang="scss">
 .hidden {
   visibility: hidden;
   display: none;

@@ -90,7 +90,7 @@ if (process.env.VUE_VERSION === "2") {
 
 export default component
 </script>
-<style lang="less">
+<style lang="scss">
 .u-dialog {
   text-align: left;
   .el-dialog__header,

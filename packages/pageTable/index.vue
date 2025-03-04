@@ -96,7 +96,7 @@ export default {
 };
 </script>
 
-<style lang="less">
+<style lang="scss">
 .u-page-table {
   .el-table,
   .eu-table {

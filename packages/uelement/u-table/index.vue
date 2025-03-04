@@ -64,7 +64,7 @@ export default {
   }
 };
 </script>
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .el-table ::v-deep(),
 .eu-table ::v-deep() {
   overflow: visible;
@@ -110,24 +110,16 @@ export default {
     }
   }
 }
-.adapter-screen ::v-deep() {
-  .el-table__header {
+.adapter-screen {
+  ::v-deep(.el-table__header),
+  ::v-deep(.el-table__body) {
     width: 100% !important;
-  }
-  .el-table__header col {
-    width: 25% !important;
-  }
-  .el-table__header col[name="gutter"] {
-    width: 0 !important;
-  }
-  .el-table__body {
-    width: 100% !important;
-  }
-  .el-table__body col {
-    width: 25% !important;
-  }
-  .el-table__body col[name="gutter"] {
-    width: 0 !important;
+    col {
+      width: 25% !important;
+    }
+    col[name="gutter"] {
+      width: 0 !important;
+    }
   }
 }
 </style>

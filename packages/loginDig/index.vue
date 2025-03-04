@@ -45,7 +45,7 @@ export default {
 };
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 ::v-deep(.login_window) {
   .el-dialog,
   .eu-dialog {

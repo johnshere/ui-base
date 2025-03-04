@@ -4,7 +4,7 @@ import type {} from 'vue2/types/v3-component-options';
 import type {} from 'vue2/types/v3-component-public-instance';
 import type {} from '@vue3/shared';
 
-import "./style/index.less";
+import "./style/index.scss";
 import _Title from "./title";
 import _TitleCard from "./title-card";
 import _PageTable from "./pageTable";
