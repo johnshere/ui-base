@@ -201,6 +201,7 @@ async function addSourceFile(project: Project) {
             cwd: compsSrcPath,
             absolute: true,
             onlyFiles: true,
+            ignore: ['node_modules'],
         })
     );
 
@@ -209,6 +210,7 @@ async function addSourceFile(project: Project) {
     await Promise.all([
         // 处理 packages 下的文件
         ...filePaths.map(async file => {
+            if (file.includes('node_modules')) return;
             // 提取 vue 文件
             if (file.endsWith('.vue')) {
                 const content = await fsPromises.readFile(file, 'utf-8');

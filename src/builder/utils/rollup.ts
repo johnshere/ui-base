@@ -61,8 +61,14 @@ function styleModuleResolver() {
             if (!/\.(styl|stylus|css)(\?.*)?$/.test(id)) { // 增加对查询参数的匹配
                 return;
             }
+            if (/\.scss$/.test(id)) {
+                // id = id.replace(/\.scss$/, '.css');
+                id = id.replace(new RegExp(`^@src/(.*)`), `${PKG_NAME}/$1`) // 更精准的路径替换
+            } else {
+                id = id.replace(new RegExp(`^@src/(.*)`), `${PKG_NAME}/$1`) // 更精准的路径替换
+            }
             return {
-                id: id.replace(new RegExp(`^@src/(.*)`), `${PKG_NAME}/$1`), // 更精准的路径替换
+                id,
                 external: 'absolute',
             };
         },
@@ -89,6 +95,7 @@ export function generateCommonPluginConfig() {
         }),
         (IS_VUE2
             ? vue2({
+                // compiler: vue2Compiler as any,
                 compiler: {
                     ...vue2Compiler,
                     compileStyleAsync: (opts: any) => {
@@ -98,6 +105,7 @@ export function generateCommonPluginConfig() {
                 } as any,
             })
             : vue3({
+                // compiler: vue3Compiler,
                 compiler: {
                     ...vue3Compiler,
                     compileStyleAsync: (opts: any) => {
@@ -107,10 +115,12 @@ export function generateCommonPluginConfig() {
                 } as any,
             })) as any,
         styleModuleResolver(),
+        // scss(),
         postcss({
             extract: false,
             modules: false,
             plugins: [
+                // autoprefixer(),
                 postcssurl({ url: 'inline' }),
             ]
         }),

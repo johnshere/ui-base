@@ -100,9 +100,8 @@ async function publishNpmPackage(packageName: string, version?: string) {
     );
 
     // 执行 npm 发布指令
-    const isPrerelease = selectedVersion.includes('-');
-    let tag = isPrerelease ? 'prerelease' : 'latest'
-    if (isPrerelease) {
+    let tag: 'latest' | 'next' | 'prerelease'
+    if (selectedVersion.includes('-')) {
         tag = 'prerelease'
     } else {
         tag = packageName === VUE3_PKG_NAME ? 'next' : 'latest'
