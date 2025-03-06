@@ -100,9 +100,9 @@ async function publishNpmPackage(packageName: string, version?: string) {
     );
 
     // 执行 npm 发布指令
-    let tag: 'latest' | 'next' | 'prerelease'
+    let tag: string
     if (selectedVersion.includes('-')) {
-        tag = 'prerelease'
+        tag = packageName === VUE3_PKG_NAME ? 'next-beta' : 'latest-beta'
     } else {
         tag = packageName === VUE3_PKG_NAME ? 'next' : 'latest'
     }
@@ -195,7 +195,7 @@ async function publishComponents() {
         JSON.stringify(pkj, null, 4),
     );
     consola.success(`🥳 组件库发布成功，版本号：${nextVersion2}|${nextVersion3}`);
-    consola.success(`🥳 组件库安装vue2：ui-base@latest；vue3安装：ui-base@next`);
+    consola.success(`🥳 组件库安装vue2：ui-base@latest(@latest-beta)；vue3安装：ui-base@next(@next-beta)`);
 }
 
 /** 构建组件库 */
