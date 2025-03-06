@@ -4,7 +4,7 @@ import type {} from 'vue2/types/v3-component-options';
 import type {} from 'vue2/types/v3-component-public-instance';
 import type {} from '@vue3/shared';
 
-import "./style/index.scss";
+import _Style from "./style/index.vue";
 import _Title from "./title";
 import _TitleCard from "./title-card";
 import _PageTable from "./pageTable";
@@ -34,6 +34,7 @@ import _Pagination from "./uelement/u-pagination";
 
 export * from "./utils";
 
+export const UStyle = _Style;
 export const UTitle = _Title;
 export const UTitleCard = _TitleCard;
 export const UPageTable = _PageTable;
@@ -62,6 +63,7 @@ export const UTableColumn = _TableColumn;
 export const UPagination = _Pagination;
 
 // 兼容旧代码
+export const Style = _Style;
 export const Title = _Title;
 export const TitleCard = _TitleCard;
 export const PageTable = _PageTable;
@@ -91,6 +93,7 @@ export const Pagination = _Pagination;
 
 //  新增的、非element组件
 const newComponents = {
+  Style,
   Title,
   PageTable,
   Top,

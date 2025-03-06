@@ -4,9 +4,9 @@
   text-overflow: ellipsis;
 }
 .scrollBar {
-  // &::-webkit-scrollbar-track-piece {
-  //   background: #d3dce6;
-  // }
+  /* &::-webkit-scrollbar-track-piece {*/
+  /*   background: #d3dce6;*/
+  /* }*/
   &::-webkit-scrollbar {
       width: 6px;
       @media screen and (max-width: 1600px) {

@@ -1,16 +1,27 @@
-// CSS3 var
-@use 'element-plus/theme-chalk/src/mixins/_var' as *;
-
-/** 覆盖element-plus默认字体颜色 */
+/* 覆盖element-plus默认字体颜色 */
 html [data-v-app] * {
-  @include set-css-var-value(('color', 'info'), #333);//#909399);
-  @include set-css-var-value(('color', 'danger'), #fe3434);//#f56c6c);
+  /* #909399); */
+  --el-color-info: #333;
+  --eu-color-info: #333;
+  /* #f56c6c); */
+  --el-color-danger: #fe3434;
+  --eu-color-danger: #fe3434;
 
-  @include set-css-var-value(('text', 'color', 'primary'), #333);//#303133);
-  @include set-css-var-value(('text-color-regular'), #333);//#606266);
-  @include set-css-var-value(('text-color-secondary'), #444);//#909399);
-  @include set-css-var-value(('text-color-placeholder'), #999);//#a8abb2);
-  @include set-css-var-value(('text-color-disabled'), #c0c4cc);//#c0c4cc);
+  /* #303133); */
+  --el-text-color-primary: #333;
+  --eu-text-color-primary: #333;
+  /* #606266); */
+  --el-text-color-regular: #333;
+  --eu-text-color-regular: #333;
+  /* #909399); */
+  --el-text-color-secondary: #444;
+  --eu-text-color-secondary: #444;
+  /* #a8abb2); */
+  --el-text-color-placeholder: #999;
+  --eu-text-color-placeholder: #999;
+  /* #c0c4cc); */
+  --el-text-color-disabled: #c0c4cc;
+  --eu-text-color-disabled: #c0c4cc;
 
   font-family: "PingFang SC", "Microsoft YaHei", system-ui, -apple-system, "PingFang", "Source Han Sans", sans-serif;
 }

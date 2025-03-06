@@ -11,6 +11,7 @@ import replace from '@rollup/plugin-replace';
 import image from '@rollup/plugin-image';
 import postcss from 'rollup-plugin-postcss'
 import postcssurl from 'postcss-url';
+import postcssImport from 'postcss-import';
 import * as vue2Compiler from 'vue2/compiler-sfc';
 import * as vue3Compiler from 'vue3/compiler-sfc';
 import { esbuildConfig, nodeResolveExt } from '../config';
@@ -19,7 +20,7 @@ import { compsSrcPath } from './paths';
 import { PROJECT_OUTPUT_PATH } from '@shared/config/paths';
 import { VUE2_PKG_NAME, VUE3_PKG_NAME } from '@shared/config/constance';
 import transformToVue3 from './transformToVue3';
-// import terser from '@rollup/plugin-terser';
+import autoprefixer from 'autoprefixer';
 function getPackageDependencies(
     pkgPath: string,
 ): Record<'dependencies' | 'peerDependencies', string[]> {
@@ -49,31 +50,6 @@ export const generateExternal = async (options: { full: boolean }) => {
         );
     };
 };
-
-/**
- * 样式文件单独处理引入方式，只做简单的路径转换
- * 这里的作用类似于 webpack 的 null-loader
- */
-function styleModuleResolver() {
-    return {
-        name: 'style-module-resolver',
-        resolveId(id: string) {
-            if (!/\.(styl|stylus|css)(\?.*)?$/.test(id)) { // 增加对查询参数的匹配
-                return;
-            }
-            if (/\.scss$/.test(id)) {
-                // id = id.replace(/\.scss$/, '.css');
-                id = id.replace(new RegExp(`^@src/(.*)`), `${PKG_NAME}/$1`) // 更精准的路径替换
-            } else {
-                id = id.replace(new RegExp(`^@src/(.*)`), `${PKG_NAME}/$1`) // 更精准的路径替换
-            }
-            return {
-                id,
-                external: 'absolute',
-            };
-        },
-    };
-}
 
 /**
  * 生成 module 和 full-bundle 构建器的通用插件配置
@@ -114,13 +90,14 @@ export function generateCommonPluginConfig() {
                     },
                 } as any,
             })) as any,
-        styleModuleResolver(),
-        // scss(),
         postcss({
             extract: false,
             modules: false,
+            // extensions: ['.css'], // 明确支持的文件扩展名
+            // include: /\.vue/,
             plugins: [
-                // autoprefixer(),
+                postcssImport(),
+                autoprefixer(),
                 postcssurl({ url: 'inline' }),
             ]
         }),
@@ -130,6 +107,6 @@ export function generateCommonPluginConfig() {
         }),
         commonjs(),
         esbuild(esbuildConfig),
-        // terser()
+        // terser(),
     ];
 }
