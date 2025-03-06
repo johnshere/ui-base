@@ -1,6 +1,6 @@
 {
     "name": "ui-base",
-    "version": "0.0.1-44",
+    "version": "0.0.1-46",
     "description": "Vue 2/3 ui-base components",
     "keywords": [],
     "license": "ISC",
@@ -17,6 +17,9 @@
             "require": "./cjs/index.js",
             "import": "./esm/index.mjs",
             "types": "./esm/index.d.ts"
+        },
+        "./global": {
+          "types": "./esm/global.d.ts"
         },
         "./esm": "./esm/index.mjs",
         "./cjs": "./cjs/index.js",
