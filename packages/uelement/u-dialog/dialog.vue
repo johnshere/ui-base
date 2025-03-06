@@ -25,6 +25,10 @@ const component = {
     [Dialog.name]: Dialog,
   },
   props: {
+    draggable: {
+      type: Boolean,
+      default: true,
+    },
     closeOnClickModal: {
       type: Boolean,
       default: false,
@@ -67,7 +71,7 @@ const component = {
     init() {
       const doc = this.$options.propsData.destroyOnClose;
       const isDestroyOnClose = doc === "" || doc === true;
-      if (process.env.VUE_VERSION === "2" && this.draggable) {
+      if (process.env.VUE_VERSION === "2" && this['draggable']) {
         if (isDestroyOnClose) {
           this.initDrag();
         } else if (!this.dragEl) {
