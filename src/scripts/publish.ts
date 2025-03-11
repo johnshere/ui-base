@@ -194,7 +194,8 @@ async function publishComponents() {
         path.join(PACKAGES_ROOT_PATH, 'package.json'),
         JSON.stringify(pkj, null, 4),
     );
-    consola.success(`🥳 组件库发布成功，版本号：${nextVersion2}|${nextVersion3}`);
+    consola.success(`🥳 组件库发布成功，版本号：${chalk.green(nextVersion2)}|${chalk.green(nextVersion3)}`);
+    consola.success(`🥳 组件库信息查看，执行：${chalk.green(`npm view ui-base`)}`);
     consola.success(`🥳 组件库安装vue2：ui-base@latest(@latest-beta)；vue3安装：ui-base@next(@next-beta)`);
 }
 
