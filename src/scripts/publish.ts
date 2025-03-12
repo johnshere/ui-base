@@ -183,18 +183,21 @@ async function publishComponents() {
             },
         ],
     }) as 0 | 1 | 2;
+    const successTip = [] as string[];
     if (vueSelect !== 1) {
         await publishNpmPackage(VUE2_PKG_NAME, nextVersion2);
+        successTip.push(chalk.green(nextVersion2));
     }
     if (vueSelect !== 2) {
         await publishNpmPackage(VUE3_PKG_NAME, nextVersion3);
+        successTip.push(chalk.green(nextVersion3));
     }
     pkj.version = nextVersion;
     fs.writeFileSync(
         path.join(PACKAGES_ROOT_PATH, 'package.json'),
         JSON.stringify(pkj, null, 4),
     );
-    consola.success(`🥳 组件库发布成功，版本号：${chalk.green(nextVersion2)}|${chalk.green(nextVersion3)}`);
+    consola.success(`🥳 组件库发布成功，版本号：${successTip.join('|')}`);
     consola.success(`🥳 组件库信息查看，执行：${chalk.green(`npm view ui-base`)}`);
     consola.success(`🥳 组件库安装vue2：ui-base@latest(@latest-beta)；vue3安装：ui-base@next(@next-beta)`);
 }
