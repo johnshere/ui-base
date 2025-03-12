@@ -20,6 +20,7 @@ import _FormItem from "./uelement/u-form-item";
 import _Input from "./uelement/u-input";
 import _Radio from "./uelement/u-radio";
 import _RadioGroup from "./uelement/u-radio-group";
+import _Checkbox from "./uelement/u-checkbox";
 import _Select from "./uelement/u-select";
 import _Cascader from "./uelement/u-cascader";
 import _DatePicker from "./uelement/u-date-picker";
@@ -51,6 +52,7 @@ export const UInput = _Input;
 export const USelect = _Select;
 export const URadio = _Radio;
 export const URadioGroup = _RadioGroup;
+export const UCheckbox = _Checkbox;
 export const UCascader = _Cascader;
 export const UDatePicker = _DatePicker;
 
@@ -80,6 +82,7 @@ export const Input = _Input;
 export const Select = _Select;
 export const Radio = _Radio;
 export const RadioGroup = _RadioGroup;
+export const Checkbox = _Checkbox;
 export const Cascader = _Cascader;
 export const DatePicker = _DatePicker;
 
@@ -112,6 +115,7 @@ const coverComponents = {
   Select,
   Radio,
   RadioGroup,
+  Checkbox,
   Cascader,
   DatePicker,
 
