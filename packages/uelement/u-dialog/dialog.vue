@@ -14,7 +14,7 @@
 </template>
 <script>
 import { Dialog } from "element-ui";
-import 'element-ui/packages/theme-chalk/src/overlay.scss';
+import 'element-plus/theme-chalk/src/overlay.scss';
 import 'element-ui/packages/theme-chalk/src/dialog.scss';
 import DraggableMixin from "../../utils/draggable";
 import listeners from "@src/utils/listeners.ts";

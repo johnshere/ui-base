@@ -87,11 +87,20 @@ async function publishNpmPackage(packageName: string, version?: string) {
     pkgJSON.version = selectedVersion;
     delete pkgJSON.dependencies['element-ui']
     delete pkgJSON.dependencies['element-plus']
-    if (packageName === VUE2_PKG_NAME) {
-        Object.assign(pkgJSON.dependencies, pkgJSON._vue2)
-    } else {
-        Object.assign(pkgJSON.dependencies, pkgJSON._vue3)
-    }
+    const bak = packageName === VUE2_PKG_NAME ? pkgJSON._vue2 : pkgJSON._vue3
+    Object.keys(bak).forEach(key => {
+        if (pkgJSON[key]) {
+            if (typeof pkgJSON[key] === 'string') {
+                pkgJSON[key] = bak[key]
+            } else if(Array.isArray(pkgJSON[key])) {
+                pkgJSON[key] = pkgJSON[key].concat(bak[key])
+            } else {
+                Object.assign(pkgJSON[key], bak[key])
+            }
+        } else {
+            pkgJSON[key] = bak[key]
+        }
+    })
     delete pkgJSON._vue2;
     delete pkgJSON._vue3;
     fs.writeFileSync(

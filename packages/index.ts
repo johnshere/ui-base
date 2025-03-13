@@ -4,6 +4,9 @@ import type {} from 'vue2/types/v3-component-options';
 import type {} from 'vue2/types/v3-component-public-instance';
 import type {} from '@vue3/shared';
 
+import ElementUI from 'element-ui'
+import * as EleComponents from 'element-ui'
+
 import _Style from "./style/index.vue";
 import _Title from "./title";
 import _TitleCard from "./title-card";
@@ -130,21 +133,33 @@ const coverComponents = {
 
 const install = function (Vue, options = {}) {
   console.log("ui-base install");
+  let components: any;
   // 版本检测
   if (Vue.version?.startsWith('3.')) {
     // 兼容 Vue3 的 globalProperties
     Vue.config.globalProperties.$UBase = Object.assign({}, options);
+    components = EleComponents;
   } else {
     // Vue2 的原型链方式
     Vue.prototype.$UBase = Object.assign({}, options);
+    components = ElementUI;
   }
 
   /**
    * UElement组件注册
    */
-  Object.keys(coverComponents).forEach(function (key) {
-    const name = "U" + key;
-    Vue.component(name, coverComponents[key]);
+  Object.keys(components).forEach(function (key) {
+    let component = components[key];
+    key = key.replace(/^El/, ''); // element-plus组件名增加了El前缀
+    // 判断是否为组件
+    if (!component?.name || component instanceof Function) {
+      return;
+    }
+    // 覆盖element原有组件
+    if (coverComponents[key]) {
+      component = coverComponents[key];
+    }
+    Vue.component("U" + key, component);
   });
   /**
    * 新增自定义组件注册

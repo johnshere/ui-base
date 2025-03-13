@@ -25,6 +25,7 @@ declare module 'vue' {
         USelect: typeof import('ui-base')['USelect']
         URadio: typeof import('ui-base')['URadio']
         URadioGroup: typeof import('ui-base')['URadioGroup']
+        UCheckbox: typeof import('ui-base')['UCheckbox']
         UCascader: typeof import('ui-base')['UCascader']
         UDatePicker: typeof import('ui-base')['UDatePicker']
 

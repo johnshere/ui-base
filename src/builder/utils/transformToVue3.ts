@@ -11,7 +11,10 @@ const transformToVue3: Plugin = {
     async transform(code: string, id: string) {
       // const existingMap = this.getCombinedSourcemap()
       code = code.replace(/process\.env\.VUE_VERSION/g, version);
-      if (!IS_VUE2) {
+
+      if (IS_VUE2) {
+        code = code.replace(/\n.*element-plus.*\n/g, '\n');
+      } else {
         code = code.replace(/element-ui\/packages\/theme-chalk/g, 'element-plus/theme-chalk');
         code = code.replace(/element-ui/g, 'element-plus');
 
@@ -23,7 +26,7 @@ const transformToVue3: Plugin = {
             .map((item: any) => {
               // 处理带别名的导入项（例如：Button as MyButton）
               const [original, alias] = item.trim().split(/\s+as\s+/);
-              if (original.startsWith('El')) return original;
+              if (original.startsWith('El') || original.startsWith('*')) return original;
               const elComponent = `El${original}`; // 防止重复添加El前缀
               
               // 保留原别名，如果没有别名则使用转换后的名称
