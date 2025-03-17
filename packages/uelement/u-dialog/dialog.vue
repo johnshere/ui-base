@@ -4,7 +4,7 @@
         :draggable="_draggable"
         :close-on-click-modal="closeOnClickModal"
         :close-on-press-escape="closeOnPressEscape"
-        :class="_clss"
+        class="u-dialog"
         v-on="_listeners"
     >
         <template v-for="(_, name) in $slots" #[name]="data">
@@ -47,12 +47,6 @@ const component = {
         return this['draggable'];
       }
       return true
-    },
-    _clss() {
-      return {
-        "u-dialog": true,
-        "isVue3": process.env.VUE_VERSION === "3"
-      }
     }
   },
   watch: {
@@ -124,7 +118,7 @@ export default component
       }
     }
   }
-  &.isVue3 {
+  &.vue-modern {
     padding-top: 56px;
     .el-dialog__header,
     .eu-dialog__header {
