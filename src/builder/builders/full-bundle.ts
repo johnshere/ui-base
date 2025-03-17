@@ -24,7 +24,8 @@ export async function buildFullBundle() {
                 'element-ui': 'element-ui',
                 'element-plus': 'element-plus',
                 'tinymce': 'tinymce',
-                '@tinymce/tinymce-vue': '@tinymce/tinymce-vue'
+                '@tinymce/tinymce-vue': '@tinymce/tinymce-vue',
+                'ui-base': 'ui-base'
             },
             sourcemap: false
         },

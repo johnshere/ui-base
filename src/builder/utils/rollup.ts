@@ -7,7 +7,7 @@ import vue3 from '@vitejs/plugin-vue';
 import vue2 from '@vitejs/plugin-vue2';
 import path from 'path';
 import esbuild from 'rollup-plugin-esbuild';
-import replace from '@rollup/plugin-replace';
+// import replace from '@rollup/plugin-replace';
 import image from '@rollup/plugin-image';
 import postcss from 'rollup-plugin-postcss'
 import postcssurl from 'postcss-url';
@@ -17,8 +17,8 @@ import * as vue3Compiler from 'vue3/compiler-sfc';
 import { esbuildConfig, nodeResolveExt } from '../config';
 import { IS_VUE2, PKG_NAME } from './constance';
 import { compsSrcPath } from './paths';
-import { PROJECT_OUTPUT_PATH } from '@shared/config/paths';
-import { VUE2_PKG_NAME, VUE3_PKG_NAME } from '@shared/config/constance';
+// import { PROJECT_OUTPUT_PATH } from '@shared/config/paths';
+// import { VUE2_PKG_NAME, VUE3_PKG_NAME } from '@shared/config/constance';
 import transformToVue3 from './transformToVue3';
 import autoprefixer from 'autoprefixer';
 function getPackageDependencies(
@@ -81,7 +81,7 @@ export function generateCommonPluginConfig() {
                 } as any,
             })
             : vue3({
-                // compiler: vue3Compiler,
+                // compiler: vue3Compiler as any,
                 compiler: {
                     ...vue3Compiler,
                     compileStyleAsync: (opts: any) => {
@@ -93,7 +93,8 @@ export function generateCommonPluginConfig() {
         postcss({
             extract: false,
             modules: false,
-            // extensions: ['.css'], // 明确支持的文件扩展名
+            extensions: ['.css', '.scss'], // 明确支持的文件扩展名
+            // use: ['sass'],
             // include: /\.vue/,
             plugins: [
                 postcssImport(),

@@ -42,7 +42,6 @@
         "rollup-plugin-esbuild": "^6.1.1",
         "rollup-plugin-less": "^1.1.3",
         "rollup-plugin-postcss": "^4.0.2",
-        "sass": "^1.82.0",
         "stylus": "^0.57.0",
         "ts-morph": "^25.0.1",
         "vite": "^5.3.3"
@@ -60,7 +59,9 @@
         "@types/postcss-url": "^10.0.4",
         "@types/rollup-plugin-less": "^1.1.5",
         "@types/stylus": "^0.48.38",
+        "node-sass": "^9.0.0",
         "postcss-url": "^10.1.3",
+        "sass": "^1.85.1",
         "unplugin-vue-setup-extend-plus": "^1.0.1"
     },
     "keywords": [],

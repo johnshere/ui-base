@@ -49,7 +49,8 @@ export async function buildModules() {
                 'element-ui': 'element-ui',
                 'element-plus': 'element-plus',
                 'tinymce': 'tinymce',
-                '@tinymce/tinymce-vue': '@tinymce/tinymce-vue'
+                '@tinymce/tinymce-vue': '@tinymce/tinymce-vue',
+                'ui-base': 'ui-base'
             }
         } as OutputOptions;
     });

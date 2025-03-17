@@ -1,8 +1,8 @@
- // 显式声明类型引用：https://github.com/microsoft/TypeScript/pull/58176#issuecomment-2052698294
-import type {} from 'vue2/types/common';
-import type {} from 'vue2/types/v3-component-options';
-import type {} from 'vue2/types/v3-component-public-instance';
-import type {} from '@vue3/shared';
+// 显式声明类型引用：https://github.com/microsoft/TypeScript/pull/58176#issuecomment-2052698294
+import type { } from 'vue2/types/common';
+import type { } from 'vue2/types/v3-component-options';
+import type { } from 'vue2/types/v3-component-public-instance';
+import type { } from '@vue3/shared';
 
 import ElementUI from 'element-ui'
 import * as EleComponents from 'element-ui'
@@ -99,7 +99,6 @@ export const Pagination = _Pagination;
 
 //  新增的、非element组件
 const newComponents = {
-  Style,
   Title,
   PageTable,
   Top,
@@ -131,17 +130,43 @@ const coverComponents = {
   Pagination
 };
 
-const install = function (Vue, options = {}) {
+function addRootClass(app: any) {
+  const clss = app.version?.startsWith('3.') ? 'vue-modern' : 'vue-legacy';
+  function setClass(el: string | Node, cls?: string) {
+    if (typeof el === 'string') el = document.querySelector(el)!;
+    if (!el) return;
+    (el as Element)?.classList?.add(cls || clss);
+  }
+  function findRootElement(el: Node | null) {
+    const types = [Node.COMMENT_NODE, Node.TEXT_NODE] as Node['nodeType'][];
+    while (el && types.includes(el.nodeType)) {
+      el = el.nextSibling;
+    }
+    return el;
+  }
+  let root: Node | null
+  app.mixin({
+    mounted() {
+      setClass(this.$el)
+      if (root) return;
+      root = findRootElement(this.$root.$el);
+      if (!root) return;
+      setClass(root, clss + '-root')
+    }
+  });
+}
+const install = function (app: any, options = {}) {
   console.log("ui-base install");
+  addRootClass(app);
   let components: any;
   // 版本检测
-  if (Vue.version?.startsWith('3.')) {
+  if (app.version?.startsWith('3.')) {
     // 兼容 Vue3 的 globalProperties
-    Vue.config.globalProperties.$UBase = Object.assign({}, options);
+    app.config.globalProperties.$UBase = Object.assign({}, options);
     components = EleComponents;
   } else {
     // Vue2 的原型链方式
-    Vue.prototype.$UBase = Object.assign({}, options);
+    app.prototype.$UBase = Object.assign({}, options);
     components = ElementUI;
   }
 
@@ -159,12 +184,12 @@ const install = function (Vue, options = {}) {
     if (coverComponents[key]) {
       component = coverComponents[key];
     }
-    Vue.component("U" + key, component);
+    app.component("U" + key, component);
   });
   /**
    * 新增自定义组件注册
    */
-   Object.values(newComponents).forEach(component => Vue.component(component.name, component))
+  Object.values(newComponents).forEach(component => app.component(component.name, component))
 };
 
 /* istanbul ignore if */

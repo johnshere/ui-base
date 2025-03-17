@@ -12,6 +12,8 @@
     "types/*"
   ],
   "scripts": {
+    "build:vue2": "pnpm --filter ./src/builder run build:vue2",
+    "build:vue3": "pnpm --filter ./src/builder run build:vue3",
     "build": "pnpm --filter ./src/builder run build",
     "clean:node_modules": "find . -name \"node_modules\" -type d -exec rm -rf '{}' +",
     "dev:vue2": "pnpm --filter ./src/playground run dev:vue2",
