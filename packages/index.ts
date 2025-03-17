@@ -173,6 +173,8 @@ const install = function (app: any, options = {}) {
   /**
    * UElement组件注册
    */
+  // fix: Component "UTableV2" has already been registered in target app
+  const keySet = new Set();
   Object.keys(components).forEach(function (key) {
     let component = components[key];
     key = key.replace(/^El/, ''); // element-plus组件名增加了El前缀
@@ -184,6 +186,8 @@ const install = function (app: any, options = {}) {
     if (coverComponents[key]) {
       component = coverComponents[key];
     }
+    if (keySet.has(key)) return;
+    keySet.add(key);
     app.component("U" + key, component);
   });
   /**
