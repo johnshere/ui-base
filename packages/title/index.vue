@@ -65,8 +65,7 @@ export default {
     padding-left: 14px;
     position: relative;
     display: flex;
-    .el-button--primary,
-    .eu-button--primary {
+    .el-button--primary {
       display: inline-block;
       position: absolute;
       left: 0;
@@ -74,6 +73,8 @@ export default {
       height: 18px;
       width: 4px;
       -webkit-print-color-adjust: exact;
+      background-color: var(--eu-color-primary, --el-color-primary);
+      border-color: var(--eu-color-primary, --el-color-primary);
     }
   }
   .tip {

@@ -59,7 +59,6 @@
         "@types/postcss-url": "^10.0.4",
         "@types/rollup-plugin-less": "^1.1.5",
         "@types/stylus": "^0.48.38",
-        "node-sass": "^9.0.0",
         "postcss-url": "^10.1.3",
         "sass": "^1.85.1",
         "unplugin-vue-setup-extend-plus": "^1.0.1"
