@@ -1,16 +1,16 @@
 <template>
-  <el-button
-    v-bind="$attrs"
-    :loading="loading || b_loading"
-    v-on="listeners"
-    @click="execute"
-    class="u-button"
-    onclick="return false"
-  >
-    <template v-for="slot in Object.keys($slots)" :slot="slot">
-      <slot :name="slot" />
-    </template>
-  </el-button>
+    <el-button
+        v-bind="$attrs"
+        :loading="loading || b_loading"
+        class="u-button"
+        onclick="return false"
+        v-on="listeners"
+        @click="execute"
+    >
+        <template v-for="slot in Object.keys($slots)" #[slot]>
+            <slot :name="slot" />
+        </template>
+    </el-button>
 </template>
 <script>
 import listeners from '@src/utils/listeners.ts';
@@ -34,7 +34,7 @@ export default {
   },
   data() {
     return {
-      // eslint-disable-next-line vue/no-reserved-keys
+       
       b_loading: false,
     };
   },

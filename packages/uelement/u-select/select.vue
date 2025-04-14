@@ -1,10 +1,14 @@
 <template>
-  <el-select v-bind="$attrs" v-on="_listeners">
-    <el-option v-for="(item, i) in list" :key="i" v-bind="{...item}" />
-    <template v-for="(_, name) in $slots" v-slot:[name]="data">
-      <slot :name="name" v-bind="{ ...data }"></slot>
-    </template>
-  </el-select>
+    <el-select v-bind="$attrs" v-on="_listeners">
+        <el-option
+            v-for="(item, i) in list"
+            :key="i"
+            v-bind="{...item}"
+        />
+        <template v-for="(_, name) in $slots" #[name]>
+            <slot :name="name" />
+        </template>
+    </el-select>
 </template>
 <script>
 import { Option, Select } from "element-ui";
@@ -33,7 +37,7 @@ export default {
   },
   methods: {
     input(v) {
-      !this.readonly && this.$emit("input", v);
+      if (!this.readonly) this.$emit("input", v);
     },
   },
 };

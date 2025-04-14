@@ -1,23 +1,29 @@
 <template>
-  <el-table
-    ref="table"
-    v-bind="$attrs"
-    :size="size"
-    :class="printClassName"
-    v-on="listeners"
-  >
-    <template v-for="(slot, i) in Object.keys($slots)" :slot="slot">
-      <div v-if="slot === 'empty'" :key="i" slot="empty">
-        <div class="u-page-table__empty">
-          <slot :name="slot" />
-        </div>
-      </div>
-      <slot v-else :name="slot" />
-    </template>
-    <div v-if="!Object.keys($slots).includes('empty')" slot="empty">
-      <div class="u-page-table__empty">暂无数据</div>
-    </div>
-  </el-table>
+    <el-table
+        ref="table"
+        v-bind="$attrs"
+        :size="size"
+        :class="printClassName"
+        v-on="listeners"
+    >
+        <template v-for="(slot, i) in Object.keys($slots)" #[slot]>
+            <div
+                v-if="slot === 'empty'"
+                :key="i"
+                slot="empty"
+            >
+                <div class="u-page-table__empty">
+                    <slot :name="slot" />
+                </div>
+            </div>
+            <slot v-else :name="slot" />
+        </template>
+        <template #empty>
+            <div v-if="!Object.keys($slots).includes('empty')">
+                <div class="u-page-table__empty">暂无数据</div>
+            </div>
+        </template>
+    </el-table>
 </template>
 <script>
 import listeners from '@src/utils/listeners.ts';

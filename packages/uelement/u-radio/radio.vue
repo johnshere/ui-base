@@ -1,7 +1,7 @@
 <template>
-  <el-radio v-bind="$attrs" v-on="_listeners">
-    <slot />
-  </el-radio>
+    <el-radio v-bind="$attrs" v-on="_listeners">
+        <slot />
+    </el-radio>
 </template>
 
 <script>
@@ -27,7 +27,7 @@ export default {
   },
   methods: {
     input(v) {
-      !this.readonly && this.$emit("input", v);
+      if (!this.readonly) this.$emit("input", v);
     },
   },
 };

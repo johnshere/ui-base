@@ -1,14 +1,14 @@
 <template>
-  <el-cascader
-    :append-to-body="false"
-    v-bind="$attrs"
-    ref="cascader"
-    v-on="listeners"
-  >
-    <template v-for="slot in Object.keys($slots)" :slot="slot">
-      <slot :name="slot" />
-    </template>
-  </el-cascader>
+    <el-cascader
+        v-bind="$attrs"
+        ref="cascader"
+        :append-to-body="false"
+        v-on="listeners"
+    >
+        <template v-for="slot in Object.keys($slots)" #[slot]>
+            <slot :name="slot" />
+        </template>
+    </el-cascader>
 </template>
 <script>
 import listeners from '@src/utils/listeners.ts';

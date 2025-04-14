@@ -1,9 +1,13 @@
 <template>
-  <el-form ref="form" v-bind="$attrs" v-on="listeners">
-    <template v-for="key in Object.keys($slots)" v-slot:[key]="data">
-      <slot :name="key" v-bind="{ ...data }" />
-    </template>
-  </el-form>
+    <el-form
+        ref="form"
+        v-bind="$attrs"
+        v-on="listeners"
+    >
+        <template v-for="key in Object.keys($slots)" #[key]="data">
+            <slot :name="key" v-bind="{ ...data }" />
+        </template>
+    </el-form>
 </template>
 <script>
 import listeners from '@src/utils/listeners.ts';

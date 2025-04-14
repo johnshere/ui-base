@@ -1,9 +1,9 @@
 <template>
-  <el-date-picker v-bind="$attrs" v-on="listeners">
-    <template v-for="slot in Object.keys($slots)" :slot="slot">
-      <slot :name="slot" />
-    </template>
-  </el-date-picker>
+    <el-date-picker v-bind="$attrs" v-on="listeners">
+        <template v-for="slot in Object.keys($slots)" #[slot]>
+            <slot :name="slot" />
+        </template>
+    </el-date-picker>
 </template>
 <script>
 import listeners from '@src/utils/listeners.ts';

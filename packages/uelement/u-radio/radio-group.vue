@@ -1,17 +1,17 @@
 <template>
-  <el-radio-group v-bind="$attrs" v-on="_listeners">
-    <el-radio
-      v-for="item in list"
-      :key="item.value"
-      :label="item.value"
-      :disabled="item.disabled"
-    >
-      {{ item.label }}
-    </el-radio>
-    <template v-for="(_, name) in $slots" v-slot:[name]="data">
-      <slot :name="name" v-bind="{ ...data }"></slot>
-    </template>
-  </el-radio-group>
+    <el-radio-group v-bind="$attrs" v-on="_listeners">
+        <el-radio
+            v-for="item in list"
+            :key="item.value"
+            :label="item.value"
+            :disabled="item.disabled"
+        >
+            {{ item.label }}
+        </el-radio>
+        <template v-for="(_, name) in $slots" #[name]>
+            <slot :name="name" />
+        </template>
+    </el-radio-group>
 </template>
 
 <script>

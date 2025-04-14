@@ -1,9 +1,9 @@
 <template>
-  <el-input v-bind="$attrs" v-on="_listeners">
-    <template v-for="(_, name) in $slots" v-slot:[name]="data">
-      <slot :name="name" v-bind="{ ...data }" />
-    </template>
-  </el-input>
+    <el-input v-bind="$attrs" v-on="_listeners">
+        <template v-for="(_, name) in $slots" #[name]>
+            <slot :name="name" />
+        </template>
+    </el-input>
 </template>
 <script>
 import listeners from '@src/utils/listeners.ts';

@@ -1,15 +1,15 @@
 <template>
-  <el-descriptions
-    v-bind="$attrs"
-    :size="size"
-    :content-style="contentStyle_"
-    :label-style="labelStyle_"
-    v-on="listeners"
-  >
-    <template v-for="slot in Object.keys($slots)" :slot="slot">
-      <slot :name="slot" />
-    </template>
-  </el-descriptions>
+    <el-descriptions
+        v-bind="$attrs"
+        :size="size"
+        :content-style="contentStyle_"
+        :label-style="labelStyle_"
+        v-on="listeners"
+    >
+        <template v-for="slot in Object.keys($slots)" #[slot]>
+            <slot :name="slot" />
+        </template>
+    </el-descriptions>
 </template>
 <script>
 import listeners from '@src/utils/listeners.ts';

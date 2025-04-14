@@ -1,7 +1,7 @@
 <template>
     <el-checkbox v-bind="$attrs" v-on="_listeners">
-        <template v-for="(_, name) in $slots" v-slot:[name]="data">
-            <slot :name="name" v-bind="{ ...data }" />
+        <template v-for="(_, name) in $slots" #[name]>
+            <slot :name="name" />
         </template>
     </el-checkbox>
 </template>
