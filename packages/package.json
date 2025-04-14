@@ -1,6 +1,6 @@
 {
     "name": "ui-base",
-    "version": "0.0.1-3",
+    "version": "0.0.1-4",
     "description": "Vue 2/3 ui-base components",
     "keywords": [],
     "license": "ISC",
@@ -42,7 +42,7 @@
             "./esm/*": "./esm/*.mjs",
             "./cjs/*.js": "./cjs/*.js",
             "./cjs/*": "./cjs/*.js",
-            "./*": "./*"
+            "./*": "./esm/*"
         },
         "dependencies": {
             "@tinymce/tinymce-vue": "^6.1.0",
@@ -51,6 +51,23 @@
     },
     "_vue2": {
         "types": "cjs/index.d.ts",
+        "exports": {
+            ".": {
+                "require": "./cjs/index.js",
+                "import": "./esm/index.mjs",
+                "types": "./cjs/index.d.ts"
+            },
+            "./global": {
+                "types": "./cjs/global.d.ts"
+            },
+            "./esm": "./esm/index.mjs",
+            "./cjs": "./cjs/index.js",
+            "./esm/*.mjs": "./esm/*.mjs",
+            "./esm/*": "./esm/*.mjs",
+            "./cjs/*.js": "./cjs/*.js",
+            "./cjs/*": "./cjs/*.js",
+            "./*": "./cjs/*"
+        },
         "dependencies": {
             "element-ui": "^2.15.14"
         }

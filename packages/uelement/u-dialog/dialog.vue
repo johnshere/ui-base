@@ -1,14 +1,14 @@
 <template>
     <el-dialog
-        v-bind="$attrs"
-        :draggable="_draggable"
+        v-bind="_atts"
         :close-on-click-modal="closeOnClickModal"
         :close-on-press-escape="closeOnPressEscape"
+        :distroy-on-close="distroyOnClose"
         class="u-dialog"
         v-on="_listeners"
     >
-        <template v-for="(_, name) in $slots" #[name]="data">
-            <slot :name="name" v-bind="{ ...data }" />
+        <template v-for="(_, name) in $slots" #[name]>
+            <slot :name="name" />
         </template>
     </el-dialog>
 </template>
@@ -37,16 +37,27 @@ const component = {
       type: Boolean,
       default: false,
     },
+    destroyOnClose: {
+      type: Boolean,
+      default: false,
+    },
+    visible: {
+      type: Boolean,
+      default: false
+    },
   },
   computed: {
     _listeners() {
       return listeners.call(this)
     },
-    _draggable() {
-      if (this['draggable'] !== undefined) {
-        return this['draggable'];
+    _atts() {
+      const atts = { ...this.$attrs }
+      if (process.env.VUE_VERSION === "3") {
+        atts.draggable = this['draggable'];
+      } else {
+        atts.visible = this['visible'];
       }
-      return true
+      return atts
     }
   },
   watch: {
@@ -63,10 +74,8 @@ const component = {
   },
   methods: {
     init() {
-      const doc = this.$options.propsData.destroyOnClose;
-      const isDestroyOnClose = doc === "" || doc === true;
       if (process.env.VUE_VERSION === "2" && this['draggable']) {
-        if (isDestroyOnClose) {
+        if (this.destroyOnClose) {
           this.initDrag();
         } else if (!this.dragEl) {
           this.initDrag();
