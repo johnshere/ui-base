@@ -12,8 +12,8 @@
 </template>
 
 <script lang="ts" setup>
-import {IS_VUE2} from '@src/utils';
-import {routes} from '@/router/routes';
+import {IS_VUE2} from '../../utils/runtime-env';
+import {routes} from '../../router/routes';
 import {RouterLink} from 'vue-router';
 
 const computedRoutes = routes.filter(

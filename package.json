@@ -27,6 +27,8 @@
     "*.{css,less,scss,styl}": "stylelint"
   },
   "dependencies": {
+    "ui-base": "workspace:^",
+    "@shared/builder": "workspace:^",
     "@shared/config": "workspace:^",
     "@shared/utils": "workspace:^",
     "@vue3/shared": "npm:@vue/shared@3.2",

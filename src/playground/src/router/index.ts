@@ -1,4 +1,4 @@
-import {IS_VUE2} from '@src/utils';
+import {IS_VUE2} from '../utils/runtime-env';
 import {router as routerV3} from './v3';
 import {router as routerV4} from './v4';
 import {

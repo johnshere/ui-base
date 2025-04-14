@@ -4,8 +4,8 @@
     "version": "0.0.0",
     "type": "module",
     "scripts": {
-        "dev:vue2": "cross-env VITE_VUE_VERSION=2 vite",
-        "dev:vue3": "cross-env VITE_VUE_VERSION=3 vite"
+        "dev:vue2": "cross-env VUE_VERSION=2 vite",
+        "dev:vue3": "cross-env VUE_VERSION=3 vite"
     },
     "devDependencies": {
         "@vitejs/plugin-vue": "^5.0.5",

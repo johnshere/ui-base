@@ -1,11 +1,23 @@
 import type { Plugin } from "rollup";
-import { IS_VUE2 } from "./constance";
 // import { PACKAGES_ROOT_PATH } from "@shared/config/paths";
 // import path from "path";
 // import fs from 'fs';
 // import MagicString from "magic-string";
+export const IS_VUE2 = String(process.env.VUE_VERSION) === '2';
 
 const version = `String(${process.env.VUE_VERSION || ""})`;
+export const transformVueVersion: Plugin = {
+  name: "transform-vue-version",
+  async transform(code: string, id: string) {
+    // const existingMap = this.getCombinedSourcemap()
+    code = code.replace(/process\.env\.VUE_VERSION/g, version);
+    return {
+      code, //: magicString.toString(),
+      map: this.getCombinedSourcemap(),
+    };
+  },
+};
+
 const transformToVue3: Plugin = {
   name: "transform-to-vue3",
   async transform(code: string, id: string) {
