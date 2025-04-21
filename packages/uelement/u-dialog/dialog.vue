@@ -3,7 +3,7 @@
         v-bind="_atts"
         :close-on-click-modal="closeOnClickModal"
         :close-on-press-escape="closeOnPressEscape"
-        :distroy-on-close="distroyOnClose"
+        :distroy-on-close="destroyOnClose"
         class="u-dialog"
         v-on="_listeners"
     >
