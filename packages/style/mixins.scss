@@ -1,0 +1,117 @@
+@use "./conf.scss" as *;
+@use "./func.scss" as *;
+@use "sass:string";
+
+@mixin namespace($namespace) {
+  $N: $namespace !global;
+  @if feature-exists('at-root-without-rule') {
+    @if content-exists() {
+      @at-root {
+        .#{$N} {
+          @content;
+        }
+      }
+    }
+  } @else {
+    // 兼容旧版本 Sass
+    @if content-exists() {
+      @at-root {
+        .#{$N} {
+          @content;
+        }
+      }
+    }
+  }
+}
+
+// BEM block
+@mixin block($block) {
+  $B: $block !global;
+  .#{bem($block)} {
+    // 调用 bem 函数生成 "namespace+block-separator+block"
+    @content;
+  }
+}
+// BEM element
+@mixin element($element) {
+  $E: $element !global;
+  $currentSelector: "";
+  @each $ele in $element {
+    @if $currentSelector == "" {
+      $currentSelector: "." + bem($B, $ele);
+    } @else {
+      $currentSelector: #{$currentSelector + ", ." + bem($B, $ele)};
+    }
+  }
+  @at-root {
+    & #{$currentSelector} {
+      @content;
+    }
+  }
+}
+// BEM modifier
+@mixin modifier($modifier) {
+  $selectors: &; // & 可能返回逗号分隔的选择器列表
+  $newSelectors: ();
+
+  @each $sel in $selectors {
+    // 如果 $sel 中没有 block 前缀，则补充上
+    @if string.index("#{ $sel }", "." + bem($B)) == null {
+      $sel: "." + bem($B) + " " + "#{ $sel }";
+    }
+    // 遍历 modifier 单元，拼接生成最终选择器
+    @each $mod in $modifier {
+      $newSelectors: append($newSelectors, $sel + $modifier-separator + $mod, comma);
+    }
+  }
+
+  @at-root {
+    #{join($newSelectors, ", ")} {
+      @content;
+    }
+  }
+}
+@mixin when($state) {
+  @at-root {
+    &.#{$state-prefix + $state} {
+      @content;
+    }
+  }
+}
+@mixin scrollBar {
+  &::-webkit-scrollbar {
+    background-color: transparent;
+    width: 6px;
+    @media screen and (max-width: 1600px) {
+      width: 8px;
+    }
+  }
+  &::-webkit-scrollbar-thumb {
+    display: none;
+  }
+  &:hover::-webkit-scrollbar-thumb {
+    display: block;
+  }
+}
+
+@mixin backdrop {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-weight: normal;
+    font-family: "Microsoft YaHei";
+  }
+  i {
+    font-style: normal;
+  }
+  ul,
+  li {
+    list-style: none;
+  }
+}
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,0 +1,23 @@
+@use "./conf.scss" as *;
+@use "sass:string";
+@function ifNestRule($selector) {
+  // 如果选择器为字符串，并且包含空格，则认为是嵌套选择器
+  @if type-of($selector) == "string" and string.index($selector, " ") {
+    @return true;
+  }
+  @return false;
+}
+
+@function bem($block, $element: null, $modifier: null) {
+  $selector: "#{$N}";
+  @if $block {
+    $selector: $selector + $block-separator + $block;
+  }
+  @if $element {
+    $selector: $selector + $element-separator + $element;
+  }
+  @if $modifier {
+    $selector: $selector + $modifier-separator + $modifier;
+  }
+  @return $selector;
+}

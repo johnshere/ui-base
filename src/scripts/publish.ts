@@ -62,6 +62,18 @@ async function publishNpmPackage(packageName: string, version?: string) {
     if (!fs.existsSync(pkgPath)) {
         throw new Error(`无法查找到 ${pkgPath} 目录，请确认是否已经编译出内容`);
     }
+
+    // 复制packages到pkgPath/src
+    const targetDir = path.join(pkgPath, 'src');
+    if (!fs.existsSync(targetDir)) {
+        fs.mkdirSync(targetDir, { recursive: true });
+    }
+    const copyOptions = {
+        recursive: true,
+        filter: (f: string) => !f.includes('node_modules')
+    };
+    fs.cpSync(PACKAGES_ROOT_PATH, targetDir, copyOptions);
+
     const pkgfile = require(path.join(PACKAGES_ROOT_PATH, 'package.json'));
     if (!pkgfile) {
         throw new Error(`无法查找到 ${packageName} 对应的 package.json`);
