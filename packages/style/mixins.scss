@@ -36,7 +36,7 @@
   @each $ele in $element {
     $E: $ele !global;
     @at-root {
-      & .#{$bem($B, $ele)} {
+      & .#{bem($B, $ele)} {
         @content;
       }
     }
