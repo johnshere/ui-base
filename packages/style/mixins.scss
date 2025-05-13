@@ -52,10 +52,17 @@
       }
   }
 }
-@mixin when($state) {
+@mixin when($state, $and: null) {
   @at-root {
     &.#{$state-prefix + $state} {
       @content;
+    }
+  }
+  @if $and {
+    @at-root {
+      &#{$and} {
+        @content;
+      }
     }
   }
 }
