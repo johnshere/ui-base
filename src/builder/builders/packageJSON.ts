@@ -2,13 +2,13 @@
 import fs from 'fs';
 import path from 'path';
 import {mkdirSync} from '../utils';
-import {distPath, compsSrcPath} from '../utils/paths';
+import {distPath, packagesPath} from '../utils/paths';
 import {PKG_NAME} from '../utils/constance';
 
 const IGNORE_DEPS = ['vue2', 'vue3', '@vue3/shared'];
 
 export async function generatePackageJSON() {
-    const packageJSONPath = path.join(compsSrcPath, 'package.json');
+    const packageJSONPath = path.join(packagesPath, 'package.json');
     const basePackageJSON = require(packageJSONPath) as Record<string, any>;
     // 移除不需要的依赖
     if (basePackageJSON.dependencies) {

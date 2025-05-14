@@ -16,7 +16,7 @@ import * as vue2Compiler from 'vue2/compiler-sfc';
 import * as vue3Compiler from 'vue3/compiler-sfc';
 import { esbuildConfig, nodeResolveExt } from '../config';
 import { IS_VUE2, PKG_NAME } from './constance';
-import { compsSrcPath } from './paths';
+import { packagesPath } from './paths';
 // import { PROJECT_OUTPUT_PATH } from '@shared/config/paths';
 // import { VUE2_PKG_NAME, VUE3_PKG_NAME } from '@shared/config/constance';
 import transformToVue3 from './transformToVue3';
@@ -34,7 +34,7 @@ function getPackageDependencies(
 
 export const generateExternal = async (options: { full: boolean }) => {
     const { dependencies, peerDependencies } = getPackageDependencies(
-        path.resolve(compsSrcPath, 'package.json'),
+        path.resolve(packagesPath, 'package.json'),
     );
 
     return (id: string) => {
@@ -61,7 +61,7 @@ export function generateCommonPluginConfig() {
             entries: [
                 {
                     find: '@src',
-                    replacement: compsSrcPath,
+                    replacement: packagesPath,
                 },
                 {
                     find: 'element-ui',

@@ -2,7 +2,7 @@ import glob from 'fast-glob';
 import { OutputOptions, rollup, RollupOptions } from 'rollup';
 import { buildConfig } from '../config';
 import { excludeFiles } from '../utils';
-import { compsSrcPath } from '../utils/paths';
+import { packagesPath } from '../utils/paths';
 import { generateCommonPluginConfig, generateExternal } from '../utils/rollup';
 import { PACKAGES_ROOT_PATH } from '@shared/config/paths';
 /**
@@ -10,8 +10,8 @@ import { PACKAGES_ROOT_PATH } from '@shared/config/paths';
  */
 export async function buildModules() {
     const input = excludeFiles(
-        await glob('**/*.{js,ts,vue}', {
-            cwd: compsSrcPath,
+        await glob('**/*.{js,ts,tsx,vue}', {
+            cwd: packagesPath,
             absolute: true,
             onlyFiles: true,
         })

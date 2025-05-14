@@ -13,7 +13,7 @@ import {
     generateTypesDefinitions,
 } from './builders/types-definitions';
 import {withTaskName} from './utils';
-import {compsSrcPath, distPath} from './utils/paths';
+import {packagesPath, distPath} from './utils/paths';
 import {generatePackageJSON} from './builders/packageJSON';
 import path from 'path';
 
@@ -55,8 +55,8 @@ const mainTask = series(
 );
 
 if (isWatch) {
-    console.log(path.join(compsSrcPath, '*/**'));
-    watch(path.join(compsSrcPath, '*/**'), mainTask);
+    console.log(path.join(packagesPath, '*/**'));
+    watch(path.join(packagesPath, '*/**'), mainTask);
 }
 
 export default mainTask;

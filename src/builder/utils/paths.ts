@@ -6,19 +6,19 @@ import {PKG_NAME} from './constance';
 export const projectPath = PROJECT_ROOT_PATH;
 
 // 打包输出目录
-export const distPath = path.resolve(projectPath, 'output', PKG_NAME);
+export const outputPath = path.resolve(projectPath, 'output');
 
-// vr-components 子包的目录
+// 打包输出目录
+export const distPath = path.resolve(outputPath, PKG_NAME);
+
+// 组件源码目录
 export const packagesPath = path.resolve(projectPath, 'packages');
 
 // builder 目录
 export const builderPath = path.resolve(projectPath, 'src/builder');
 
-// 组件源码目录
-export const compsSrcPath = path.resolve(projectPath, 'packages');
-
 // 入口文件
-export const entryFilePath = path.resolve(compsSrcPath, './index.ts');
+export const entryFilePath = path.resolve(packagesPath, './index.ts');
 
 // 样式目录
-export const stylesPath = path.resolve(compsSrcPath, './styles');
+export const stylesPath = path.resolve(packagesPath, './styles');
