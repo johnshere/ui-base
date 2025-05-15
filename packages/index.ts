@@ -36,6 +36,7 @@ import _Table from "./uelement/u-table";
 import _TableColumn from "./uelement/u-table/UTableColumn.js";
 import _Pagination from "./uelement/u-pagination";
 
+export * from './hooks'
 export * from "./utils";
 
 export const UStyle = _Style;
