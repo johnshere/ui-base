@@ -19,6 +19,11 @@ export default {
   components: {
     [Form.name]: Form
   },
+  provide() {
+    return {
+      UForm: this
+    };
+  },
   computed:{
     listeners(){
       return listeners.call(this)
