@@ -17,9 +17,9 @@ export default {
       const isView = this.UForm?.$attrs.isView
       const isview = this.UForm?.$attrs['is-view'];
       if (!!isView || isView === '' || !!isview || isview === '') {
-        return { xxl:6, xl: 6, lg: 8, md: 12, sm: 12 }
+        return { xl: 6, lg: 8, md: 12, sm: 12, xs: 24 }
       }
-      return { xxl:8, xl: 8, lg: 8, md: 12, sm: 12 }
+      return { xl: 8, lg: 8, md: 12, sm: 12, xs: 24 }
     }
   }
 };
