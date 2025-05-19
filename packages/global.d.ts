@@ -33,7 +33,7 @@ declare module 'vue' {
         ULink: typeof import('ui-base')['ULink'] & typeof import('element-ui')['Link']
         UDescriptions: typeof import('ui-base')['UDescriptions'] & typeof import('element-ui')['Descriptions']
         UTable: typeof import('ui-base')['UTable'] & typeof import('element-ui')['Table']
-        UTableColumn: typeof import('ui-base')['UTableColumn'] & typeof import('element-ui')['TableColumn']
+        UTableColumn: typeof import('element-ui')['TableColumn']
         UPagination: typeof import('ui-base')['UPagination'] & typeof import('element-ui')['Pagination']
     }
 }
