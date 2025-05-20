@@ -1,5 +1,9 @@
 <template>
-    <el-select v-bind="$attrs" v-on="_listeners">
+    <el-select
+        v-bind="{ ...$attrs }"
+        :clearable="!readonly && clearable"
+        v-on="_listeners"
+    >
         <el-option
             v-for="(item, i) in list"
             :key="i"
@@ -29,6 +33,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    clearable: {
+      type: Boolean,
+      default: true,
+    }
   },
   computed: {
     _listeners() {

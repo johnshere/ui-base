@@ -93,20 +93,15 @@ export default {
       vertical-align: unset;
     }
   }
-  thead th {
-    &.el-table__cell,
-    &.eu-table__cell {
-      color: #606266;
-      font-weight: bold;
-      background: #f6f7fb;
-    }
-  }
   .el-table__header,
   .eu-table__header {
-    th {
-      font-weight: bold;
-      background-color: #f5f7fa;
-      color: #333;
+    .el-table__cell,
+    .eu-table__cell {
+      background-color: #f6f7fb;
+      .cell {
+        font-weight: bold;
+        color: #333;
+      }
     }
   }
   th {
