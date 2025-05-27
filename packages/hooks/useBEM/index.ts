@@ -16,18 +16,18 @@ const when = (condition: boolean | Ref<boolean>, cls: Str = 'active') => {
 
 export const useBEM = (ns: Str) => {
   const namespace = ns || config.$N;
-  let block = '';
   const _bem = (_b: Str, _e: Str, _m: Str) => {
-    block = _b || block || '';
     let cls = namespace;
-    if (block) cls += config.$blockSeparator + block;
+    if (_b) cls += config.$blockSeparator + _b;
     if (_e) cls += config.$elementSeparator + _e;
     if (_m) cls += config.$modifierSeparator + _m;
     return cls;
   };
-  const b = (_b: Str) => (_b ? _bem(_b, '', '') : '');
-  const e = (_e: Str) => (_e ? _bem('', _e, '') : '');
-  const m = (_m: Str) => (_m ? _bem('', '', _m) : '');
+  let block = '';
+  let element = '';
+  const b = (_b: Str) => (_b ? _bem((block = _b), '', '') : '');
+  const e = (_e: Str) => (_e ? _bem(block, (element = _e), '') : '');
+  const m = (_m: Str) => (_m ? _bem(block, element, _m) : '');
   const be = (_b: Str, _e: Str) => (_b && _e ? _bem(_b, _e, '') : '');
   const em = (_e: Str, _m: Str) => (_e && _m ? _bem('', _e, _m) : '');
   const bm = (_b: Str, _m: Str) => (_b && _m ? _bem(_b, '', _m) : '');
